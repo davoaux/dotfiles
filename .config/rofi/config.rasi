@@ -7,7 +7,7 @@
     backgroud-alt: #CFCFCF;
     highlight: underline bold;
 
-    font: "Cantarell 11";
+    font: "Cascadia Code Regular 10";
     dark: #000000;
 }
 #window {
