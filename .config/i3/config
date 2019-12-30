@@ -32,7 +32,6 @@ bindsym $mod+q kill
 bindsym $mod+d exec rofi -show run
 
 # change focus
-bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
