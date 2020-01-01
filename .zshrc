@@ -78,6 +78,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Fixes the problem using /etc/vimrc instead of ~./vimrc
+# alias vim="vim -S $HOME/.vimrc"
+# alias sudo="sudo "
+
 # Add's to path 
 export PATH=/usr/java/jdk1.8.0_231/bin:$PATH
 export PATH=/home/parelkobra/eclipse/java-2019-09/eclipse:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
