@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'tpope/vim-surround'	" Quoting/parenthesizing 
 Plug 'scrooloose/nerdtree'	" Tree explorer
+Plug 'mattn/emmet-vim'		" Html tools
 Plug 'itchyny/lightline.vim'	" Status line
 Plug 'tpope/vim-eunuch' 	" Helpers for UNIX
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -31,3 +32,6 @@ let g:lightline = {
 	\ 'colorscheme': 'Tomorrow_Night',
 	\ }
 
+" EMMET trigger key
+" (type command then ',' x2) 
+let g:user_emmet_leader_key=','
