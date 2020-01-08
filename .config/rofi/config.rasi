@@ -3,12 +3,12 @@
     foreground-alt: #666666;
 
     backlight:   #CFCFCF;
-    background-color:  #00000010;
-    backgroud-alt: #CFCFCF;
+    background-color:  #1e1e1e;
+    background-alt: #CFCFCF;
     highlight: underline bold;
 
     font: "Cascadia Code Regular 10";
-    dark: #000000;
+    dark: #1e1e1e;
 }
 #window {
     width: 500px;

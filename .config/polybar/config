@@ -8,9 +8,10 @@
 ;==========================================================
 
 [colors]
-background = #000
-background-alt = #000
-foreground = #e6e5e7
+background = #dd8d5f
+background-alt = #dd8d5f
+#foreground = #e6e5e7
+foreground = #000
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
@@ -32,7 +33,7 @@ line-size = 3
 line-color = #f00
 
 border-size = 0
-border-color = #00000000
+border-color = ${colors.background}
 
 padding-left = 0
 padding-right = 2

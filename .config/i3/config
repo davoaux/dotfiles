@@ -174,7 +174,7 @@ client.placeholder	#000000 #0C0C0C	#FFFFFF #000000	  #0C0C0C
 client.background	#FFFFFF
 
 # Window border size
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
 
 # Window gap
 gaps top -7
