@@ -1,3 +1,9 @@
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
 # pywal: Applying the theme to new terminals
 # (cat ~/.cache/wal/sequences &)
 
@@ -82,8 +88,9 @@ source $ZSH/oh-my-zsh.sh
 # alias vim="vim -S $HOME/.vimrc"
 # alias sudo="sudo "
 
+#Fuzzy finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Add's to path 
 export PATH=/usr/java/jdk1.8.0_231/bin:$PATH
 export PATH=/home/parelkobra/eclipse/java-2019-09/eclipse:$PATH
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
