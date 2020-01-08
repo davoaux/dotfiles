@@ -177,6 +177,7 @@ client.background	#FFFFFF
 for_window [class="^.*"] border pixel 2
 
 # Window gap
+gaps top -7
 gaps inner 10
 
 # Rounded corners

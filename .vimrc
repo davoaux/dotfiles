@@ -45,9 +45,14 @@ let g:lightline = {
 	\ }
 
 " Editor settings
+set encoding=utf-8
 set number
+set relativenumber
 set laststatus=2
+set signcolumn=no
 syntax on
+set vb t_vb= "Disables the beep sound
+set showcmd  " Shows command in status line
 
 " Disables arrows in normal mode
 noremap <Up> <Nop>
