@@ -5,14 +5,15 @@ call plug#begin('~/.vim/plugged')
 
 " Load plugins
 " VIM enhancements 
-Plug 'tpope/vim-surround'	" Quoting/parenthesizing 
-Plug 'mattn/emmet-vim'		" Html tools
-Plug 'tpope/vim-eunuch' 	" Helpers for UNIX
+Plug 'tpope/vim-surround' " Quoting/parenthesizing
+Plug 'godlygeek/tabular'  " Text filtering and alignment
+Plug 'mattn/emmet-vim'    " Html tools
+Plug 'tpope/vim-eunuch'   " Helpers for UNIX
 
 " GUI enhancements
-Plug 'chriskempson/base16-vim'  " Color scheme
-Plug 'scrooloose/nerdtree'	" Tree explorer
-Plug 'itchyny/lightline.vim'	" Status line
+Plug 'chriskempson/base16-vim' " Color scheme
+Plug 'scrooloose/nerdtree'     " Tree explorer
+Plug 'itchyny/lightline.vim'   " Status line
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -46,13 +47,21 @@ let g:lightline = {
 
 " Editor settings
 set encoding=utf-8
-set number
-set relativenumber
+set mouse=a        " Enable mouse usage (all modes)
+set relativenumber " Show's relative line numbers
+set number         " Show's current line
 set laststatus=2
 set signcolumn=no
 syntax on
-set vb t_vb= "Disables the beep sound
-set showcmd  " Shows command in status line
+set vb t_vb=       " Disables the beep sound
+set showcmd        " Shows command in status line
+
+
+" Tabs
+set tabstop=4     " Tab characters appear n-spaces-wide
+set softtabstop=4 " def 0
+set noexpandtab   " def
+set shiftwidth=4  " The size of an indent
 
 " Disables arrows in normal mode
 noremap <Up> <Nop>
