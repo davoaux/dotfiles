@@ -8,6 +8,7 @@
     highlight: underline bold;
 
     font: "Cascadia Code Regular 10";
+    font: "SF Mono 11";
     dark: #1e1e1e;
 }
 #window {

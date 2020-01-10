@@ -164,12 +164,12 @@ bindsym $mod+r mode "resize"
 #		status_command i3status
 #	}
 
-# class			border  backgr.	text	indicator child_border
-client.focused		#CFCFCF	#CFCFCF #000000 #CFCFCF	  #CFCFCF
-client.focused_inactive #CFCFCF #CFCFCF #000000 #484E50	  #5F676A
-client.unfocused	#CFCFCF #CFCFCF #000000 #363636	  #363636
-client.urgent		#CFCFCF #CFCFCF #000000 #900000	  #900000
-client.placeholder	#000000 #0C0C0C	#FFFFFF #000000	  #0C0C0C
+# class					border	backgr. text	indic.  child_border
+client.focused          #CFCFCF #CFCFCF #000000 #CFCFCF #CFCFCF
+client.focused_inactive #CFCFCF #CFCFCF #000000 #484E50 #5F676A
+client.unfocused        #CFCFCF #CFCFCF #000000 #363636 #363636
+client.urgent           #CFCFCF #CFCFCF #000000 #900000 #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000 #0C0C0C
 
 client.background	#FFFFFF
 
