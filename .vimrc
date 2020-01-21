@@ -5,15 +5,19 @@ call plug#begin('~/.vim/plugged')
 
 " Load plugins
 " VIM enhancements 
-Plug 'tpope/vim-surround' " Quoting/parenthesizing
-Plug 'godlygeek/tabular'  " Text filtering and alignment
-Plug 'mattn/emmet-vim'    " Html tools
-Plug 'tpope/vim-eunuch'   " Helpers for UNIX
+Plug 'tpope/vim-surround'      " Quoting/parenthesizing
+Plug 'godlygeek/tabular'       " Text filtering and alignment
+Plug 'mattn/emmet-vim'         " Html tools
+Plug 'tpope/vim-eunuch'        " Helpers for UNIX
 
 " GUI enhancements
 Plug 'chriskempson/base16-vim' " Color scheme
 Plug 'scrooloose/nerdtree'     " Tree explorer
 Plug 'itchyny/lightline.vim'   " Status line
+
+" Markdown utils
+Plug 'plasticboy/vim-markdown' " zR opens all folds
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
