@@ -93,5 +93,9 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Add's to path 
-export PATH=/usr/java/jdk1.8.0_231/bin:$PATH
-export PATH=/home/parelkobra/eclipse/java-2019-09/eclipse:$PATH
+export PATH=$PATH:/usr/java/jdk1.8.0_231/bin
+export PATH=$PATH:/home/parelkobra/eclipse/java-2019-09/eclipse
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
