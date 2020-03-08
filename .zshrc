@@ -92,9 +92,12 @@ source $ZSH/oh-my-zsh.sh
 #Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Add's to path 
+export VISUAL=vim
+export EDITOR=$VISUAL
+
+# Java
 export PATH=$PATH:/usr/java/jdk1.8.0_231/bin
-export PATH=$PATH:/home/parelkobra/eclipse/java-2019-09/eclipse
+#export PATH=$PATH:/home/parelkobra/eclipse/java-2019-09/eclipse
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
