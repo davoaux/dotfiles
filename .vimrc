@@ -5,11 +5,9 @@ call plug#begin('~/.vim/plugged')
 
 " Load plugins
 " VIM enhancements 
-Plug 'tpope/vim-surround'      " Quoting/parenthesizing
 Plug 'godlygeek/tabular'       " Text filtering and alignment
 Plug 'mattn/emmet-vim'         " Html tools
 Plug 'tpope/vim-eunuch'        " Helpers for UNIX
-Plug 'airblade/vim-gitgutter'  " Git diff on sign column
 
 " Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

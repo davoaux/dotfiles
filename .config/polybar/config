@@ -8,8 +8,8 @@
 ;==========================================================
 
 [colors]
-background = #dd8d5f
-background-alt = #dd8d5f
+background = #00dd8d5f
+background-alt = #00dd8d5f
 #foreground = #e6e5e7
 foreground = #000
 foreground-alt = #555
@@ -269,7 +269,10 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-;pseudo-transparency = false
+
+; Enables pseudo-transparency for the bar
+; If set to true the bar can be transparent without a compositor
+pseudo-transparency = true 
 
 [global/wm]
 margin-top = 5

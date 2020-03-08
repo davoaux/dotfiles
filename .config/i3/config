@@ -156,11 +156,13 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000 #0C0C0C
 client.background		#FFFFFF
 
 # Window border size
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 0
 
 # Window gap
-gaps top -7
-gaps inner 10
-
+gaps top -14 
+gaps inner 25
+ 
 # Rounded corners
 border_radius 0
+
+# Fuzzy finder cd -> Alt+C
