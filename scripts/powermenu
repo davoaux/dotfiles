@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+option1="shutdown"
+option2="logout"
+option3="reboot"
+option4="suspend"
+option5="update packages"
+
+list="$option1\n$option2\n$option3\n$option4\n$option5"
+
+pkgupdate() {
+  os=$(cat /etc/os-release | head -n 1 | cut -d '"' -f 2)
+  case $os in
+    Arch\ Linux) sudo pacman -Syu;;
+    *) sudo apt-get update && sudo apt-get upgrade;;
+  esac
+}
+
+#opt=$(echo -e $list | rofi -dmenu -lines 5)
+opt=$(echo -e $list | rofi -dmenu -no-config -location 3 -width 10 -xoffset -20 -yoffset 20 -lines 5)
+case $opt in
+  $option1) systemctl poweroff -i;;
+  $option2) i3-msg exit;;
+  $option3) systemctl reboot -i;;
+  $option4) systemctl suspend -i;;
+  $option5) pkgupdate;;
+esac

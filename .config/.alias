@@ -1,0 +1,28 @@
+# config editing
+alias aliasrc='$EDITOR $XDG_CONFIG_HOME/.alias'
+alias zshrc='$EDITOR $HOME/.zshrc'
+alias i3rc='$EDITOR $XDG_CONFIG_HOME/i3/config'
+alias termrc='$EDITOR $XDG_CONFIG_HOME/alacritty/alacritty.yml'
+alias panrc='$EDITOR $XDG_CONFIG_HOME/polybar/config'
+alias picomrc='$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
+alias vimrc='$EDITOR $XDG_CONFIG_HOME/nvim/init.vim'
+alias reload='source $HOME/.zshrc'
+
+# git commands
+alias gitl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+alias gita='git add . && git commit -m "auto-commit" && git push origin master'
+alias gits='git status --short'
+
+alias yadms='yadm status --short'
+alias yadma='yadm add -u'
+alias yadmc='yadm commit -m "auto-commit"'
+alias yadmp='yadm push origin master'
+alias yadmauto="yadma && yadmc && yadmp"
+
+# miscellaneous commands
+alias sudovi='sudo nvim'
+alias vi='nvim'
+alias google='ping -c1 8.8.8.8'
+alias vimo='$EDITOR -o `fzf -e`'
+alias yt='youtube-dl'
+alias wv="cd $HOME/Pictures/misc/.c/v && ls"

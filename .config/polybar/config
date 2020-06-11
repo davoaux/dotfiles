@@ -1,0 +1,57 @@
+include-file = ~/.config/polybar/modules.ini
+include-file = ~/.config/polybar/colors.ini
+
+[bar/bar1]
+enable-ipc = true
+
+bottom = false
+width = 80%
+height = 25
+offset-x = 10%
+offset-y = 0%
+fixed-center = true
+
+radius = 0.0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 11
+;last two 0s is the transparency of the border
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = lucy tewi:size=9;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+
+modules-left = i3
+;modules-center = mpd
+;modules-center = spotify
+modules-right = pulseaudio memory cpu eth temperature date powermenu
+
+tray-position = right
+tray-padding = 2
+tray-background = ${colors.background-alt}
+tray-detached = false
+tray-maxsize = 16
+
+wm-restack = i3
+override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize

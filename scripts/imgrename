@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+backup() {
+  bdir=../imgrename-backup-$(date +%d%m%y)
+  if [ -d $bdir ]; then
+    rm -rf $bdir/*
+  else
+    mkdir $bdir
+  fi
+  cp -r * $bdir
+}
+
+# Si el nombre del archivo tiene espacios, la extension da 'cannot cannot' 😞 
+rename() {
+  tdir=../temp-imgrename
+  mkdir $tdir
+  num=1
+  for file in *; do
+    mv -- $file $tdir/image$num.$(file -b $file | cut -d' ' -f 1 | tr '[:upper:]' '[:lower:]')
+    ((num++))
+  done
+  rm -rf *
+  mv $tdir/* .
+  rm -rf $tdir
+}
+
+if [ -z "$1" ]; then
+  rename
+else
+  case $1 in
+    -b|--backup ) backup; rename;;
+    * ) echo "$0: invalid option -- '$1'";;
+  esac
+fi
