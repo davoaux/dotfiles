@@ -2,7 +2,7 @@ include-file = ~/.config/polybar/modules.ini
 include-file = ~/.config/polybar/colors.ini
 
 [bar/bar1]
-enable-ipc = true
+enable-ipc = false
 
 bottom = false
 width = 80%
@@ -26,8 +26,10 @@ border-color = #00000000
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 2
+;module-margin-left = 1
+;module-margin-right = 2
+module-margin-left = 0
+module-margin-right = 0
 
 font-0 = lucy tewi:size=9;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0

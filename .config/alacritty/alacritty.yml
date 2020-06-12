@@ -6,7 +6,6 @@ window:
     x: 10
     y: 10
   dynamic_padding: false
-  # full/none 
   decorations: full
   title: Alacritty
   
