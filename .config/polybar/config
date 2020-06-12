@@ -40,7 +40,7 @@ modules-right = pulseaudio memory cpu eth temperature date powermenu
 
 tray-position = right
 tray-padding = 2
-tray-background = ${colors.background-alt}
+tray-background = ${colors.background}
 tray-detached = false
 tray-maxsize = 16
 

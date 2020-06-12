@@ -4,11 +4,11 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'gruvbox-community/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'townk/vim-autoclose'
-" Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -20,7 +20,7 @@ set encoding=utf-8
 set ignorecase smartcase hlsearch
 set hidden
 " Set to 2 for lightline
-set laststatus=0
+set laststatus=2
 set listchars+=space:·
 set mouse=a
 set nobackup nowritebackup
@@ -28,17 +28,17 @@ set noshowmode
 set number relativenumber
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2
 set updatetime=300
-" set termguicolors
+set termguicolors
 
-" let g:gruvbox_italic = '1'
-" let g:gruvbox_contrast_dark = 'hard'
-" colorscheme gruvbox
+let g:gruvbox_italic = '1'
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
 " colorscheme base16-default-dark
 
 " set t_Co=256
-set background=light
-colorscheme PaperColor
+" set background=light
+" colorscheme PaperColor
 
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1

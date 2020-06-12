@@ -24,6 +24,17 @@ rename() {
   rm -rf $tdir
 }
 
+confirm() {
+  ls -a
+  read -p 'Do you want to rename all images? (y/n) ' answer
+  case $answer in
+    y|Y) return 0;;
+    n|N) exit 0;;
+    *) echo invalid option; confirm;;
+  esac
+}
+
+confirm
 if [ -z "$1" ]; then
   rename
 else

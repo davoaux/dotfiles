@@ -16,41 +16,39 @@ scrolling:
 
 font:
   normal:
-    family: lucy tewi
+    family: SFMono Nerd Font
+    #family: lucy tewi
     #family: Iosevka
     #family: Fira Code
-    #family: SFMono Nerd Font
     #family: TerminessTTF Nerd Font
     
-    #style: Regular
-    
-    #SF Mono style
-    style: Medium
+    style: Regular
+    #style: Medium
     
   bold:
     #family: Iosevka
     #family: Fira Code
-    #family: SFMono Nerd Font
+    family: SFMono Nerd Font
     #family: TerminessTTF Nerd Font
-    family: lucy tewi
+    #family: lucy tewi
 
     style: Bold
   
   italic:
     #family: Iosevka
     #family: Fira Code
-    #family: SFMono Nerd Font
+    family: SFMono Nerd Font
     #family: TerminessTTF Nerd Font
-    family: lucy tewi
+    #family: lucy tewi
 
     style: Italic
   
   bold_italic:
     #family: Iosevka
     #family: Fira Code
-    #family: SFMono Nerd Font
+    family: SFMono Nerd Font
     #family: TerminessTTF Nerd Font
-    family: lucy tewi
+    #family: lucy tewi
     
     style: Bold Italic
 
@@ -67,70 +65,39 @@ font:
     x: 0
     y: 0
 
-    ## Colors (Base16 Default Dark)
-    #colors:
-    #  # Default colors
-    #  primary:
-    #    background: '0x181818'
-    #    foreground: '0xd8d8d8'
-    #
-    #  # Colors the cursor will use if `custom_cursor_colors` is true
-    #  cursor:
-    #    text: '0xd8d8d8'
-    #    cursor: '0xd8d8d8'
-    #
-    #  # Normal colors
-    #  normal:
-    #    black:   '0x181818'
-    #    red:     '0xab4642'
-    #    green:   '0xa1b56c'
-    #    yellow:  '0xf7ca88'
-    #    blue:    '0x7cafc2'
-    #    magenta: '0xba8baf'
-    #    cyan:    '0x86c1b9'
-    #    white:   '0xd8d8d8'
-    #
-    #  # Bright colors
-    #  bright:
-    #    black:   '0x585858'
-    #    red:     '0xab4642'
-    #    green:   '0xa1b56c'
-    #    yellow:  '0xf7ca88'
-    #    blue:    '0x7cafc2'
-    #    magenta: '0xba8baf'
-    #    cyan:    '0x86c1b9'
-    #    white:   '0xf8f8f8'
-
-# Colors (PaperColor - Light)
+# Colors (Gruvbox dark)
 colors:
   # Default colors
   primary:
-    background: '0xEEEEEE'
-    foreground: '0x4D4D4C'
+    # hard contrast: background = '#1d2021'
+    background: '#1d2021'
+    # soft contrast: background = '#32302f'
+    foreground: '#ebdbb2'
 
   # Normal colors
   normal:
-    black:   '0xEDEDED'
-    red:     '0xD7005F'
-    green:   '0x718C00'
-    yellow:  '0xD75F00'
-    blue:    '0x4271AE'
-    magenta: '0x8959A8'
-    cyan:    '0x3E999F'
-    white:   '0x4D4D4C'
+    black:   '#282828'
+    red:     '#cc241d'
+    green:   '#98971a'
+    yellow:  '#d79921'
+    blue:    '#458588'
+    magenta: '#b16286'
+    cyan:    '#689d6a'
+    white:   '#a89984'
 
   # Bright colors
   bright:
-    black:   '0x969694'
-    red:     '0xD7005F'
-    green:   '0x718C00'
-    yellow:  '0xD75F00'
-    blue:    '0x4271AE'
-    magenta: '0x8959A8'
-    cyan:    '0x3E999F'
-    white:   '0xF5F5F5'
+    black:   '#928374'
+    red:     '#fb4934'
+    green:   '#b8bb26'
+    yellow:  '#fabd2f'
+    blue:    '#83a598'
+    magenta: '#d3869b'
+    cyan:    '#8ec07c'
+    white:   '#ebdbb2'
 
 draw_bold_text_with_bright_colors: true
+
 background_opacity: 1.0
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

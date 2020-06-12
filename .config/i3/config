@@ -129,7 +129,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border	backgr. text	  indic.  child_border
-client.focused          #282828 #282828 #000000 #282828 #282828
+client.focused          #282828 #282828 #000000 #fabd2f #fabd2f
 client.focused_inactive #282828 #282828 #000000 #484E50 #5F676A
 client.unfocused        #282828 #282828 #000000 #363636 #363636
 client.urgent           #282828 #282828 #000000 #900000 #900000
@@ -145,7 +145,7 @@ client.background #FFFFFF
 #}
 
 # Window border
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 
 gaps top 25
 gaps inner 30

@@ -5,8 +5,8 @@ export ZSH="/home/parelkobra/.oh-my-zsh"
 
 #ZSH_THEME="ys"
 #ZSH_THEME="steeef"
-ZSH_THEME="risto"
-#ZSH_THEME="spaceship"
+#ZSH_THEME="risto"
+ZSH_THEME="spaceship"
 
 # alias
 [ -f "$HOME/.config/.alias" ] && source $HOME/.config/.alias
@@ -39,7 +39,7 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
 # setup path
-export PATH="$PATH:$HOME/.local/bin:$HOME/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/scripts"
 export PATH="$PATH:$HOME/nodejs/bin"  # nodejs
 
 export NVM_DIR="$HOME/.nvm"
