@@ -3,19 +3,21 @@ alias aliasrc='$EDITOR $XDG_CONFIG_HOME/.alias'
 alias zshrc='$EDITOR $HOME/.zshrc'
 alias i3rc='$EDITOR $XDG_CONFIG_HOME/i3/config'
 alias termrc='$EDITOR $XDG_CONFIG_HOME/alacritty/alacritty.yml'
-alias panrc='$EDITOR $XDG_CONFIG_HOME/polybar/config'
 alias picomrc='$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
 alias vimrc='$EDITOR $XDG_CONFIG_HOME/nvim/init.vim'
 alias reload='source $HOME/.zshrc'
 
 # git commands
-alias gitl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
-alias gita='git add . && git commit -m "auto-commit" && git push origin master'
+alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gits='git status --short'
+alias gita="git add ."
+alias gitc="git commit -m 'auto-commit'"
+alias gitp="git push origin master"
+alias gitauto="gita && gitc && gitp"
 
 alias yadms='yadm status --short'
 alias yadma='yadm add -u'
-alias yadmc='yadm commit -m "auto-commit"'
+alias yadmc="yadm commit -m 'auto-commit'"
 alias yadmp='yadm push origin master'
 alias yadmauto="yadma && yadmc && yadmp"
 
@@ -25,4 +27,14 @@ alias vi='nvim'
 alias google='ping -c1 8.8.8.8'
 alias vimo='$EDITOR -o `fzf -e`'
 alias yt='youtube-dl'
+
+mkcd() {
+  mkdir $1
+  cd $1
+}
+
+# bookmarks
+alias barrc="cd $XDG_CONFIG_HOME/polybar && ls"
+alias configs="cd $XDG_CONFIG_HOME && ls -a"
+alias notes="cd $HOME/Documents/notes/ && ls"
 alias wv="cd $HOME/Pictures/misc/.c/v && ls"

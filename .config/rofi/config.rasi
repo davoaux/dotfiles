@@ -116,3 +116,5 @@ enabled: false;
     background-color: @backlight;
     border-color: @foreground;
 }
+
+/* vim:ft=css
