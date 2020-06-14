@@ -16,7 +16,8 @@ rename() {
   mkdir $tdir
   num=1
   for file in *; do
-    mv -- $file $tdir/image$num.$(file -b $file | cut -d' ' -f 1 | tr '[:upper:]' '[:lower:]')
+    ext=$(file -b $file)
+    mv -- $file $tdir/image$num.$(echo ${ext%% *} | tr '[:upper:]' '[:lower:]')
     ((num++))
   done
   rm -rf *
