@@ -16,7 +16,12 @@ ZSH_THEME="spaceship"
 
 [ -f "$HOME/.config/.alias" ] && source $HOME/.config/.alias
 
-plugins=(git fzf zsh-interactive-cd)
+plugins=(
+  git
+  fzf
+  zsh-interactive-cd
+)
+
 source $ZSH/oh-my-zsh.sh
 
 if [[ ! -d ~/.zsh-autopair ]]; then

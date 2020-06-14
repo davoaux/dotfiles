@@ -97,7 +97,7 @@ colors:
 
 draw_bold_text_with_bright_colors: true
 
-background_opacity: 1.0
+background_opacity: 0.97
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: false

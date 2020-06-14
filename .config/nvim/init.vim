@@ -34,6 +34,9 @@ let g:gruvbox_italic = '1'
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 
+" transparency issue
+hi Normal ctermbg=NONE guibg=NONE
+
 " colorscheme base16-default-dark
 
 " set t_Co=256

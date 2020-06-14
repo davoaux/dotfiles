@@ -147,8 +147,16 @@ client.background #FFFFFF
 # Window border
 for_window [class="^.*"] border pixel 0
 
-gaps top 25
-gaps inner 30
+gaps top 20
+gaps inner 25
 
-# i3-gaps-rounded-git build fails
-#border_radius 0
+set $mode_gaps_inner Inner Gaps: +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps_inner"
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner all plus 5
+        bindsym minus gaps inner all minus 5
+        bindsym 0     gaps inner all set 0
+
+        bindsym Escape mode "default"
+}
