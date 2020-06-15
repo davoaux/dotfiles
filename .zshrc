@@ -17,8 +17,8 @@ ZSH_THEME="spaceship"
 [ -f "$HOME/.config/.alias" ] && source $HOME/.config/.alias
 
 plugins=(
-  git
   fzf
+  node
   zsh-interactive-cd
 )
 
