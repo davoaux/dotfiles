@@ -5,8 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
-Plug 'chriskempson/base16-vim'
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'mattn/emmet-vim'
 Plug 'townk/vim-autoclose'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -37,16 +36,14 @@ colorscheme gruvbox
 " transparency issue
 hi Normal ctermbg=NONE guibg=NONE
 
-" colorscheme base16-default-dark
-
-" set t_Co=256
-" set background=light
-" colorscheme PaperColor
-
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
+
+" Enable emmet just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
