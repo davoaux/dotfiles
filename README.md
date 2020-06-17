@@ -2,6 +2,5 @@
 
 My linux config files
 
-![desktop](Pictures/Screenshots/desktop3.png)
+![desktop](Pictures/Screenshots/desktop4.png)
 
-*TODO install script*
