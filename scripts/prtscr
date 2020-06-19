@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-option1="Whole screen"
-option2="Currently focused window"
-option3="Select screen section"
+option1=" Whole screen"
+option2=" Currently focused window"
+option3=" Select screen section"
 dir=$HOME/Pictures/Screenshots
 name=$(date +%Y%m%d_%H%M%S)
 
@@ -13,4 +13,4 @@ case $choice in
   $option2) scrot -d 1 -u $dir/$name.png;;
   $option3) scrot -s $dir/$name.png;;
 esac
-#TODO notify-send
+notify-send "Screenshot ($name.png) saved at $dir"
