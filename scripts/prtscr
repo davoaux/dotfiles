@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+notification() {
+  notify-send "Screenshot ($name.png) saved at $dir"
+}
+
 option1=" Whole screen"
 option2=" Currently focused window"
 option3=" Select screen section"
@@ -9,8 +13,13 @@ name=$(date +%Y%m%d_%H%M%S)
 list="$option1\n$option2\n$option3"
 choice=$(echo -e $list | rofi -dmenu -config ~/.config/rofi/scrot.rasi -location 3 -xoffset -15 -yoffset 35 -lines 3)
 case $choice in
-  $option1) scrot -d 1 $dir/$name.png;;
-  $option2) scrot -d 1 -u $dir/$name.png;;
-  $option3) scrot -s $dir/$name.png;;
+  $option1) 
+    scrot -d 1 $dir/$name.png;
+    notification;;
+  $option2) 
+    scrot -d 1 -u $dir/$name.png;
+    notification;;
+  $option3) 
+    scrot -s $dir/$name.png;
+    notification;;
 esac
-notify-send "Screenshot ($name.png) saved at $dir"
