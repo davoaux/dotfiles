@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+mkcd() {
+  mkdir -p $1 && cd $1
+}
+
+configs() {
+  local dir=$(
+    find $XDG_CONFIG_HOME -maxdepth 1 -mindepth 1 |
+    fzf
+  )
+  [ -n "$dir" ] && cd $dir; nvim .
+}

@@ -17,42 +17,49 @@ font:
   normal:
     family: SFMono Nerd Font
     #family: lucy tewi
+    #family: unifont
     #family: Iosevka
+    #family: SFMono Nerd Font
+    #family: lucy tewi
     #family: Fira Code
+    #family: FuraCode Nerd Font
     #family: TerminessTTF Nerd Font
     
-    style: Regular
-    #style: Medium
+    #style: Regular
+    style: Medium
     
   bold:
+    family: SFMono Nerd Font
+    #family: unifont
     #family: Iosevka
     #family: Fira Code
-    family: SFMono Nerd Font
     #family: TerminessTTF Nerd Font
     #family: lucy tewi
 
     style: Bold
   
   italic:
+    family: SFMono Nerd Font
+    #family: unifont
     #family: Iosevka
     #family: Fira Code
-    family: SFMono Nerd Font
     #family: TerminessTTF Nerd Font
     #family: lucy tewi
 
     style: Italic
   
   bold_italic:
+    family: SFMono Nerd Font
+    #family: unifont
     #family: Iosevka
     #family: Fira Code
-    family: SFMono Nerd Font
     #family: TerminessTTF Nerd Font
     #family: lucy tewi
     
     style: Bold Italic
 
   #SF Mono size
-  size: 10.0
+  size: 10
   
   #Terminess size
   #size: 12.0
@@ -68,9 +75,8 @@ font:
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '#1d2021'
-    background: '#1d2021'
-    # soft contrast: background = '#32302f'
+    #background: '#1d2021'
+    background: '#141414'
     foreground: '#ebdbb2'
 
   # Normal colors
@@ -97,7 +103,8 @@ colors:
 
 draw_bold_text_with_bright_colors: true
 
-background_opacity: 0.97
+#background_opacity: 0.94
+background_opacity: 1
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: false
