@@ -78,6 +78,7 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 map <C-n> :NERDTreeToggle<CR>
+map <C-j> :Files<CR>
 
 noremap <F5> :set list!<CR>
 

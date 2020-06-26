@@ -24,6 +24,7 @@ alias sudovi='sudo nvim'
 alias vi='nvim'
 alias google='ping -c1 8.8.8.8'
 alias yt='youtube-dl'
+alias tmux='tmux -u'
 alias diskspace='df -H'
 
 # bookmarks

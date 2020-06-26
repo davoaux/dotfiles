@@ -129,7 +129,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border	backgr. text	  indic.  child_border
-client.focused          #282828 #282828 #000000 #fabd2f #fabd2f
+client.focused          #282828 #282828 #000000 #888888 #888888
 client.focused_inactive #282828 #282828 #000000 #484E50 #5F676A
 client.unfocused        #282828 #282828 #000000 #363636 #363636
 client.urgent           #282828 #282828 #000000 #900000 #900000
@@ -145,10 +145,10 @@ client.background #FFFFFF
 #}
 
 # Window border
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 
 gaps top 20
-gaps inner 25
+#gaps inner 25
 
 set $mode_gaps_inner Inner Gaps: +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps_inner"

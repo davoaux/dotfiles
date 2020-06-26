@@ -6,7 +6,7 @@ export ZSH="/home/parelkobra/.oh-my-zsh"
 export TERMINAL=alacritty
 export VISUAL=/usr/bin/nvim
 export EDITOR=$VISUAL
-export BROWSER=/usr/bin/firefox-nightly
+export BROWSER=/usr/bin/chromium
 
 export LESSHISTFILE="-"
 export XDG_CONFIG_HOME=$HOME/.config

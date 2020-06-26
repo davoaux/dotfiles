@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-option1="shutdown"
-option2="logout"
-option3="reboot"
-option4="suspend"
+option1=" Shutdown"
+option2=" Logout"
+option3=" Reboot"
+option4=" Suspend"
 
 list="$option1\n$option2\n$option3\n$option4"
 
