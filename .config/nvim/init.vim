@@ -2,6 +2,7 @@ filetype plugin on
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'pangloss/vim-javascript'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'

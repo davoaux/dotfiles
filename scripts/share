@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+[ -z $1 ] && echo "error: no arg provided" && exit 1
+[ -d $1 ] && echo "error: $1 is a directory" && exit 1
+[[ ! -f $1 ]] && echo "error: file $1 not found" && exit 1
+
+curl -F "file=@$1" https://0x0.st
