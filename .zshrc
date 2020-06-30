@@ -1,6 +1,6 @@
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/scripts"
-export PATH="$PATH:$HOME/nodejs/bin"  # nodejs
+export PATH="$PATH:$HOME/nodejs/bin"
 
 export ZSH="/home/parelkobra/.oh-my-zsh"
 export TERMINAL=alacritty

@@ -3,12 +3,12 @@
     foreground-alt: #666666;
 
     backlight:   #CFCFCF;
-    background-color:  #1e1e1e;
+    background-color:  #141414;
     background-alt: #CFCFCF;
     highlight: underline bold;
 
     font: "SF Mono 11";
-    dark: #1e1e1e;
+    dark: #141414;
 }
 #window {
     width: 500px;
