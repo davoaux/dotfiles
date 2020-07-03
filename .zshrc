@@ -17,8 +17,13 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse'
 
 ZSH_THEME="spaceship"
 
-source $ZSH/oh-my-zsh.sh
+plugins=(
+  fzf
+  node
+  zsh-interactive-cd
+)
 
+source $ZSH/oh-my-zsh.sh
 [ -f "$HOME/.config/zsh/.alias" ] && source $HOME/.config/zsh/.alias
 [ -f "$HOME/.config/zsh/.functions" ] && source $HOME/.config/zsh/.functions
 [ -f "$HOME/.config/zsh/.plugins" ] && source $HOME/.config/zsh/.plugins

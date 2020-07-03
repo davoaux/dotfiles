@@ -6,9 +6,3 @@ fi
 
 source ~/.zsh-autopair/autopair.zsh
 autopair-init
-
-plugins=(
-  fzf
-  node
-  zsh-interactive-cd
-)
