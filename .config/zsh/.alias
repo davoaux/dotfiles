@@ -26,6 +26,7 @@ alias google='ping -c1 8.8.8.8'
 alias yt='youtube-dl'
 alias tmux='tmux -u'
 alias diskspace='df -H'
+alias vol='alsamixer -g'
 
 # bookmarks
 alias notes="cd $HOME/Documents/notes/ && ls"
