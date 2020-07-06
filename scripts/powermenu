@@ -1,16 +1,29 @@
 #!/usr/bin/env bash
 
 option1=" Shutdown"
-option2=" Logout"
+option2=" Lock"
 option3=" Reboot"
 option4=" Suspend"
 
 list="$option1\n$option2\n$option3\n$option4"
 
-opt=$(echo -e $list | rofi -dmenu -config ~/.config/rofi/powermenu.rasi -location 3 -xoffset -15 -yoffset 35 -lines 4)
+opt=$(
+  echo -e $list |
+  rofi -dmenu -config ~/.config/rofi/powermenu.rasi \
+  -location 3 -xoffset -15 -yoffset 35 -lines 4
+)
+
 case $opt in
-  $option1) systemctl poweroff -i;;
-  $option2) i3-msg exit;;
-  $option3) systemctl reboot -i;;
-  $option4) systemctl suspend -i;;
+  $option1)
+    systemctl poweroff -i
+    ;;
+  $option2)
+    i3lock
+    ;;
+  $option3)
+    systemctl reboot -i
+    ;;
+  $option4)
+    systemctl suspend -i
+    ;;
 esac

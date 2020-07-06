@@ -23,7 +23,7 @@ set ignorecase smartcase hlsearch
 set hidden
 " Set to 2 for lightline
 set laststatus=2
-set listchars+=space:·
+set listchars+=space:·,eol:¬
 set mouse=a
 set nobackup nowritebackup
 set noshowmode
@@ -81,7 +81,11 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 map <C-n> :NERDTreeToggle<CR>
+
 map <C-j> :Files<CR>
+
+" xclip based clipboard copy
+vmap <C-c> :!xclip -f -sel clip<CR>
 
 noremap <F5> :set list!<CR>
 

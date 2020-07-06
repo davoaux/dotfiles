@@ -22,6 +22,7 @@ bindsym $mod+d exec rofi -show drun
 bindsym $mod+Tab exec rofi -show window
 
 bindsym $mod+Shift+q exec ~/scripts/powermenu
+bindsym $mod+Print exec ~/scripts/prtscr -f
 bindsym Print exec ~/scripts/prtscr
 
 bindsym $mod+b exec amixer -q sset 'Master' 4%-
@@ -129,9 +130,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border	backgr. text	  indic.  child_border
-client.focused          #282828 #282828 #000000 #888888 #888888
+client.focused          #282828 #282828 #000000 #9d9d9d #9d9d9d
 client.focused_inactive #282828 #282828 #000000 #484E50 #5F676A
-client.unfocused        #282828 #282828 #000000 #363636 #363636
+client.unfocused        #282828 #282828 #000000 #3a3a3a #3a3a3a
 client.urgent           #282828 #282828 #000000 #900000 #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000 #0C0C0C
 
@@ -145,10 +146,10 @@ client.background #FFFFFF
 #}
 
 # Window border
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
-gaps top 20
-#gaps inner 25
+gaps top 25
+gaps inner 25
 
 set $mode_gaps_inner Inner Gaps: +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps_inner"

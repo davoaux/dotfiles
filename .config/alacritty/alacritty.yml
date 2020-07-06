@@ -13,53 +13,42 @@ scrolling:
   history: 10000
   multiplier: 3
 
+#family: FantasqueSansMono Nerd Font
+#family: SFMono Nerd Font
+#family: xos4 Terminus
+#family: lucy tewi
+#family: Misc Tamsyn
+#family: unifont
+#family: Iosevka
+#family: lucy tewi
+#family: Fira Code
+#family: FuraCode Nerd Font
+
 font:
   normal:
-    family: xos4 Terminus
-    #family: SFMono Nerd Font
-    #family: lucy tewi
-    #family: unifont
-    #family: Iosevka
-    #family: lucy tewi
-    #family: Fira Code
-    #family: FuraCode Nerd Font
+    family: cozette
     
     #style: Regular
     style: Medium
     
   bold:
-    family: xos4 Terminus
-    #family: SFMono Nerd Font
-    #family: unifont
-    #family: Iosevka
-    #family: Fira Code
-    #family: lucy tewi
+    family: cozette
 
     style: Bold
   
   italic:
-    family: xos4 Terminus
-    #family: SFMono Nerd Font
-    #family: unifont
-    #family: Iosevka
-    #family: Fira Code
-    #family: lucy tewi
+    family: cozette
 
     style: Italic
   
   bold_italic:
-    family: xos4 Terminus
-    #family: SFMono Nerd Font
-    #family: unifont
-    #family: Iosevka
-    #family: Fira Code
-    #family: lucy tewi
+    family: cozette
     
     style: Bold Italic
 
   #SF Mono size
-  #size: 10
-  size: 9
+  size: 10
+  #size: 9
     
   offset:
     x: 0
