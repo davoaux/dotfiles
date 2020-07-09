@@ -3,8 +3,8 @@ env:
 
 window:
   padding:
-    x: 0
-    y: 0
+    x: 20
+    y: 20
   dynamic_padding: false
   decorations: full
   title: Alacritty
@@ -17,6 +17,8 @@ scrolling:
 #family: SFMono Nerd Font
 #family: xos4 Terminus
 #family: lucy tewi
+#family: Dina
+#family: cozette
 #family: Misc Tamsyn
 #family: unifont
 #family: Iosevka
@@ -26,23 +28,23 @@ scrolling:
 
 font:
   normal:
-    family: cozette
+    family: lucy tewi
     
-    #style: Regular
-    style: Medium
+    style: Regular
+    #style: Medium
     
   bold:
-    family: cozette
+    family: lucy tewi
 
     style: Bold
   
   italic:
-    family: cozette
+    family: lucy tewi
 
     style: Italic
   
   bold_italic:
-    family: cozette
+    family: lucy tewi
     
     style: Bold Italic
 

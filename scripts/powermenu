@@ -10,7 +10,7 @@ list="$option1\n$option2\n$option3\n$option4"
 opt=$(
   echo -e $list |
   rofi -dmenu -config ~/.config/rofi/powermenu.rasi \
-  -location 3 -xoffset -15 -yoffset 35 -lines 4
+  -location 3 -xoffset -15 -yoffset 45 -lines 4
 )
 
 case $opt in
@@ -18,7 +18,7 @@ case $opt in
     systemctl poweroff -i
     ;;
   $option2)
-    i3lock
+    i3lock -i "$HOME"/Pictures/Lock/sM441Xg.png
     ;;
   $option3)
     systemctl reboot -i
