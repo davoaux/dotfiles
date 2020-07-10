@@ -27,6 +27,7 @@ alias yt='youtube-dl'
 alias tmux='tmux -u'
 alias diskspace='df -H'
 alias vol='alsamixer -g'
+alias joystick='ds4drv --hidraw'
 
 # bookmarks
 alias notes="cd $HOME/Documents/notes/ && ls"
