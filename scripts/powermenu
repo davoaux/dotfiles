@@ -18,7 +18,18 @@ case $opt in
     systemctl poweroff -i
     ;;
   $option2)
-    i3lock -i "$HOME"/Pictures/Lock/sM441Xg.png
+    file="$(cat .fehbg)"
+
+    # Current wallpaper
+    wal="${file#*\'}" && wal="${wal%?}"
+
+    # Wallpaper extension
+    ext="$(echo "${file#*.}" | cut -d "'" -f 1)"
+
+    # If the image isn't a png file, format it to png, and delete the original
+    [[ $ext != png ]] && mogrify -format png $wal ; rm $wal ; fmtwal="${wal%.*}.png"
+
+    i3lock -i "$fmtwal"
     ;;
   $option3)
     systemctl reboot -i

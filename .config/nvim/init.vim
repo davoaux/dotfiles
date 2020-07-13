@@ -2,7 +2,6 @@ filetype plugin on
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'pangloss/vim-javascript'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
@@ -10,10 +9,12 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'mattn/emmet-vim'
 Plug 'townk/vim-autoclose'
 Plug 'itchyny/lightline.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'pangloss/vim-javascript'
+Plug 'digitaltoad/vim-pug'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 call plug#end()
 

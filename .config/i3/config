@@ -19,7 +19,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 bindsym $mod+d exec rofi -show drun
-bindsym $mod+Tab exec rofi -show window
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 bindsym $mod+Shift+q exec ~/scripts/powermenu
 bindsym $mod+Print exec ~/scripts/prtscr -f
