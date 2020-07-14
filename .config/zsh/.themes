@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Frequent themes: 
+#
+# - spaceship (https://github.com/denysdovhan/spaceship-prompt)
+# - common (https://github.com/jackharrisonsherlock/common)
+# - pista (https://github.com/NerdyPepper/pista)
+
+#ZSH_THEME=""
+
+# pista theme
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+autoload -Uz add-zsh-hook
+_pista_prompt() {
+	PROMPT="$(pista -z)"   # `pista -zm` for the miminal variant
+}
+add-zsh-hook precmd _pista_prompt

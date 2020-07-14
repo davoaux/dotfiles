@@ -2,9 +2,7 @@ set $mod Mod4
 
 font pango:monospace 8
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -24,6 +22,9 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 bindsym $mod+Shift+q exec ~/scripts/powermenu
+
+bindsym $mod+p exec ~/scripts/popup
+
 bindsym $mod+Print exec ~/scripts/prtscr -f
 bindsym Print exec ~/scripts/prtscr
 
@@ -150,7 +151,7 @@ client.background #FFFFFF
 # Window border
 for_window [class="^.*"] border pixel 2
 
-gaps top 30
+#gaps top 30
 gaps inner 25
 
 set $mode_gaps_inner Inner Gaps: +|-|0 (global)

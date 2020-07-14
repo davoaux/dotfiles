@@ -10,7 +10,7 @@ list="$option1\n$option2\n$option3\n$option4"
 opt=$(
   echo -e $list |
   rofi -dmenu -config ~/.config/rofi/powermenu.rasi \
-  -location 3 -xoffset -15 -yoffset 45 -lines 4
+  -location 3 -xoffset -15 -yoffset 15 -lines 4
 )
 
 case $opt in
@@ -18,18 +18,7 @@ case $opt in
     systemctl poweroff -i
     ;;
   $option2)
-    file="$(cat .fehbg)"
-
-    # Current wallpaper
-    wal="${file#*\'}" && wal="${wal%?}"
-
-    # Wallpaper extension
-    ext="$(echo "${file#*.}" | cut -d "'" -f 1)"
-
-    # If the image isn't a png file, format it to png, and delete the original
-    [[ $ext != png ]] && mogrify -format png $wal ; rm $wal ; fmtwal="${wal%.*}.png"
-
-    i3lock -i "$fmtwal"
+    betterlockscreen -l dimblur
     ;;
   $option3)
     systemctl reboot -i
