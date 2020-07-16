@@ -2,8 +2,7 @@
 
 workspaces() {
   cur="$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')"; ((cur++))
-  tot="$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')"
-  echo "ws: $cur/$tot"
+  echo "ws: $cur"
 }
 
 memused() {
@@ -20,7 +19,7 @@ volume() {
 }
 
 pkgs() {
-  /home/parelkobra/.config/polybar/custom_modules/pkgs.sh
+  /home/parelkobra/scripts/pkgs.sh
 }
 
 clock() {
@@ -35,5 +34,4 @@ output="${output} vol: $(volume) |";
 output="${output} $(pkgs) |";
 output="${output} $(clock)"
     
-# arg c stands for category. Rules at dunst config file
-notify-send -c popup "$output"
+notify-send "$output"

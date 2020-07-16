@@ -86,9 +86,9 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-j> :Files<CR>
 
 " xclip based clipboard copy
-vmap <C-c> :!xclip -f -sel clip<CR>
+vmap <silent> <C-c> :!xclip -f -sel clip<CR>
 
-noremap <F5> :set list!<CR>
+noremap <silent> <F5> :set list!<CR>
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>

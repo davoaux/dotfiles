@@ -2,13 +2,12 @@
 
 My \*nix config files
 
-![desktop](Pictures/Screenshots/desktop5.png)
+![desktop](Pictures/Screenshots/desktop11.png)
 
 ## Setup
 
 - Distro: `arch linux`
-- WM: `i3 gaps`
-- Bar: `polybar`
+- WM: `2bwm`
 - Compositor: `picom`
 - Terminal emulator: `alacritty`
 - Editor: `neovim`
