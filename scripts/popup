@@ -2,7 +2,7 @@
 
 workspaces() {
   cur="$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')"; ((cur++))
-  echo "ws: $cur"
+  echo "$cur"
 }
 
 memused() {
@@ -27,7 +27,7 @@ clock() {
 }
 
 output=""
-output="${output} $(workspaces) |";
+output="${output} ws: $(workspaces) |";
 output="${output} mem: $(memused) |";
 output="${output} cpu: $(cpuload) |";
 output="${output} vol: $(volume) |";

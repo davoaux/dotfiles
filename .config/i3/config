@@ -2,7 +2,7 @@ set $mod Mod4
 
 font pango:monospace 8
 
-#exec_always --no-startup-id $HOME/scripts/bar.sh
+exec_always --no-startup-id $HOME/scripts/bar.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -151,7 +151,7 @@ client.background #FFFFFF
 # Window border
 for_window [class="^.*"] border pixel 2
 
-#gaps top 30
+gaps top 30
 gaps inner 25
 
 set $mode_gaps_inner Inner Gaps: +|-|0 (global)
