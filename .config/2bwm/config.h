@@ -90,7 +90,6 @@ static void toggle_sloppy(const Arg *arg)
 #define DESKTOPCHANGE(K,N) \
 {  MOD ,             K,              changeworkspace, {.i=N}}, \
 {  MOD |SHIFT,       K,              sendandfocus, {.i=N}},
-//{  MOD |SHIFT,       K,              sendtoworkspace, {.i=N}},
 static key keys[] = {
     /* modifier           key            function           argument */
     // Focus to next/previous window

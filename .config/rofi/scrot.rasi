@@ -115,4 +115,3 @@ enabled: false;
     border-color: @foreground;
 }
 
-/* vim:ft=css
