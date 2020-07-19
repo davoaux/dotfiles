@@ -18,12 +18,8 @@ volume() {
   amixer get Master | sed -n 'N;s/^.*\[\([0-9]\+%\).*$/\1/p'
 }
 
-pkgs() {
-  /home/parelkobra/scripts/pkgs.sh
-}
-
 clock() {
-  date '+%a, %B %d  %H:%M'
+  date '+%a, %B %d %H:%M'
 }
 
 output=""
@@ -31,7 +27,6 @@ output="${output} ws: $(workspaces) |";
 output="${output} mem: $(memused) |";
 output="${output} cpu: $(cpuload) |";
 output="${output} vol: $(volume) |";
-output="${output} $(pkgs) |";
 output="${output} $(clock)"
     
 notify-send "$output"

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-option1=" Shutdown"
-option2=" Lock"
-option3=" Reboot"
-option4=" Suspend"
+option1="Shutdown"
+option2="Lock"
+option3="Reboot"
+option4="Suspend"
 
 list="$option1\n$option2\n$option3\n$option4"
 

@@ -1,20 +1,5 @@
 [global]
-    ### Display ###
-
-    # Which monitor should the notifications be displayed on.
     monitor = 0
-    
-    # Display notification on focused monitor.  Possible modes are:
-    #   mouse: follow mouse pointer
-    #   keyboard: follow window with keyboard focus
-    #   none: don't follow anything
-    #
-    # "keyboard" needs a window manager that exports the
-    # _NET_ACTIVE_WINDOW property.
-    # This should be the case for almost all modern window managers.
-    #
-    # If this option is set to mouse or keyboard, the monitor option
-    # will be ignored.
     follow = mouse
 
     # The geometry of the window:
@@ -29,9 +14,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    
-    #geometry = "300x5-30+20"
-    geometry = "600x5-30+30"
+    geometry = "600x5-0+50"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -63,10 +46,10 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 2
+    frame_width = 0
 
     # Defines color of the frame around the notification window.
-    frame_color = "#9d9d9d"
+    frame_color = "#333333"
 
     # Define a color for the separator.
     # possible values are:
@@ -164,7 +147,6 @@
     icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
-    #max_icon_size = 32
     max_icon_size = 96
 
     # Paths to default icons.

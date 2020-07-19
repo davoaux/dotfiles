@@ -16,8 +16,6 @@ export XDG_DATA_HOME=$HOME/.local/share
 export ZSH="/home/parelkobra/.oh-my-zsh"
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 plugins=(
   fzf
   node

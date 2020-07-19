@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+level="$(amixer get Master | sed -n 'N;s/^.*\[\([0-9]\+%\).*$/\1/p')"
+state="$(amixer get Master | sed -n 'N;s/^.*\[\(o[nf]\+\)]$/\1/p')"
+
+if [ -z $1 ]; then
+  [ $state = on ] && echo "$level" || echo "$state"
+  exit 0
+fi
+
+case $1 in
+  +) amixer set Master 4%+ >/dev/null;;
+  -) amixer set Master 4%- >/dev/null;;
+  !) amixer set Master toggle >/dev/null;;
+esac

@@ -5,6 +5,7 @@ menu() {
   case $answer in
     y|Y)
       startx
+      exit 0
       ;;
     n|N)
       exit 0

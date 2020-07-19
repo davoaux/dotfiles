@@ -5,14 +5,14 @@ configuration{
 }
 
 * {
-    background:                  rgba (0,0,0, 70 % );
+    background:                  rgba (0,0,0, 65 % );
     background-color:            transparent;
     foreground:                  #777777;
     selected-normal-foreground:  #ffffff;
     normal-foreground:           @foreground;
     alternate-normal-foreground: @foreground;
     spacing:                     40px;
-    font: 						           "SF Mono 14";
+    font: 						           "SF UI Display Light 14";
     text-color: 				         @normal-foreground;
 }
 

@@ -11,3 +11,11 @@ configs() {
   )
   [ -n "$dir" ] && cd $dir; nvim .
 }
+
+2bwm_reload() {
+  local DIR=$XDG_CONFIG_HOME/2bwm
+  [ -d "$DIR" ] &&
+    make -C "$DIR" &&
+    sudo make -C "$DIR" clean install &&
+    sudo pkill Xorg
+}

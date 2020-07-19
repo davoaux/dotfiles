@@ -28,9 +28,9 @@ bindsym $mod+p exec ~/scripts/popup
 bindsym $mod+Print exec ~/scripts/prtscr -f
 bindsym Print exec ~/scripts/prtscr
 
-bindsym $mod+b exec amixer -q sset 'Master' 4%-
-bindsym $mod+n exec amixer -q sset 'Master' 4%+
-bindsym $mod+m exec amixer -q sset 'Master' toggle
+bindsym $mod+b exec ~/scripts/vol -
+bindsym $mod+n exec ~/scripts/vol +
+bindsym $mod+m exec ~/scripts/vol !
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -64,14 +64,10 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
 bindsym $mod+a focus parent
-
-#Move floating container to the center of all outputs
-bindsym $mod+c move absolute position center
-
-# focus the child container
 #bindsym $mod+d focus child
+
+bindsym $mod+c move absolute position center
 
 set $ws1 "1"
 set $ws2 "2"
@@ -106,14 +102,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
@@ -141,14 +133,6 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000 #0C0C0C
 
 client.background #FFFFFF
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        status_command i3status
-#        position top
-#}
-
-# Window border
 for_window [class="^.*"] border pixel 2
 
 gaps top 30
@@ -164,3 +148,9 @@ mode "$mode_gaps_inner" {
 
         bindsym Escape mode "default"
 }
+
+#bar {
+#        status_command i3status
+#        position top
+#}
+

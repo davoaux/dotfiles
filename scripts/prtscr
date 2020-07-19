@@ -3,9 +3,9 @@
 DIR=$HOME/Pictures/Screenshots
 NAME=$(date +%Y%m%d_%H%M%S)
 
-option1=" Whole screen"
-option2=" Currently focused window"
-option3=" Select screen section"
+option1="Whole screen"
+option2="Currently focused window"
+option3="Select screen section"
 list="$option1\n$option2\n$option3"
 
 notification() {
@@ -21,15 +21,17 @@ menu() {
   case $choice in
     $option1) 
       scrot -d 1 $DIR/$NAME.png
+      notification
       ;;
     $option2) 
       scrot -d 1 -u $DIR/$NAME.png
+      notification
       ;;
     $option3) 
       scrot -s $DIR/$NAME.png
+      notification
       ;;
   esac
-  notification
 }
 
 while [[ $# -gt 0 ]]; do
