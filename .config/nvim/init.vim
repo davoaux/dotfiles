@@ -6,8 +6,10 @@ Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
+Plug 'jaredgorski/fogbell.vim'
 Plug 'mattn/emmet-vim'
 Plug 'townk/vim-autoclose'
+Plug 'ap/vim-css-color'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -33,9 +35,9 @@ set tabstop=2 softtabstop=2 expandtab shiftwidth=2
 set updatetime=300
 set termguicolors
 
-let g:gruvbox_italic = '1'
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+"let g:gruvbox_italic = '1'
+"let g:gruvbox_contrast_dark = 'hard'
+colorscheme fogbell
 
 " transparency issue
 hi Normal ctermbg=NONE guibg=NONE

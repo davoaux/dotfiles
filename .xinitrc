@@ -6,6 +6,7 @@ unclutter --timeout 2 --jitter 15 --exclude-root &
 $HOME/.fehbg &
 $HOME/scripts/mssets.sh &
 $HOME/scripts/curlock.sh &
+$HOME/scripts/bar.sh
 picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 dunst &
 

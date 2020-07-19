@@ -1,6 +1,7 @@
 #define MOD             XCB_MOD_MASK_4
 #define CURSOR_POSITION MIDDLE
 #define LOOK_INTO       "WM_NAME"
+#define WORKSPACES      7
 
 static const uint16_t movements[] = {
     10,  // move step slow
@@ -31,8 +32,8 @@ static const char *colors[] = {
 };
 
 static const uint8_t borders[] = {
-    6,  // Outer border size
-    8,  // Full borderwidth
+    2,  // Outer border size
+    3,  // Full borderwidth
     2,  // Magnet border size
     2   // Resize border size
 };
@@ -250,9 +251,6 @@ static key keys[] = {
     DESKTOPCHANGE(XK_5, 4)
     DESKTOPCHANGE(XK_6, 5)
     DESKTOPCHANGE(XK_7, 6)
-    DESKTOPCHANGE(XK_8, 7)
-    DESKTOPCHANGE(XK_9, 8)
-    DESKTOPCHANGE(XK_0, 9)
 };
 
 // the last argument makes it a root window only event
