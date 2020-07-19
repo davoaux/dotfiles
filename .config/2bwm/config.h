@@ -3,10 +3,10 @@
 #define LOOK_INTO       "WM_NAME"
 
 static const uint16_t movements[] = {
-  10,  // move step slow
-  40,  // move step fast
-  15,  // mouse slow
-  400  // mouse fast
+    10,  // move step slow
+    40,  // move step fast
+    15,  // mouse slow
+    400  // mouse fast
 };
 
 static const bool resize_by_line = true;
@@ -14,27 +14,27 @@ static const bool inverted_colors = true;
 static const float resize_keep_aspect_ratio = 1.03;
 
 static const uint8_t offsets[] = {
-  0,  // offsetx
-  0,  // offsety
-  0,  // maxwidth
-  0   // maxheight
+    0,  // offsetx
+    0,  // offsety
+    0,  // maxwidth
+    0   // maxheight
 };
 
 static const char *colors[] = {
-  "#141414",  // focuscol
-  "#141414",  // unfocuscol
-  "#458588",  // fixedcol
-  "#fb4934",  // unkilcol
-  "#cc9933",  // fixedunkilcol
-  "#333333",  // outerbordercol
-  "#000000"   // emptycol
+    "#141414",  // focuscol
+    "#141414",  // unfocuscol
+    "#458588",  // fixedcol
+    "#fb4934",  // unkilcol
+    "#cc9933",  // fixedunkilcol
+    "#333333",  // outerbordercol
+    "#000000"   // emptycol
 };
 
 static const uint8_t borders[] = {
-  6,  // Outer border size
-  8,  // Full borderwidth
-  2,  // Magnet border size
-  2   // Resize border size
+    6,  // Outer border size
+    8,  // Full borderwidth
+    2,  // Magnet border size
+    2   // Resize border size
 };
 
 //static const char *ignore_names[] = {"bar", "xclock", "polybar-bar1_DVI-D-0"};
@@ -52,24 +52,24 @@ static const char *popup[]  = { "/home/parelkobra/scripts/popup", NULL };
 
 static void halfandcentered(const Arg *arg)
 {
-	Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
-	maxhalf(&arg2);
-	Arg arg3 = {.i=TWOBWM_TELEPORT_CENTER};
-	teleport(&arg3);
+    Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
+    maxhalf(&arg2);
+    Arg arg3 = {.i=TWOBWM_TELEPORT_CENTER};
+    teleport(&arg3);
 }
 
 static void killandfocus(const Arg *arg)
 {
-  deletewin(arg);
-	Arg arg3 = {.i=TWOBWM_FOCUS_PREVIOUS};
-  focusnext(&arg3);
+    deletewin(arg);
+    Arg arg3 = {.i=TWOBWM_FOCUS_PREVIOUS};
+    focusnext(&arg3);
 }
 
 static void sendandfocus(const Arg *arg)
 {
-  sendtoworkspace(arg);
-  Arg arg2 = {.i=TWOBWM_FOCUS_PREVIOUS};
-  focusnext(&arg2);
+    sendtoworkspace(arg);
+    Arg arg2 = {.i=TWOBWM_FOCUS_PREVIOUS};
+    focusnext(&arg2);
 }
 
 ///---Sloppy focus behavior---///
