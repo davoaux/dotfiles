@@ -3,8 +3,8 @@ env:
 
 window:
   padding:
-    x: 15
-    y: 10
+    x: 25
+    y: 20
   dynamic_padding: false
   decorations: full
   title: Alacritty
@@ -29,28 +29,28 @@ scrolling:
 
 font:
   normal:
-    family: Dina
+    family: xos4 Terminus
     
     #style: Regular
     style: Medium
     
   bold:
-    family: Dina
+    family: xos4 Terminus
 
     style: Bold
   
   italic:
-    family: Dina
+    family: xos4 Terminus
 
     style: Italic
   
   bold_italic:
-    family: Dina
+    family: xos4 Terminus
     
     style: Bold Italic
 
   #SF Mono size
-  size: 10
+  size: 9
     
   offset:
     x: 0

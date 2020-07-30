@@ -30,7 +30,7 @@ set listchars+=space:·,eol:¬
 set mouse=a
 set nobackup nowritebackup
 set noshowmode
-set number relativenumber
+" set number relativenumber
 set updatetime=300
 set termguicolors
 
