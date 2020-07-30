@@ -38,7 +38,7 @@ static const uint8_t borders[] = {
     1   // Resize border size
 };
 
-static const char *ignore_names[] = {"bar", "xclock", "Chromium", "spotify"};
+static const char *ignore_names[] = {"bar", "xclock", "Chromium", "mpv"};
 
 static const char *term[]  = { "alacritty", NULL };
 static const char *rofidrun[]  = { "rofi", "-show", "drun", NULL };
