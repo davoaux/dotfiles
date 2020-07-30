@@ -14,16 +14,8 @@ opt=$(
 )
 
 case $opt in
-  $option1)
-    systemctl poweroff -i
-    ;;
-  $option2)
-    betterlockscreen -l dimblur
-    ;;
-  $option3)
-    systemctl reboot -i
-    ;;
-  $option4)
-    systemctl suspend -i
-    ;;
+  $option1) systemctl poweroff -i;;
+  $option2) betterlockscreen -l dimblur;;
+  $option3) systemctl reboot -i;;
+  $option4) systemctl suspend -i;;
 esac

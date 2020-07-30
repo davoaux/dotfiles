@@ -2,7 +2,7 @@
 
 My \*nix config files
 
-![desktop](Pictures/Screenshots/desktop11.png)
+![desktop](Pictures/Screenshots/desktop12.png)
 
 ## Setup
 

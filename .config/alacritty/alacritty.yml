@@ -3,8 +3,8 @@ env:
 
 window:
   padding:
-    x: 20
-    y: 20
+    x: 15
+    y: 10
   dynamic_padding: false
   decorations: full
   title: Alacritty
@@ -29,29 +29,28 @@ scrolling:
 
 font:
   normal:
-    family: lucy tewi
+    family: Dina
     
-    style: Regular
-    #style: Medium
+    #style: Regular
+    style: Medium
     
   bold:
-    family: lucy tewi
+    family: Dina
 
     style: Bold
   
   italic:
-    family: lucy tewi
+    family: Dina
 
     style: Italic
   
   bold_italic:
-    family: lucy tewi
+    family: Dina
     
     style: Bold Italic
 
   #SF Mono size
   size: 10
-  #size: 9
     
   offset:
     x: 0
@@ -64,33 +63,34 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#101010'
-    foreground: '#b9b9b9'
+    background: '#fffff8'
+    foreground: '#000000'
   
   cursor:
-    cursor: '#cc0953'
+    #cursor: '#cc0953'
+    cursor: '#000000'
 
   # Normal colors
   normal:
     black:   '#101010'
-    red:     '#7c7c7c'
-    green:   '#8e8e8e'
+    red:     '#333333'
+    green:   '#444444'
     yellow:  '#a0a0a0'
     blue:    '#686868'
     magenta: '#747474'
     cyan:    '#868686'
-    white:   '#e3e3d3'
+    white:   '#afafaf'
 
   # Bright colors
   bright:
     black:   '#2f2f2f'
-    red:     '#7c7c7c'
-    green:   '#8e8e8e'
+    red:     '#333333'
+    green:   '#444444'
     yellow:  '#a0a0a0'
     blue:    '#686868'
     magenta: '#747474'
     cyan:    '#868686'
-    white:   '#e3e3e3'
+    white:   '#afafaf'
 
 draw_bold_text_with_bright_colors: true
 

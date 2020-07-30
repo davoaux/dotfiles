@@ -1,7 +1,7 @@
 #define MOD             XCB_MOD_MASK_4
 #define CURSOR_POSITION MIDDLE
 #define LOOK_INTO       "WM_NAME"
-#define WORKSPACES      7
+#define WORKSPACES      5
 
 static const uint16_t movements[] = {
     10,  // move step slow
@@ -22,24 +22,23 @@ static const uint8_t offsets[] = {
 };
 
 static const char *colors[] = {
-    "#141414",  // focuscol
-    "#141414",  // unfocuscol
+    "#fffff8",  // focuscol
+    "#fffff8",  // unfocuscol
     "#458588",  // fixedcol
     "#fb4934",  // unkilcol
     "#cc9933",  // fixedunkilcol
-    "#333333",  // outerbordercol
+    "#ddddda",  // outerbordercol
     "#000000"   // emptycol
 };
 
 static const uint8_t borders[] = {
-    2,  // Outer border size
-    3,  // Full borderwidth
-    2,  // Magnet border size
-    2   // Resize border size
+    3,  // Outer border size
+    4,  // Full borderwidth
+    1,  // Magnet border size
+    1   // Resize border size
 };
 
-//static const char *ignore_names[] = {"bar", "xclock", "polybar-bar1_DVI-D-0"};
-static const char *ignore_names[] = {"bar", "xclock"};
+static const char *ignore_names[] = {"bar", "xclock", "Chromium", "spotify"};
 
 static const char *term[]  = { "alacritty", NULL };
 static const char *rofidrun[]  = { "rofi", "-show", "drun", NULL };
@@ -66,6 +65,13 @@ static void killandfocus(const Arg *arg)
     focusnext(&arg3);
 }
 
+static void changeandfocus(const Arg *arg)
+{
+    changeworkspace(arg);
+    Arg arg2 = {.i=TWOBWM_FOCUS_PREVIOUS};
+    focusnext(&arg2);
+}
+
 static void sendandfocus(const Arg *arg)
 {
     sendtoworkspace(arg);
@@ -89,7 +95,7 @@ static void toggle_sloppy(const Arg *arg)
 }
 
 #define DESKTOPCHANGE(K,N) \
-{  MOD ,             K,              changeworkspace, {.i=N}}, \
+{  MOD ,             K,              changeandfocus, {.i=N}}, \
 {  MOD |SHIFT,       K,              sendandfocus, {.i=N}},
 static key keys[] = {
     /* modifier           key            function           argument */
@@ -249,8 +255,6 @@ static key keys[] = {
     DESKTOPCHANGE(XK_3, 2)
     DESKTOPCHANGE(XK_4, 3)
     DESKTOPCHANGE(XK_5, 4)
-    DESKTOPCHANGE(XK_6, 5)
-    DESKTOPCHANGE(XK_7, 6)
 };
 
 // the last argument makes it a root window only event

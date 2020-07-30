@@ -1,44 +1,49 @@
 #!/usr/bin/env bash
 
+
 backup() {
   bdir=../imgrename-backup-$(date +%d%m%y)
-  if [ -d $bdir ]; then
-    rm -rf $bdir/*
-  else
-    mkdir $bdir
-  fi
-  cp -r * $bdir
+  [ -d $bdir ] && rm -rf "$bdir/*" || mkdir "$bdir"
+
+  cp -r * "$bdir"
 }
 
-# Si el nombre del archivo tiene espacios, la extension da 'cannot cannot' 😞 
 rename() {
-  tdir=../temp-imgrename
-  mkdir $tdir
+  tdir=../dir-temp
+  tdir_noimg=../dir-temp-noimg
+  mkdir "$tdir" "$tdir_noimg"
+
   num=1
   for file in *; do
-    ext=$(file -b $file)
-    mv -- $file $tdir/image$num.$(echo ${ext%% *} | tr '[:upper:]' '[:lower:]')
+    # Get file extension
+    ext=$(file -b "$file")
+    ext=$(echo ${ext%% *} | tr '[:upper:]' '[:lower:]')
+
+    # If file has png, jpg or jpeg extension, rename the file
+    if [[ $ext = 'png' || $ext = 'jpg' || $ext = 'jpeg' ]]; then
+      mv -- "$file" "$tdir/image$num.$ext"
+    else
+      # move the file elsewhere, then move back
+      mv -- "$file" "$tdir_noimg"
+    fi
     ((num++))
   done
+
+  # Remove the files, and move in the renamed images plus the non 
+  # images files
   rm -rf *
   mv $tdir/* .
-  rm -rf $tdir
+  mv $tdir_noimg/* .
+  rm -rf "$tdir" "$tdir_noimg"
 }
 
 confirm() {
   ls -a
   read -p 'Do you want to rename all images? (y/n) ' answer
   case $answer in
-    y|Y) 
-      return 0
-      ;;
-    n|N)
-      exit 0
-      ;;
-    *)
-      echo 'invalid option'
-      confirm
-      ;;
+    y|Y) return 0;;
+    n|N) exit 0;;
+    *) echo 'invalid option'; confirm;;
   esac
 }
 

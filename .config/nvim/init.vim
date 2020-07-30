@@ -7,6 +7,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
 Plug 'jaredgorski/fogbell.vim'
+Plug 'wjlroe/brutalist.vim'
 Plug 'mattn/emmet-vim'
 Plug 'townk/vim-autoclose'
 Plug 'ap/vim-css-color'
@@ -24,22 +25,25 @@ syntax on
 set encoding=utf-8
 set ignorecase smartcase hlsearch
 set hidden
-" Set to 2 for lightline
 set laststatus=2
 set listchars+=space:·,eol:¬
 set mouse=a
 set nobackup nowritebackup
 set noshowmode
 set number relativenumber
-set tabstop=2 softtabstop=2 expandtab shiftwidth=2
 set updatetime=300
 set termguicolors
 
+set tabstop=2 softtabstop=2 expandtab shiftwidth=2
+autocmd FileType c setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
+
+let g:lightline = { 'colorscheme': 'powerlineish' }
+
 "let g:gruvbox_italic = '1'
 "let g:gruvbox_contrast_dark = 'hard'
-colorscheme fogbell
+colorscheme brutalist
 
-" transparency issue
+" use terminal's bg
 hi Normal ctermbg=NONE guibg=NONE
 
 let NERDTreeMinimalUI = 1
@@ -83,7 +87,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-map <C-n> :NERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
 
 map <C-j> :Files<CR>
 

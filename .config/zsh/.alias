@@ -32,3 +32,4 @@ alias joystick='ds4drv --hidraw'
 # bookmarks
 alias notes="cd $HOME/Documents/notes/ && ls"
 alias wv="cd $HOME/Pictures/misc/.c/v && ls"
+alias vswap="cd $HOME/.local/share/nvim/swap && ls"

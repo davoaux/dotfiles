@@ -4,7 +4,7 @@ mkcd() {
   mkdir -p $1 && cd $1
 }
 
-configs() {
+config() {
   local dir=$(
     find $XDG_CONFIG_HOME -maxdepth 1 -mindepth 1 |
     fzf
@@ -12,7 +12,7 @@ configs() {
   [ -n "$dir" ] && cd $dir; nvim .
 }
 
-2bwm_reload() {
+2bwmupdate() {
   local DIR=$XDG_CONFIG_HOME/2bwm
   [ -d "$DIR" ] &&
     make -C "$DIR" &&

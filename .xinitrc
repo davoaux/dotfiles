@@ -1,8 +1,8 @@
 #!/bin/sh
 
-setxkbmap es
+setxkbmap us
 xsetroot -cursor_name left_ptr
-unclutter --timeout 2 --jitter 15 --exclude-root &
+unclutter --timeout 2 --jitter 3 --exclude-root &
 $HOME/.fehbg &
 $HOME/scripts/mssets.sh &
 $HOME/scripts/curlock.sh &
