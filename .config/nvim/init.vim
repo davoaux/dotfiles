@@ -8,6 +8,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
 Plug 'jaredgorski/fogbell.vim'
 Plug 'wjlroe/brutalist.vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'mattn/emmet-vim'
 Plug 'townk/vim-autoclose'
 Plug 'ap/vim-css-color'
@@ -21,26 +22,33 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 call plug#end()
 
-syntax on
+" syntax on
 set encoding=utf-8
 set ignorecase smartcase hlsearch
 set hidden
-set laststatus=2
+set laststatus=0
 set listchars+=space:·,eol:¬
 set mouse=a
+set nu rnu
 set nobackup nowritebackup
 set noshowmode
-" set number relativenumber
 set updatetime=300
 set termguicolors
+
+exec "nohlsearch"
 
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2
 autocmd FileType c setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
 
 let g:lightline = { 'colorscheme': 'powerlineish' }
 
+" gruvbox settings
 "let g:gruvbox_italic = '1'
 "let g:gruvbox_contrast_dark = 'hard'
+
+" solarized settings
+" set background=light
+
 colorscheme brutalist
 
 " use terminal's bg
@@ -87,16 +95,27 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-map <silent> <C-n> :NERDTreeToggle<CR>
-
-map <C-j> :Files<CR>
-
 " xclip based clipboard copy
 vmap <silent> <C-c> :!xclip -f -sel clip<CR>
 
+map <silent> <C-n> :NERDTreeToggle<CR>
+map <silent> <C-j> :Files<CR>
+
 noremap <silent> <F5> :set list!<CR>
+noremap <silent> <F6> :set nu! \| set rnu!<CR>
+noremap <silent> <C-h> :nohlsearch<CR>
+
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
+cmap W w
+cmap WQ wq
+cmap wQ wq
+cmap Q q

@@ -79,12 +79,6 @@ static void sendandfocus(const Arg *arg)
     focusnext(&arg2);
 }
 
-///---Sloppy focus behavior---///
-/*
- * Command to execute when switching from sloppy focus to click to focus
- * The strings "Sloppy" and "Click" will be passed as the last argument
- * If NULL this is ignored
- */
 static const char *sloppy_switch_cmd[] = { "notify-send", "sloppy toggle", NULL };
 static void toggle_sloppy(const Arg *arg)
 {

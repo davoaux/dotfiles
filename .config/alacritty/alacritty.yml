@@ -7,6 +7,7 @@ window:
     y: 20
   dynamic_padding: false
   decorations: full
+  dynamic_title: true
   title: Alacritty
   
 scrolling:
@@ -15,6 +16,7 @@ scrolling:
 
 #family: FantasqueSansMono Nerd Font
 #family: SFMono Nerd Font
+#family: Roboto Mono
 #family: xos4 Terminus
 #family: lucy tewi
 #family: cherry
@@ -31,8 +33,8 @@ font:
   normal:
     family: xos4 Terminus
     
-    #style: Regular
-    style: Medium
+    style: Regular
+    #style: Medium
     
   bold:
     family: xos4 Terminus
@@ -49,7 +51,6 @@ font:
     
     style: Bold Italic
 
-  #SF Mono size
   size: 9
     
   offset:
@@ -67,7 +68,6 @@ colors:
     foreground: '#000000'
   
   cursor:
-    #cursor: '#cc0953'
     cursor: '#000000'
 
   # Normal colors
@@ -98,8 +98,6 @@ background_opacity: 1
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: false
-
-dynamic_title: true
 
 cursor:
   style: Block

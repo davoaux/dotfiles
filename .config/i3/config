@@ -2,7 +2,7 @@ set $mod Mod4
 
 font pango:monospace 8
 
-exec_always --no-startup-id $HOME/scripts/bar.sh
+#exec_always --no-startup-id $HOME/scripts/bar.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -13,7 +13,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 floating_modifier $mod
 
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty --config-file ~/.config/alacritty/min_conf.yml
 bindsym $mod+q kill
 
 bindsym $mod+d exec rofi -show drun
@@ -25,12 +25,12 @@ bindsym $mod+Shift+q exec ~/scripts/powermenu
 
 bindsym $mod+p exec ~/scripts/popup
 
-bindsym $mod+Print exec ~/scripts/prtscr -f
-bindsym Print exec ~/scripts/prtscr
+bindsym $mod+Shift+Print exec ~/scripts/prtscr -f
+bindsym $mod+Print exec ~/scripts/prtscr
 
-bindsym $mod+b exec ~/scripts/vol -
-bindsym $mod+n exec ~/scripts/vol +
-bindsym $mod+m exec ~/scripts/vol !
+bindsym $mod+F6 exec ~/scripts/vol -
+bindsym $mod+F7 exec ~/scripts/vol +
+bindsym $mod+F8 exec ~/scripts/vol !
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -55,7 +55,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+v split h
 bindsym $mod+v split v
 
-bindsym $mod+f fullscreen toggle
+bindsym $mod+x fullscreen toggle
 
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -124,19 +124,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# class                 border	backgr. text	  indic.  child_border
-client.focused          #282828 #282828 #000000 #9d9d9d #9d9d9d
-client.focused_inactive #282828 #282828 #000000 #484E50 #5F676A
-client.unfocused        #282828 #282828 #000000 #3a3a3a #3a3a3a
-client.urgent           #282828 #282828 #000000 #900000 #900000
-client.placeholder      #000000 #0C0C0C #FFFFFF #000000 #0C0C0C
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-client.background #FFFFFF
+client.background       #ffffff
 
-for_window [class="^.*"] border pixel 2
+## class                 border	backgr. text	  indic.  child_border
+#client.focused          #282828 #282828 #000000 #4c7899 #4c7899
+#client.focused_inactive #282828 #282828 #000000 #484E50 #5F676A
+#client.unfocused        #282828 #282828 #000000 #000000 #000000
+#client.urgent           #282828 #282828 #000000 #900000 #900000
+#client.placeholder      #000000 #0C0C0C #FFFFFF #000000 #0C0C0C
+#
+#client.background #FFFFFF
 
-gaps top 30
-gaps inner 25
+#for_window [class="^.*"] border pixel 2
+
+#gaps top 30
+#gaps inner 25
 
 set $mode_gaps_inner Inner Gaps: +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps_inner"
@@ -149,8 +158,8 @@ mode "$mode_gaps_inner" {
         bindsym Escape mode "default"
 }
 
-#bar {
-#        status_command i3status
-#        position top
-#}
+bar {
+        status_command i3status
+        #position top
+}
 
