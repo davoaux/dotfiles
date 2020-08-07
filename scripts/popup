@@ -23,8 +23,8 @@ clock() {
 }
 
 output=""
-output="${output} ws: $(workspaces) ";
-output="${output} | mem: $(memused)";
+#output="${output} ws: $(workspaces) ";
+output="${output} mem: $(memused)";
 output="${output} | cpu: $(cpuload)";
 output="${output} | vol: $(volume)";
 #output="${output} | $(clock)"

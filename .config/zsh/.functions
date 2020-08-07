@@ -13,9 +13,9 @@ config() {
 }
 
 2bwmupdate() {
-  local DIR=$XDG_CONFIG_HOME/2bwm
-  [ -d "$DIR" ] &&
-    make -C "$DIR" &&
-    sudo make -C "$DIR" clean install &&
+  local dir=$XDG_CONFIG_HOME/2bwm
+  [ -d "$dir" ] &&
+    make -C "$dir" &&
+    sudo make -C "$dir" clean install &&
     sudo pkill Xorg
 }

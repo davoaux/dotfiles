@@ -24,18 +24,18 @@ static const uint8_t offsets[] = {
 static const char *colors[] = {
     "#fffff8",  // focuscol
     "#fffff8",  // unfocuscol
-    "#458588",  // fixedcol
-    "#fb4934",  // unkilcol
-    "#cc9933",  // fixedunkilcol
-    "#ddddda",  // outerbordercol
+    "#d3e2ff",  // fixedcol
+    "#ffd3d3",  // unkilcol
+    "#f2ffd3",  // fixedunkilcol
+    "#edede6",  // outerbordercol
     "#000000"   // emptycol
 };
 
 static const uint8_t borders[] = {
     3,  // Outer border size
-    4,  // Full borderwidth
-    1,  // Magnet border size
-    1   // Resize border size
+    6,  // Full borderwidth
+    3,  // Magnet border size
+    3   // Resize border size
 };
 
 static const char *ignore_names[] = {"bar", "xclock", "Chromium", "mpv"};
@@ -56,6 +56,22 @@ static void halfandcentered(const Arg *arg)
     maxhalf(&arg2);
     Arg arg3 = {.i=TWOBWM_TELEPORT_CENTER};
     teleport(&arg3);
+}
+
+static void snapright(const Arg *arg)
+{
+  Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
+  maxhalf(&arg2);
+  Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_RIGHT};
+  teleport(&arg3);
+}
+
+static void snapleft(const Arg *arg)
+{
+  Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
+  maxhalf(&arg2);
+  Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_LEFT};
+  teleport(&arg3);
 }
 
 static void killandfocus(const Arg *arg)
@@ -202,8 +218,9 @@ static key keys[] = {
     {  MOD |SHIFT ,       XK_v,          sendtonextworkspace,{}},
     {  MOD |SHIFT ,       XK_c,          sendtoprevworkspace,{}},
    
-    // Iconify the window
-    //{  MOD ,              XK_i,          hide,              {}},
+    // Snap window left/right
+    {  MOD ,              XK_i,          snapleft,          {}},
+    {  MOD ,              XK_o,          snapright,         {}},
    
     // Make the window unkillable
     {  MOD ,              XK_a,          unkillable,        {}},

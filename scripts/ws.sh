@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Active workspaces
-active_ws=`wmctrl -l | awk '{print $2}'`
+active_ws=`wmctrl -l | awk '{print $2}' 2>/dev/null`
 
 # Current workspace
 current_ws=`xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}'`
@@ -27,6 +27,6 @@ for i in {0..4}; do
   elif [[ $active_ws == *$i* ]]; then
     printf ' %s ' "$ws"
   else
-    printf ""
+    printf " "
   fi
 done

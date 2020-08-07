@@ -9,8 +9,8 @@ notify() {
   get_vol
   local id=33
   case "$1" in
-    toggle) dunstify -r $id "volume $state";;
-    *) dunstify -r $id "volume $level"
+    toggle) dunstify -r $id "VOL $state";;
+    *) dunstify -r $id "VOL $level"
   esac
 }
 

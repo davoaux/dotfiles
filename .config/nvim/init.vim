@@ -26,7 +26,7 @@ call plug#end()
 set encoding=utf-8
 set ignorecase smartcase hlsearch
 set hidden
-set laststatus=0
+set laststatus=2
 set listchars+=space:·,eol:¬
 set mouse=a
 set nu rnu
@@ -39,6 +39,7 @@ exec "nohlsearch"
 
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2
 autocmd FileType c setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
+autocmd FileType cpp setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
 
 let g:lightline = { 'colorscheme': 'powerlineish' }
 
