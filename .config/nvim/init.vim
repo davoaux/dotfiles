@@ -33,7 +33,7 @@ set nu rnu
 set nobackup nowritebackup
 set noshowmode
 set updatetime=300
-set termguicolors
+" set termguicolors
 
 exec "nohlsearch"
 
@@ -41,16 +41,16 @@ set tabstop=2 softtabstop=2 expandtab shiftwidth=2
 autocmd FileType c setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
 autocmd FileType cpp setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
 
-let g:lightline = { 'colorscheme': 'powerlineish' }
-
-" gruvbox settings
 "let g:gruvbox_italic = '1'
 "let g:gruvbox_contrast_dark = 'hard'
 
 " solarized settings
-" set background=light
+set background=dark
 
-colorscheme brutalist
+colorscheme solarized
+
+" let g:lightline = { 'colorscheme': 'powerlineish' }
+let g:lightline = { 'colorscheme': 'solarized' }
 
 " use terminal's bg
 hi Normal ctermbg=NONE guibg=NONE

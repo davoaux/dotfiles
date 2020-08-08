@@ -1,18 +1,18 @@
 configuration{
-	show-icons: true;
+	show-icons: false;
 	lines: 3;
 	columns: 2;
 }
 
 * {
-    background:                  rgba (0,0,0, 65 % );
+    background:                  rgba (0,0,0, 70 % );
     background-color:            transparent;
     foreground:                  #777777;
     selected-normal-foreground:  #ffffff;
     normal-foreground:           @foreground;
     alternate-normal-foreground: @foreground;
-    spacing:                     40px;
-    font: 						           "SF UI Display Light 14";
+    spacing:                     30px;
+    font: 						           "SF UI Display Light 15";
     text-color: 				         @normal-foreground;
 }
 
@@ -35,7 +35,7 @@ configuration{
     scrollbar:      false;
     lines:          3;
     spacing:        @spacing;
-    fixed-height:   true; /* doesn't work as i expect ? */
+    fixed-height:   true;
 }
 
 #element.selected.normal {
