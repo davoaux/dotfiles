@@ -1,11 +1,11 @@
 * {
-    dark: #141414;
+    dark: #222222;
     
-    foreground:  #CFCFCF;
-    foreground-alt: #666666;
-    backlight:   #CFCFCF;
+    foreground:  #BBBBBB;
+    foreground-alt: #444444;
+    backlight:   #BBBBBB;
     background-color:  @dark;
-    background-alt: #CFCFCF;
+    background-alt: #BBBBBB;
     highlight: underline bold;
 
     font: "cozette 10";

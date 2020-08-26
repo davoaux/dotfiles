@@ -1,3 +1,8 @@
 {
-  "javascript.validate.enable": false
+  "javascript.validate.enable": false,
+
+  "explorer.icon.enableNerdfont": true,
+
+  "clangd.enabled": true,
+  "clangd.disableDiagnostics": false
 }

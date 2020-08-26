@@ -60,18 +60,18 @@ static void halfandcentered(const Arg *arg)
 
 static void snapright(const Arg *arg)
 {
-  Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
-  maxhalf(&arg2);
-  Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_RIGHT};
-  teleport(&arg3);
+    Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
+    maxhalf(&arg2);
+    Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_RIGHT};
+    teleport(&arg3);
 }
 
 static void snapleft(const Arg *arg)
 {
-  Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
-  maxhalf(&arg2);
-  Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_LEFT};
-  teleport(&arg3);
+    Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
+    maxhalf(&arg2);
+    Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_LEFT};
+    teleport(&arg3);
 }
 
 static void killandfocus(const Arg *arg)
@@ -139,27 +139,14 @@ static key keys[] = {
     {  MOD |CONTROL,      XK_j,          movestep,          {.i=TWOBWM_MOVE_DOWN_SLOW}},
     {  MOD |CONTROL,      XK_l,          movestep,          {.i=TWOBWM_MOVE_RIGHT_SLOW}},
     {  MOD |CONTROL,      XK_h,          movestep,          {.i=TWOBWM_MOVE_LEFT_SLOW}},
-   
-    // Teleport the window to an area of the screen.
-    // Center:
+  
+    // Teleports
     {  MOD ,              XK_g,          teleport,          {.i=TWOBWM_TELEPORT_CENTER}},
-   
-    // Center y:
     {  MOD |SHIFT,        XK_g,          teleport,          {.i=TWOBWM_TELEPORT_CENTER_Y}},
-   
-    // Center x:
     {  MOD |CONTROL,      XK_g,          teleport,          {.i=TWOBWM_TELEPORT_CENTER_X}},
-   
-    // Top left:
     {  MOD ,              XK_y,          teleport,          {.i=TWOBWM_TELEPORT_TOP_LEFT}},
-   
-    // Top right:
     {  MOD ,              XK_u,          teleport,          {.i=TWOBWM_TELEPORT_TOP_RIGHT}},
-   
-    // Bottom left:
     {  MOD ,              XK_b,          teleport,          {.i=TWOBWM_TELEPORT_BOTTOM_LEFT}},
-   
-    // Bottom right:
     {  MOD ,              XK_n,          teleport,          {.i=TWOBWM_TELEPORT_BOTTOM_RIGHT}},
    
     // Resize while keeping the window aspect
@@ -179,28 +166,13 @@ static key keys[] = {
     {  MOD |SHIFT,        XK_m,          maxvert_hor,       {.i=TWOBWM_MAXIMIZE_HORIZONTALLY}},
     
     // Maximize and move
-    // vertically left
     {  MOD |SHIFT,        XK_y,          maxhalf,           {.i=TWOBWM_MAXHALF_VERTICAL_LEFT}},
-    
-    // vertically right
     {  MOD |SHIFT,        XK_u,          maxhalf,           {.i=TWOBWM_MAXHALF_VERTICAL_RIGHT}},
-   
-    // horizontally left
     {  MOD |SHIFT,        XK_b,          maxhalf,           {.i=TWOBWM_MAXHALF_HORIZONTAL_BOTTOM}},
-   
-    // horizontally right
     {  MOD |SHIFT,        XK_n,          maxhalf,           {.i=TWOBWM_MAXHALF_HORIZONTAL_TOP}},
-   
-    //fold half vertically
     {  MOD |SHIFT|CONTROL,XK_y,          maxhalf,           {.i=TWOBWM_MAXHALF_FOLD_VERTICAL}},
-   
-    //fold half horizontally
     {  MOD |SHIFT|CONTROL,XK_b,          maxhalf,           {.i=TWOBWM_MAXHALF_FOLD_HORIZONTAL}},
-   
-    //unfold vertically
     {  MOD |SHIFT|CONTROL,XK_u,          maxhalf,           {.i=TWOBWM_MAXHALF_UNFOLD_VERTICAL}},
-   
-    //unfold horizontally
     {  MOD |SHIFT|CONTROL,XK_n,          maxhalf,           {.i=TWOBWM_MAXHALF_UNFOLD_HORIZONTAL}},
    
     // Next/Previous screen

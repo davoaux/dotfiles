@@ -26,24 +26,25 @@ scrolling:
 #family: SFMono Nerd Font
 #family: Roboto Mono
 #family: Misc Tamsyn
+#family: Ubuntu Mono
 #family: Fira Code
 #family: FuraCode Nerd Font
 #family: FantasqueSansMono Nerd Font
 
 font:
   normal:
-    family: Iosevka
+    family: FuraCode Nerd Font
     style: Regular
   bold:
-    family: Iosevka
+    family: FuraCode Nerd Font
     style: Bold
   italic:
-    family: Iosevka
+    family: FuraCode Nerd Font
     style: Italic
   bold_italic:
-    family: Iosevka
+    family: FuraCode Nerd Font
     style: Bold Italic
-  size: 9.5
+  size: 10
   offset:
     x: 0
     y: 0
@@ -52,6 +53,29 @@ font:
     y: 0
 
 schemes:
+  simple_dark: &simple_dark
+    primary:
+      background: '#0a0a0a'
+      foreground: '#B8B9B4'
+    normal:
+      black:    '#0A0A0A'
+      red:      '#939490'
+      green:    '#5E6E5C'
+      yellow:   '#B6B8B3'
+      blue:     '#727370'
+      magenta:  '#D1D1CB'
+      cyan:     '#636361'
+      white:    '#AAABA6'
+    bright:
+      black:    '#2E2E2C'
+      red:      '#989995'
+      green:    '#636361'
+      yellow:   '#BBBDB8'
+      blue:     '#777875'
+      magenta:  '#D6D6D0'
+      cyan:     '#696966'
+      white:    '#AFB0AB'
+  
   solarized_light: &solarized_light
     primary:
       background: '#fdf6e3' # base3
@@ -77,7 +101,7 @@ schemes:
       magenta: '#6c71c4' # violet
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
-
+  
   solarized_dark: &solarized_dark
     primary:
       background: '#002b36' # base03

@@ -25,6 +25,7 @@ alias vi='nvim'
 alias google='ping -c1 8.8.8.8'
 alias yt='youtube-dl'
 alias tmux='tmux -u'
+alias sxiv='sxiv -b'
 alias diskspace='df -H'
 alias volume='alsamixer -g'
 alias joystick='ds4drv --hidraw'
@@ -32,4 +33,4 @@ alias joystick='ds4drv --hidraw'
 # bookmarks
 alias notes="cd $HOME/Documents/notes/ && ls"
 alias wv="cd $HOME/Pictures/misc/.c/v && ls"
-alias vswap="cd $HOME/.local/share/nvim/swap && ls"
+alias vswap="cd $HOME/.local/share/nvim/swap && ls && rm -I *"

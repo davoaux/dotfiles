@@ -2,14 +2,9 @@ filetype plugin on
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'preservim/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
-Plug 'jaredgorski/fogbell.vim'
-Plug 'wjlroe/brutalist.vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'mattn/emmet-vim'
 Plug 'townk/vim-autoclose'
 Plug 'ap/vim-css-color'
 Plug 'itchyny/lightline.vim'
@@ -22,89 +17,61 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 call plug#end()
 
-" syntax on
+syntax on
 set encoding=utf-8
 set ignorecase smartcase hlsearch
 set hidden
 set laststatus=2
-set listchars+=space:·,eol:¬
-set mouse=a
-set nu rnu
-set nobackup nowritebackup
 set noshowmode
+set listchars=tab:\|\ ,space:·
+set mouse=a
+set number relativenumber
+set cursorline
+set nobackup nowritebackup
 set updatetime=300
-" set termguicolors
+set splitbelow splitright
 
 exec "nohlsearch"
 
-set tabstop=2 softtabstop=2 expandtab shiftwidth=2
-autocmd FileType c setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
-autocmd FileType cpp setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4
+set shiftwidth=4 softtabstop=4 tabstop=4 noexpandtab
+autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab 
+autocmd FileType c,cpp setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab 
 
-"let g:gruvbox_italic = '1'
-"let g:gruvbox_contrast_dark = 'hard'
+" Hide fzf statusline
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+" let g:gruvbox_italic = '1'
+" let g:gruvbox_contrast_dark = 'hard'
+" set termguicolors
 
 " solarized settings
 set background=dark
-
 colorscheme solarized
 
-" let g:lightline = { 'colorscheme': 'powerlineish' }
 let g:lightline = { 'colorscheme': 'solarized' }
 
+" Style sign column to have the same color has the line number column
+hi clear SignColumn
+hi link SignColumn LineNr
+
 " use terminal's bg
-hi Normal ctermbg=NONE guibg=NONE
-
-let NERDTreeMinimalUI = 1
-let NERDTreeShowHidden = 1
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
-
-" Enable emmet just for html/css
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Use tab for trigger commpletion
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" hi Normal ctermbg=NONE guibg=NONE
 
 " xclip based clipboard copy
 vmap <silent> <C-c> :!xclip -f -sel clip<CR>
 
-map <silent> <C-n> :NERDTreeToggle<CR>
-map <silent> <C-j> :Files<CR>
+map <silent> <C-n> :CocCommand explorer<CR>
+map <silent> <C-p> :Files<CR>
 
 noremap <silent> <F5> :set list!<CR>
-noremap <silent> <F6> :set nu! \| set rnu!<CR>
-noremap <silent> <C-h> :nohlsearch<CR>
+noremap <silent> <F6> :set nu! \| set rnu! \| set cul!<CR>
+noremap <silent> <Space> :nohlsearch<CR>
+
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
 
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>

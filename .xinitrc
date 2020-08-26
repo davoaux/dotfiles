@@ -10,5 +10,11 @@ $HOME/scripts/curlock.sh &
 picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 dunst &
 
+#while true; do
+#	xsetroot -name "$(date "+%b %d %Y | %H:%M")"
+#	sleep 1m
+#done &
+
 exec i3
 #exec 2bwm
+#exec dwm

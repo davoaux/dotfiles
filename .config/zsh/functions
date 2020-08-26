@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+mkcd() {
+  mkdir -p $1 && cd $1
+}
+
+config() {
+  local dir=$(
+    find $XDG_CONFIG_HOME -maxdepth 1 -mindepth 1 |
+    fzf
+  )
+  [ -n "$dir" ] && 
+	  cd $dir; nvim .
+}
+
+wmupdate() {
+	case $1 in
+		2bwm)	local WM=2bwm;;
+		dwm)	local WM=dwm;;
+		*)		return 1;;
+	esac
+	local dir="$XDG_CONFIG_HOME/$WM"
+	[ -d "$dir" ] && 
+		make -C "$dir" &&
+		sudo make -C "$dir" clean install &&
+		sudo pkill Xorg
+}
