@@ -7,7 +7,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'townk/vim-autoclose'
 Plug 'ap/vim-css-color'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -46,10 +46,11 @@ autocmd! FileType fzf set laststatus=0 noshowmode noruler
 " set termguicolors
 
 " solarized settings
-set background=dark
+set background=light
 colorscheme solarized
 
-let g:lightline = { 'colorscheme': 'solarized' }
+let g:airline_solarized_bg = 'light'
+let g:airline_powerline_fonts = 1
 
 " Style sign column to have the same color has the line number column
 hi clear SignColumn

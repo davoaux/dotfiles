@@ -25,6 +25,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+[ -f "$HOME/.config/zsh/.env" ] && source $HOME/.config/zsh/.env
 [ -f "$HOME/.config/zsh/alias" ] && source $HOME/.config/zsh/alias
 [ -f "$HOME/.config/zsh/functions" ] && source $HOME/.config/zsh/functions
 [ -f "$HOME/.config/zsh/autopair" ] && source $HOME/.config/zsh/autopair

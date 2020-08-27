@@ -128,7 +128,7 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
-colors: *solarized_dark
+colors: *solarized_light
 draw_bold_text_with_bright_colors: true
 
 background_opacity: 1
