@@ -58,20 +58,18 @@ static void halfandcentered(const Arg *arg)
     teleport(&arg3);
 }
 
-static void snapright(const Arg *arg)
+static void snap(const Arg *arg)
 {
     Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
     maxhalf(&arg2);
-    Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_RIGHT};
-    teleport(&arg3);
-}
 
-static void snapleft(const Arg *arg)
-{
-    Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
-    maxhalf(&arg2);
-    Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_LEFT};
-    teleport(&arg3);
+    if (arg->i == 1) {
+        Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_LEFT};
+        teleport(&arg3);
+    } else {
+        Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_RIGHT};
+        teleport(&arg3);
+    }
 }
 
 static void killandfocus(const Arg *arg)
@@ -190,9 +188,9 @@ static key keys[] = {
     {  MOD |SHIFT ,       XK_v,          sendtonextworkspace,{}},
     {  MOD |SHIFT ,       XK_c,          sendtoprevworkspace,{}},
    
-    // Snap window left/right
-    {  MOD ,              XK_i,          snapleft,          {}},
-    {  MOD ,              XK_o,          snapright,         {}},
+    // Snap window left (1) / right (2)
+    {  MOD ,              XK_i,          snap,              {.i=1}},
+    {  MOD ,              XK_o,          snap,              {.i=2}},
    
     // Make the window unkillable
     {  MOD ,              XK_a,          unkillable,        {}},

@@ -46,10 +46,10 @@ autocmd! FileType fzf set laststatus=0 noshowmode noruler
 " set termguicolors
 
 " solarized settings
-set background=light
+set background=dark
 colorscheme solarized
 
-let g:airline_solarized_bg = 'light'
+let g:airline_solarized_bg = 'dark'
 let g:airline_powerline_fonts = 1
 
 " Style sign column to have the same color has the line number column
@@ -64,6 +64,7 @@ vmap <silent> <C-c> :!xclip -f -sel clip<CR>
 
 map <silent> <C-n> :CocCommand explorer<CR>
 map <silent> <C-p> :Files<CR>
+map <silent> <C-b> :Buffers<CR>
 
 noremap <silent> <F5> :set list!<CR>
 noremap <silent> <F6> :set nu! \| set rnu! \| set cul!<CR>

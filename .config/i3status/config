@@ -11,8 +11,8 @@ general {
         interval = 5
 }
 
-order += "wireless _first_"
 order += "ethernet _first_"
+order += "volume master"
 order += "disk /"
 order += "load"
 order += "memory"
@@ -26,6 +26,13 @@ wireless _first_ {
 ethernet _first_ {
         format_up = "E: %ip (%speed)"
         format_down = "E: down"
+}
+
+volume master {
+		format = "%volume"
+		format_muted = "muted"
+		device = "default"
+		mixer = "Master"
 }
 
 battery all {

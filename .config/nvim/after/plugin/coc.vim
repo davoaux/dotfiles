@@ -1,17 +1,11 @@
-
- " Always show the signcolumn, otherwise it would shift the text each time
- " diagnostics appear/become resolved.
 if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
   set signcolumn=yes
 endif
 
-" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Use tab for trigger commpletion
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
             \ <SID>check_back_space() ? "\<TAB>" :
@@ -23,10 +17,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion
 if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
@@ -39,3 +31,11 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+let g:coc_global_extensions = [
+			\ 'coc-explorer',
+			\ 'coc-tsserver',
+			\ 'coc-json',
+			\ 'coc-clangd',
+			\ 'coc-marketplace',
+			\ ]
