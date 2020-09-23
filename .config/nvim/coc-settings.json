@@ -1,8 +1,9 @@
 {
   "javascript.validate.enable": false,
-
   "explorer.icon.enableNerdfont": true,
-
   "clangd.enabled": true,
-  "clangd.disableDiagnostics": false
+  "clangd.disableDiagnostics": false,
+  "jedi.enable": true,
+  "jedi.startupMessage": false,
+  "jedi.diagnostics.didChange": false
 }

@@ -4,10 +4,12 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'gruvbox-community/gruvbox'
-Plug 'altercation/vim-colors-solarized'
 Plug 'townk/vim-autoclose'
 Plug 'ap/vim-css-color'
 Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-rooter'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -30,6 +32,8 @@ set cursorline
 set nobackup nowritebackup
 set updatetime=300
 set splitbelow splitright
+set termguicolors " gruvbox's true colors
+set clipboard+=unnamedplus " use system's clipboard
 
 exec "nohlsearch"
 
@@ -37,34 +41,27 @@ set shiftwidth=4 softtabstop=4 tabstop=4 noexpandtab
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab 
 autocmd FileType c,cpp setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab 
 
-" Hide fzf statusline
-autocmd! FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
-" let g:gruvbox_italic = '1'
-" let g:gruvbox_contrast_dark = 'hard'
-" set termguicolors
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_bold = 1
+let g:gruvbox_italic = 1
 
-" solarized settings
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 
-let g:airline_solarized_bg = 'dark'
 let g:airline_powerline_fonts = 1
 
-" Style sign column to have the same color has the line number column
 hi clear SignColumn
 hi link SignColumn LineNr
 
-" use terminal's bg
+" " For transparency
 " hi Normal ctermbg=NONE guibg=NONE
-
-" xclip based clipboard copy
-vmap <silent> <C-c> :!xclip -f -sel clip<CR>
+" hi LineNr ctermbg=NONE guibg=NONE
 
 map <silent> <C-n> :CocCommand explorer<CR>
 map <silent> <C-p> :Files<CR>
 map <silent> <C-b> :Buffers<CR>
+map <silent> <C-q> :bdelete<CR>
 
 noremap <silent> <F5> :set list!<CR>
 noremap <silent> <F6> :set nu! \| set rnu! \| set cul!<CR>

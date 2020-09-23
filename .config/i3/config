@@ -2,17 +2,13 @@ set $mod Mod4
 
 font pango:monospace 8
 
-#exec_always --no-startup-id $HOME/scripts/bar.sh
-
 floating_modifier $mod
 
 bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 bindsym $mod+d exec rofi -show drun
-
 bindsym $mod+Shift+q exec ~/scripts/powermenu
-
 bindsym $mod+p exec ~/scripts/popup
 
 bindsym $mod+Shift+Print exec ~/scripts/prtscr -f
@@ -55,42 +51,57 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 bindsym $mod+a focus parent
-#bindsym $mod+d focus child
+bindsym $mod+f focus child
 
 bindsym $mod+g move absolute position center
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1:term"
+set $ws2 "2:web"
+set $ws3 "3:media"
+set $ws4 "4:chat"
+set $ws5 "5:misc"
+set $ws6 "6:temp"
+set $ws7 "7:temp"
+set $ws8 "8:temp"
+set $ws9 "9:temp"
+set $ws10 "10:temp"
 
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# spotify wont work using assign because it doesn't set the class hints when mapping the window
+for_window [class="Spotify"] move to workspace $ws3
+assign [class="discord"] $ws4
+assign [class="Steam"] $ws5
+
+for_window [class="^Steam$" title="^Friends List$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -102,11 +113,6 @@ mode "resize" {
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -115,19 +121,20 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.focused          #504945 #504945 #ffffff #504945   #504945
+client.focused_inactive #3c3836 #3c3836 #ffffff #32302f	  #32302f
+client.unfocused        #1d2021 #1d2021 #888888 #32302f   #32302f
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
-#for_window [class="^.*"] border pixel 2
-#gaps top 30
-#gaps inner 25
+for_window [class="^.*"] border pixel 1
+gaps top 0
+gaps inner 0
 
-set $mode_gaps_inner Inner Gaps: +|-|0 (global)
+set $mode_gaps_inner inner gaps + - 0
+
 bindsym $mod+Shift+g mode "$mode_gaps_inner"
 
 mode "$mode_gaps_inner" {
@@ -139,7 +146,27 @@ mode "$mode_gaps_inner" {
 }
 
 bar {
-        status_command i3status
-        position bottom
+	status_command i3blocks
+    position bottom
+	font pango: cozette 9
+	workspace_min_width 45
+	strip_workspace_numbers yes
+	strip_workspace_name no
+
+	colors {
+		background #0b0c0c
+    	statusline #ebdbb2
+    	separator #666666
+
+		# <colorclass> <border> <background> <text>
+    	focused_workspace  #0b0c0c #0b0c0c #ebdbb2
+    	active_workspace   #333333 #ff0000 #ebdbb2
+    	inactive_workspace #0b0c0c #0b0c0c #665c54
+    	urgent_workspace   #2f343a #900000 #ffffff
+    	binding_mode       #d79921 #d79921 #1d2021
+	}
 }
+
+exec --no-startup-id $HOME/scripts/curlock.sh
+#exec_always --no-startup-id $HOME/scripts/bar.sh
 

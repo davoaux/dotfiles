@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
+case $1 in
+	g) output='';;
+	*) output='';;
+esac
+
 pkgs=$(pacman -Qu | wc -l)
-glyph='  '
+output="$output $pkgs"
 
 [ $pkgs -eq 0 ] && 
-  echo "$glyph Up to date" ||
-  echo "$glyph $pkgs "
+  echo "Up to date" ||
+  echo "$output"

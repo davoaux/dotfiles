@@ -36,6 +36,5 @@ let g:coc_global_extensions = [
 			\ 'coc-explorer',
 			\ 'coc-tsserver',
 			\ 'coc-json',
-			\ 'coc-clangd',
-			\ 'coc-marketplace',
+			\ 'coc-clangd'
 			\ ]
