@@ -33,18 +33,26 @@ scrolling:
 
 font:
   normal:
-    family: FuraCode Nerd Font
+    # family: FuraCode Nerd Font
+    # family: Ubuntu Mono
+    family: cherry
     style: Regular
   bold:
-    family: FuraCode Nerd Font
+    # family: FuraCode Nerd Font
+    # family: Ubuntu Mono
+    family: cherry
     style: Bold
   italic:
-    family: FuraCode Nerd Font
+    # family: FuraCode Nerd Font
+    # family: Ubuntu Mono
+    family: cherry
     style: Italic
   bold_italic:
-    family: FuraCode Nerd Font
+    # family: FuraCode Nerd Font
+    # family: Ubuntu Mono
+    family: cherry
     style: Bold Italic
-  size: 10
+  size: 8
   offset:
     x: 0
     y: 0

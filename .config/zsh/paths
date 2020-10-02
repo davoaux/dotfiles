@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/nodejs/bin"
+export PATH="$PATH:$HOME/.emacs.d/bin"

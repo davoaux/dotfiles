@@ -10,7 +10,7 @@ list="$option1\n$option2\n$option3\n$option4"
 opt=$(
   echo -e $list |
   rofi -dmenu -config ~/.config/rofi/powermenu.rasi \
-  -location 3 -xoffset -13 -yoffset 27 -lines 4
+  -location 3 -xoffset -20 -yoffset 20 -lines 4 -i
 )
 
 case $opt in

@@ -16,7 +16,7 @@ menu() {
   choice=$(
     echo -e $list |
     rofi -dmenu -config ~/.config/rofi/scrot.rasi \
-    -location 3 -xoffset -13 -yoffset 27 -lines 3
+    -location 3 -xoffset -20 -yoffset 20 -lines 3 -i
   )
   case $choice in
     $option1) 

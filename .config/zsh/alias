@@ -20,16 +20,23 @@ alias yadmp='yadm push origin master'
 alias yadmauto="yadma && yadmc && yadmp"
 
 # miscellaneous commands
+alias rm='rm -i'
 alias sudovi='sudo nvim'
 alias vi='nvim'
 alias google='ping -c1 8.8.8.8'
 alias yt='youtube-dl'
-alias twitch='concat -client-id "$TWITCHID" -vod '
-alias tmux='tmux -u'
+alias joystick='ds4drv --hidraw'
+alias mongo='mongo --norc'
+alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
+alias sqlite3='sqlite3 -init "$XDG_CONFIG_HOME"/sqlite3/sqliterc'
 alias sxiv='sxiv -b'
 alias diskspace='df -H'
+alias twitch='concat -client-id "$TWITCHID" -vod '
+alias tmux='tmux -u'
 alias volume='alsamixer -g'
-alias joystick='ds4drv --hidraw'
+alias wget='wget --hsts-file=$XDG_CACHE_HOME/wget-hsts'
+alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'
+alias zathura='zathura --fork'
 
 # bookmarks
 alias notes="cd $HOME/Documents/notes/ && ls"

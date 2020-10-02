@@ -1,19 +1,20 @@
 * {
-    dark: #222222;
+    dark: #1d2021;
     
-    foreground:  #BBBBBB;
-    foreground-alt: #444444;
-    backlight:   #BBBBBB;
+    foreground:  #ebdbb2;
+    foreground-alt: #665c54;
+    backlight:   #ebdbb2;
     background-color:  @dark;
-    background-alt: #BBBBBB;
-    highlight: underline bold;
+    background-alt: #ebdbb2;
+    highlight: bold;
 
-    font: "cozette 11";
+    font: "cherry 8";
 }
+
 #window {
-    width: 150px;
+    width: 100px;
     padding: 0px;
-    border:  2px;
+    border:  0px;
     border-radius: 0;
     border-color: #333333;
     color: @foreground;
@@ -38,32 +39,29 @@
 #inputbar {
     padding: 20px 20px 0 20px;
     border-color: #666666;
-	  color: @foreground;
+	color: @foreground;
 }
 #entry,prompt,case-indicator {
     text-font: inherit;
-    text-color:inherit;
+    text-color: inherit;
 }
 #prompt {
-enabled: false;
+    enabled: false;
 }
 #listview {
     padding: 20px;
     border-color: @foreground;
     border: none;
     dynamic: false;
-    //lines: 13;
 }
 #element {
     padding: 5px;
     vertical-align: 0.5;
-    background-color: @dark;
-    color: @foreground;
+    color: @foreground-alt;
     font-size: 10px;
 }
 #element selected.normal {
-    background-color: #CFCFCF;
-	  color: #000000;
+    color: @foreground;
 }
 #element normal active {
     foreground: @foreground-alt;
