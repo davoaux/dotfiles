@@ -2,7 +2,7 @@
 mpd_port = "6600"
 mpd_host = localhost
 
-mpd_music_dir = ~/Music
+mpd_music_dir = ~/music
 
 song_status_format = "{%a - %t}"
 song_list_format = "{%a - %t} $R {%l}"

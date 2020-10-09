@@ -1,35 +1,35 @@
 #!/usr/bin/env bash
 
 get_vol() {
-	level="$(amixer get Master | sed -n 'N;s/^.*\[\([0-9]\+%\).*$/\1/p')"
-  	state="$(amixer get Master | sed -n 'N;s/^.*\[\(o[nf]\+\)]$/\1/p')"
+  level="$(amixer get Master | sed -n 'N;s/^.*\[\([0-9]\+%\).*$/\1/p')"
+  state="$(amixer get Master | sed -n 'N;s/^.*\[\(o[nf]\+\)]$/\1/p')"
 }
 
 notify() {
-	get_vol
-  	local id=33
-  	[ $state = on ] && state="" || state=" "
+  get_vol
+  local id=33
+  [ $state = on ] && state="" || state=" "
 
-	case "$1" in
-		toggle) dunstify -r $id "$state";;
-		*) dunstify -r $id "  $level"
-	esac
+  case "$1" in
+    toggle) dunstify -r $id "$state";;
+    *) dunstify -r $id "  $level"
+  esac
 }
 
 get_vol
 if [ -z $1 ]; then
-	[ $state = on ] && echo "$level" || echo "$state"
-	exit 0
+  [ $state = on ] && echo "$level" || echo "$state"
+  exit 0
 fi
 
 case $1 in
-	+) 
-		amixer set Master 4%+ >/dev/null
-    	notify;;
-	-) 
-		amixer set Master 4%- >/dev/null
-    	notify;;
-	!) 
-		amixer set Master toggle >/dev/null
-    	notify toggle;;
+  +)
+    amixer set Master 4%+ >/dev/null
+    notify;;
+  -)
+    amixer set Master 4%- >/dev/null
+    notify;;
+  !)
+    amixer set Master toggle >/dev/null
+    notify toggle;;
 esac

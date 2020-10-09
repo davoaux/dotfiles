@@ -110,10 +110,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes' 'i3-msg exit'"
 
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 1 px or 1 ppt
+        bindsym j resize grow height 1 px or 1 ppt
+        bindsym k resize shrink height 1 px or 1 ppt
+        bindsym l resize grow width 1 px or 1 ppt
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -131,7 +131,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 gaps top 0
 gaps inner 0
 
@@ -148,25 +148,25 @@ mode "$mode_gaps_inner" {
 }
 
 bar {
-	status_command i3blocks
-    position bottom
-	font pango:cherry 8
-	height 26
-	strip_workspace_numbers yes
-	strip_workspace_name no
+  status_command i3blocks
+  position bottom
+  font pango:cherry 8
+  height 26
+  strip_workspace_numbers yes
+  strip_workspace_name no
+  
+  colors {
+    background #1d2021
+    statusline #ebdbb2
+    separator #666666
 
-	colors {
-		background #1d2021
-    	statusline #ebdbb2
-    	separator #666666
-
-		# <colorclass> <border> <background> <text>
-    	focused_workspace  #1d2021 #1d2021 #ebdbb2
-    	active_workspace   #333333 #ff0000 #ebdbb2
-    	inactive_workspace #1d2021 #1d2021 #665c54
-    	urgent_workspace   #1d2021 #1d2021 #fb4934
-    	binding_mode       #d79921 #d79921 #1d2021
-	}
+    # <colorclass> <border> <background> <text>
+      focused_workspace  #1d2021 #1d2021 #ebdbb2
+      active_workspace   #333333 #ff0000 #ebdbb2
+      inactive_workspace #1d2021 #1d2021 #665c54
+      urgent_workspace   #1d2021 #1d2021 #fb4934
+      binding_mode       #d79921 #d79921 #1d2021
+  }
 }
 
 exec --no-startup-id $HOME/scripts/curlock.sh

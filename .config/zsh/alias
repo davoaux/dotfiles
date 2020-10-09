@@ -35,10 +35,10 @@ alias twitch='concat -client-id "$TWITCHID" -vod '
 alias tmux='tmux -u'
 alias volume='alsamixer -g'
 alias wget='wget --hsts-file=$XDG_CACHE_HOME/wget-hsts'
-alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'
 alias zathura='zathura --fork'
 
 # bookmarks
-alias notes="cd $HOME/Documents/notes/ && ls"
-alias wv="cd $HOME/Pictures/misc/.c/v && ls"
+alias notes="cd $HOME/documents/notes/ && ls"
+alias stack="nvim --noplugin workspace/STACK"
+alias wv="cd $HOME/pictures/misc/.c/v && ls"
 alias vswap="cd $HOME/.local/share/nvim/swap && ls && rm -I *"
