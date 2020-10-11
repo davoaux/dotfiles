@@ -1,7 +1,7 @@
 set $mod Mod4
 
-#font pango:monospace 8
-font pango:cherry 8
+# font pango: monospace 8
+font pango: FuraCode Nerd Font 8
 
 floating_modifier $mod
 
@@ -55,6 +55,9 @@ bindsym $mod+a focus parent
 bindsym $mod+f focus child
 
 bindsym $mod+g move absolute position center
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 set $ws1 "1:dev"
 set $ws2 "2:web"
@@ -150,7 +153,8 @@ mode "$mode_gaps_inner" {
 bar {
   status_command i3blocks
   position bottom
-  font pango:cherry 8
+  # font pango:cherry 8
+  font pango: FuraCode Nerd Font Bold 8
   height 26
   strip_workspace_numbers yes
   strip_workspace_name no

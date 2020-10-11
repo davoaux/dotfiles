@@ -1,7 +1,7 @@
 configuration{
-	show-icons: false;
-	lines: 3;
-	columns: 2;
+    show-icons: false;
+    lines: 3;
+    columns: 2;
 }
 
 * {

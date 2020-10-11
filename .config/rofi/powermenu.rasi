@@ -1,6 +1,6 @@
 * {
     dark: #1d2021;
-    
+
     foreground:  #ebdbb2;
     foreground-alt: #665c54;
     backlight:   #ebdbb2;
@@ -29,9 +29,9 @@
     children: [ inputbar, message, listview ];
 }
 
-#message 
+#message
 {
-	border: none;
+    border: none;
     padding: 5;
     background-color: @dark;
 }
@@ -39,7 +39,7 @@
 #inputbar {
     padding: 20px 20px 0 20px;
     border-color: #666666;
-	color: @foreground;
+    color: @foreground;
 }
 #entry,prompt,case-indicator {
     text-font: inherit;
@@ -65,7 +65,7 @@
 }
 #element normal active {
     foreground: @foreground-alt;
-	color: #fff;
+    color: #fff;
 }
 #element normal urgent {
     foreground: #ff332299;
@@ -73,7 +73,7 @@
 
 #element alternate active {
     foreground: @foreground-alt;
-	color: @foreground;
+    color: @foreground;
 }
 #element alternate urgent {
     foreground: #ff332299;

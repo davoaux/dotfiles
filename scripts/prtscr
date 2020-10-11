@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIR=$HOME/Pictures/Screenshots
+DIR=$HOME/pictures/Screenshots
 NAME=$(date +%Y%m%d_%H%M%S)
 
 option1="Whole screen"

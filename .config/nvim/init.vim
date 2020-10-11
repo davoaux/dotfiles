@@ -27,7 +27,7 @@ set ignorecase smartcase hlsearch
 set hidden
 set laststatus=2
 set noshowmode
-set listchars=tab:\|\ ,space:·,eol:$
+set listchars=tab:\\ ,space:·,eol:$
 set mouse=a
 set number relativenumber
 set cursorline
@@ -52,7 +52,7 @@ let g:gruvbox_italic = 1
 set background=dark
 colorscheme gruvbox
 
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 hi clear SignColumn
 hi link SignColumn LineNr
@@ -81,7 +81,7 @@ endfun
 command! Vimrc :e $MYVIMRC
 
 map <silent> <C-n> :CocCommand explorer<CR>
-map <silent> <C-p> :Files<CR>
+map <silent> <C-p> :Files ~/workspace<CR>
 map <silent> <C-b> :Buffers<CR>
 map <silent> <C-q> :bdelete<CR>
 
