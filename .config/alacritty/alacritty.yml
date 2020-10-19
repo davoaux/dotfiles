@@ -9,50 +9,44 @@ window:
   decorations: full
   dynamic_title: true
   title: Alacritty
-  
+
 scrolling:
   history: 10000
   multiplier: 3
 
 # Frecuent fonts
 #
-#family: Iosevka
-#family: lucy tewi
-#family: xos4 Terminus
-#family: cherry
-#family: Dina
-#family: cozette
-#family: unifont
-#family: SFMono Nerd Font
-#family: Roboto Mono
-#family: Misc Tamsyn
-#family: Ubuntu Mono
-#family: Fira Code
-#family: FuraCode Nerd Font
-#family: FantasqueSansMono Nerd Font
+# family: JetBrainsMono Nerd Font
+# family: FuraCode Nerd Font
+# family: Ubuntu Mono
+# family: GoMono Nerd Font
+# family: Iosevka
+# family: lucy tewi
+# family: xos4 Terminus
+# family: cherry
+# family: Dina
+# family: cozette
+# family: unifont
+# family: SFMono Nerd Font
+# family: Roboto Mono
+# family: Misc Tamsyn
+# family: Fira Code
+# family: FantasqueSansMono Nerd Font
 
 font:
   normal:
-    # family: FuraCode Nerd Font
-    family: Ubuntu Mono
-    # family: cherry
+    family: FuraCode Nerd Font
     style: Regular
   bold:
-    # family: FuraCode Nerd Font
-    family: Ubuntu Mono
-    # family: cherry
+    family: FuraCode Nerd Font
     style: Bold
   italic:
-    # family: FuraCode Nerd Font
-    family: Ubuntu Mono
-    # family: cherry
-    style: Italic
-  bold_italic:
-    # family: FuraCode Nerd Font
-    family: Ubuntu Mono
-    # family: cherry
+    family: FuraCode Nerd Font
     style: Bold Italic
-  size: 12
+  bold_italic:
+    family: FuraCode Nerd Font
+    style: Bold Italic
+  size: 10
   offset:
     x: 0
     y: 0
@@ -85,6 +79,53 @@ schemes:
       cyan:    '#8ec07c'
       white:   '#ebdbb2'
 
+  gruvbox_light: &gruvbox_light
+    primary:
+      # contrast = #f9f5d7 #fbf1c7 #f2e5bc
+      background: '#fbf1c7'
+      foreground: '#3c3836'
+    normal:
+      black:   '#fbf1c7'
+      red:     '#cc241d'
+      green:   '#98971a'
+      yellow:  '#d79921'
+      blue:    '#458588'
+      magenta: '#b16286'
+      cyan:    '#689d6a'
+      white:   '#7c6f64'
+    bright:
+      black:   '#928374'
+      red:     '#9d0006'
+      green:   '#79740e'
+      yellow:  '#b57614'
+      blue:    '#076678'
+      magenta: '#8f3f71'
+      cyan:    '#427b58'
+      white:   '#3c3836'
+
+  shirotelin: &shirotelin
+    primary:
+      background: '#ffffff'
+      foreground: '#000000'
+    normal:
+      black:   '#000000'
+      red:     '#be5046'
+      green:   '#005f00'
+      yellow:  '#ffff80'
+      blue:    '#000087'
+      magenta: '#87005f'
+      cyan:    '#005f5f'
+      white:   '#ffffff'
+    bright:
+      black:   '#000000'
+      red:     '#be5046'
+      green:   '#005f00'
+      yellow:  '#ffff80'
+      blue:    '#000087'
+      magenta: '#87005f'
+      cyan:    '#005f5f'
+      white:   '#ffffff'
+
   simple_dark: &simple_dark
     primary:
       background: '#0a0a0a'
@@ -107,7 +148,7 @@ schemes:
       magenta:  '#D6D6D0'
       cyan:     '#696966'
       white:    '#AFB0AB'
-  
+
   solarized_light: &solarized_light
     primary:
       background: '#fdf6e3' # base3
@@ -133,7 +174,7 @@ schemes:
       magenta: '#6c71c4' # violet
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
-  
+
   solarized_dark: &solarized_dark
     primary:
       background: '#002b36' # base03
@@ -170,14 +211,14 @@ selection:
 
 cursor:
   style: Block
- 
+
 live_config_reload: true
 
 shell:
   program: /bin/zsh
 
 mouse:
-  hide_when_typing: false 
+  hide_when_typing: false
   url:
     launcher:
       program: xdg-open

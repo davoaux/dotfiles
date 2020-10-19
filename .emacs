@@ -9,10 +9,6 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; (load-theme 'gruber-darker t)
-;; (set-background-color "grey6")
-;; (set-foreground-color "grey94")
-
 ;; Tabs (need to look more deep into it)
 (setq default-tab-width 4)
 
@@ -43,7 +39,6 @@
 ;; Use company-mode in all buffers
 (add-hook 'after-init-hook 'global-company-mode)
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -53,10 +48,16 @@
    '("5f824cddac6d892099a91c3f612fcf1b09bb6c322923d779216ab2094375c5ee" "4cf9ed30ea575fb0ca3cff6ef34b1b87192965245776afa9e9e20c17d115f3fb" "a06658a45f043cd95549d6845454ad1c1d6e24a99271676ae56157619952394a" default))
  '(display-line-numbers-type 'relative)
  '(fancy-splash-image nil)
- '(package-selected-packages '(powerline neotree company fzf use-package evil)))
+ '(package-selected-packages
+   '(gruvbox-theme company fzf use-package evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 103 :width normal :foundry "ADBO" :family "FuraCode Nerd Font")))))
+
+;; Load theme
+(load-theme 'gruvbox t)
+(set-background-color "#1d2021")
+(set-foreground-color "#ebdbb2")

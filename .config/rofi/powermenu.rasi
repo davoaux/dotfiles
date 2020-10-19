@@ -8,11 +8,11 @@
     background-alt: #ebdbb2;
     highlight: bold;
 
-    font: "cherry 8";
+    font: "SF UI Display 10";
 }
 
 #window {
-    width: 100px;
+    width: 115px;
     padding: 0px;
     border:  0px;
     border-radius: 0;
