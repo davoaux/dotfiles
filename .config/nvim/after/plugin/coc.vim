@@ -1,11 +1,14 @@
+" Always show the signcolumn
 if has("patch-8.1.1564")
   set signcolumn=number
 else
   set signcolumn=yes
 endif
 
+" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+" Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
             \ <SID>check_back_space() ? "\<TAB>" :
@@ -17,6 +20,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
 if exists('*complete_info')
@@ -31,6 +35,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <leader>rn <Plug>(coc-rename)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -47,5 +52,7 @@ let g:coc_global_extensions = [
       \ 'coc-explorer',
       \ 'coc-tsserver',
       \ 'coc-json',
-      \ 'coc-clangd'
+      \ 'coc-clangd',
+      \ 'coc-eslint',
+      \ 'coc-prettier',
       \ ]

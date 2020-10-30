@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # config editing
 alias zshrc='$EDITOR $HOME/.zshrc'
 alias i3rc='$EDITOR $XDG_CONFIG_HOME/i3/config'
@@ -39,6 +41,6 @@ alias zathura='zathura --fork'
 
 # bookmarks
 alias notes="cd $HOME/documents/notes/ && ls"
-alias stack="nvim --noplugin workspace/STACK"
+alias stack="nvim --noplugin $HOME/workspace/STACK"
 alias wv="cd $HOME/pictures/misc/.c/v && ls"
 alias vswap="cd $HOME/.local/share/nvim/swap && ls && rm -I *"

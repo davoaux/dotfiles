@@ -46,7 +46,7 @@ font:
   bold_italic:
     family: FuraCode Nerd Font
     style: Bold Italic
-  size: 10
+  size: 10.0
   offset:
     x: 0
     y: 0

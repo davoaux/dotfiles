@@ -29,8 +29,7 @@ rename() {
     ((num++))
   done
 
-  # Remove the files, and move in the renamed images plus the non 
-  # images files
+  # Replace the old images and clean up the temp directories
   rm -rf *
   mv $tdir/* .
   mv $tdir_noimg/* .

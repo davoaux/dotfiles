@@ -1,9 +1,22 @@
 {
-  "javascript.validate.enable": false,
   "explorer.icon.enableNerdfont": true,
   "clangd.enabled": true,
   "clangd.disableDiagnostics": false,
-  "jedi.enable": false,
-  "jedi.startupMessage": false,
-  "jedi.diagnostics.didChange": false
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "css",
+    "html",
+    "markdown"
+  ],
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "△",
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.autoFixOnSave": true,
+  "javascript.validate.enable": false
 }

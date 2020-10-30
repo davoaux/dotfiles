@@ -151,10 +151,10 @@ mode "$mode_gaps_inner" {
 
 bar {
   status_command i3blocks
-  position bottom
-  # font pango:cherry 8
-  font pango: FuraCode Nerd Font Bold 8
-  height 26
+  position top
+  font pango: cherry 8
+  # font pango: FuraCode Nerd Font Bold 8
+  height 20
   strip_workspace_numbers yes
   strip_workspace_name no
 

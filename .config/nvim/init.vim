@@ -12,19 +12,12 @@ Plug 'airblade/vim-rooter'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf', {
-      \ 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {
-      \ 'branch': 'release' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'digitaltoad/vim-pug'
-Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'css', 'json', 'html'] }
-Plug 'iamcco/markdown-preview.nvim', {
-      \ 'do': 'cd app && yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 call plug#end()
 
@@ -48,6 +41,8 @@ set termguicolors " gruvbox's true colors
 set clipboard+=unnamedplus " use system's clipboard (relies on xclip)
 set colorcolumn=
 set inccommand=nosplit " shows in realtime what changes the ex command should make
+
+let mapleader = ","
 
 exec "nohlsearch"
 
@@ -80,9 +75,8 @@ highlight GitGutterAdd    guifg=#b8bb26 ctermfg=2
 highlight GitGutterChange guifg=#fabd2f ctermfg=3
 highlight GitGutterDelete guifg=#fb4934 ctermfg=1
 
-" Enable autoformat without need of @format or @prettier tags
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
+" Don't set any gitgutter mapping
+let g:gitgutter_map_keys = 0
 
 " Function to toggle colorcolumn
 function! ToogleCC()
@@ -94,6 +88,7 @@ function! ToogleCC()
 endfun
 
 command! Vimrc :e $MYVIMRC
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 map <silent> <C-n> :CocCommand explorer<CR>
 map <silent> <C-p> :Files .<CR>
