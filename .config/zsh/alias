@@ -15,6 +15,7 @@ alias gitc="git commit -m 'auto-commit'"
 alias gitp="git push origin master"
 alias gitauto="gita && gitc && gitp"
 
+alias yadml="yadm log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias yadms='yadm status --short'
 alias yadma='yadm add -u'
 alias yadmc="yadm commit -m 'auto-commit'"

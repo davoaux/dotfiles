@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if [[ ! -d ~/.config/zsh-plugins/zsh-autopair ]]; then
-  git clone https://github.com/hlissner/zsh-autopair ~/.config/zsh-plugins/zsh-autopair
-fi
-
-source ~/.config/zsh-plugins/zsh-autopair/autopair.zsh
-autopair-init

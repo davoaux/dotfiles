@@ -11,6 +11,7 @@
   ],
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "△",
+  "diagnostic.infoSign": "כֿ",
   "eslint.filetypes": [
     "javascript",
     "javascriptreact",

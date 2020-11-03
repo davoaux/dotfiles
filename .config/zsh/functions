@@ -16,8 +16,7 @@ config() {
 wmupdate() {
 	case $1 in
 		2bwm)	local WM=2bwm;;
-		dwm)	local WM=dwm;;
-		*)		return 1;;
+		*)		echo 'Usage: wmupdate [WM]'; return 1;;
 	esac
 	local dir="$XDG_CONFIG_HOME/$WM"
 	[ -d "$dir" ] && 

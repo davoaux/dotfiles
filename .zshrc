@@ -1,14 +1,18 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="spaceship"
+ZSH_THEME="cloud"
+ZSH_THEME_CLOUD_PREFIX="🦍"
 
 plugins=(
   fzf
   node
-  zsh-interactive-cd
+  zsh-autopair
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
+
+bindkey '^ ' autosuggest-accept
 
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache

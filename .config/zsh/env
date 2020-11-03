@@ -10,6 +10,15 @@ export LESSHISTFILE="-"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
 
+# less colors for man pages
+export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\e[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\e[0m'           # end mode
+export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\e[38;5;246m'    # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\e[0m'           # end underline
+export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
+
 export ZSH="/home/parelkobra/.oh-my-zsh"
 
 local GRUVBOX_LIGHT_HARD="'fg:#1d2021,fg+:#1d2021,bg:#fbf1c7,bg+:#fbf1c7,border:#ebdbb2,prompt:#cc241d,pointer:#cc241d,info:#689d6a,spinner:#98971a'"
