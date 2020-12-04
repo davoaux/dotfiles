@@ -1,14 +1,15 @@
 * {
-    dark: #1d2021;
+    dark: #141414;
 
-    foreground:  #ebdbb2;
-    foreground-alt: #665c54;
-    backlight:   #ebdbb2;
+    foreground:  #e1e1e1;
+    foreground-alt: #555555;
+    backlight:   #e1e1e1;
     background-color:  @dark;
-    background-alt: #ebdbb2;
+    background-alt: #e1e1e1;
     highlight: bold;
 
-    font: "SF UI Display 10";
+    /* font: "SF UI Display 10"; */
+    font: "GoMono Nerd Font 10";
 }
 
 #window {

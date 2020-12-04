@@ -1,0 +1,10 @@
+set default-bg "#22242D"
+set recolor "false"
+set recolor-darkcolor "#F0F0F0"
+set recolor-lightcolor "#383C4A"
+
+unmap t
+map t set recolor "true"
+
+unmap b
+map b toggle_statusbar

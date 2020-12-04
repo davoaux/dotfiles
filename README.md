@@ -2,15 +2,11 @@
 
 My \*nix config files
 
-![desktop](pictures/Screenshots/desktop13.png)
-
 ## Setup
 
-- Distro: `arch linux`
-- WM: `2bwm`/`i3`
+- Distro: `Arch`
+- WM: `2bwm` and `i3`
+- Editor: `neovim`
+- Shell: `fish`
 - Compositor: `picom`
 - Terminal emulator: `alacritty`
-- Editor: `neovim`
-- Shell: `zsh`
-- Notifications: `dunst`
-- Application manager: `rofi`

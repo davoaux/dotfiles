@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango: FuraCode Nerd Font 8
+font pango: SF UI Display Medium 10
 
 floating_modifier $mod
 
@@ -125,9 +125,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #504945 #504945 #ffffff #7c6f64   #7c6f64
-client.focused_inactive #3c3836 #3c3836 #ffffff #1d2021	  #1d2021
-client.unfocused        #1d2021 #1d2021 #888888 #1d2021   #1d2021
+client.focused          #141414 #141414 #b2b2b2 #777777   #777777
+client.focused_inactive #141414 #141414 #141414 #000000   #000000
+client.unfocused        #141414 #141414 #141414 #000000   #000000
 client.urgent           #2f343a #fb4934 #ffffff #fb4934   #fb4934
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
@@ -152,25 +152,32 @@ mode "$mode_gaps_inner" {
 bar {
   status_command i3blocks
   position top
-  font pango: cherry 8
-  # font pango: FuraCode Nerd Font Bold 8
-  height 20
-  strip_workspace_numbers yes
-  strip_workspace_name no
+  font pango: GoMono Nerd Font 10
+  height 25
+  strip_workspace_numbers no
+  strip_workspace_name yes
 
   colors {
-    background #1d2021
-    statusline #ebdbb2
-    separator #666666
+    background #141414
+    statusline #e1e1e1
+    separator #e1e1e1
 
     # <colorclass> <border> <background> <text>
-      focused_workspace  #1d2021 #1d2021 #ebdbb2
-      active_workspace   #333333 #ff0000 #ebdbb2
-      inactive_workspace #1d2021 #1d2021 #665c54
-      urgent_workspace   #1d2021 #1d2021 #fb4934
-      binding_mode       #d79921 #d79921 #1d2021
+    # gruvbox dark hard
+    #focused_workspace  #1d2021 #1d2021 #ebdbb2
+    #active_workspace   #333333 #ff0000 #ebdbb2
+    #inactive_workspace #1d2021 #1d2021 #665c54
+    #urgent_workspace   #1d2021 #1d2021 #fb4934
+    #binding_mode       #d79921 #d79921 #1d2021
+
+    # shirotelin/envy
+    focused_workspace  #141414 #141414 #e1e1e1
+    active_workspace   #333333 #ff0000 #e1e1e1
+    inactive_workspace #141414 #141414 #665c54
+    urgent_workspace   #fb4934 #fb4934 #000000
+    binding_mode       #d79921 #d79921 #1d2021
   }
 }
 
 exec --no-startup-id $HOME/scripts/curlock.sh
-#exec_always --no-startup-id $HOME/scripts/bar.sh
+exec_always --no-startup-id picom --experimental-backends --config $HOME/.config/picom/picom.conf &

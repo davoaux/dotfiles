@@ -14,7 +14,6 @@ $HOME/.fehbg &
 # Mouse settings
 $HOME/scripts/mssets.sh &
 
-picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 dunst &
 
 exec i3

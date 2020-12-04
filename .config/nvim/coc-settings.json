@@ -1,5 +1,4 @@
 {
-  "explorer.icon.enableNerdfont": true,
   "clangd.enabled": true,
   "clangd.disableDiagnostics": false,
   "coc.preferences.formatOnSaveFiletypes": [
@@ -10,7 +9,7 @@
     "markdown"
   ],
   "diagnostic.errorSign": "✘",
-  "diagnostic.warningSign": "△",
+  "diagnostic.warningSign": "",
   "diagnostic.infoSign": "כֿ",
   "eslint.filetypes": [
     "javascript",

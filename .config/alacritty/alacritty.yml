@@ -35,18 +35,22 @@ scrolling:
 
 font:
   normal:
-    family: FuraCode Nerd Font
+    # family: JetBrainsMono Nerd Font
+    family: Ubuntu Mono
     style: Regular
   bold:
-    family: FuraCode Nerd Font
+    # family: JetBrainsMono Nerd Font
+    family: Ubuntu Mono
     style: Bold
   italic:
-    family: FuraCode Nerd Font
-    style: Bold Italic
+    # family: JetBrainsMono Nerd Font
+    family: Ubuntu Mono
+    style: Italic
   bold_italic:
-    family: FuraCode Nerd Font
+    # family: JetBrainsMono Nerd Font
+    family: Ubuntu Mono
     style: Bold Italic
-  size: 10.0
+  size: 12.0
   offset:
     x: 0
     y: 0
@@ -108,23 +112,46 @@ schemes:
       background: '#ffffff'
       foreground: '#000000'
     normal:
-      black:   '#000000'
-      red:     '#be5046'
-      green:   '#005f00'
-      yellow:  '#ffff80'
-      blue:    '#000087'
+      black:   '#ffffff'
+      red:     '#FF0000'
+      green:   '#005F00'
+      yellow:  '#a09150'
+      blue:    '#0000AF'
       magenta: '#87005f'
       cyan:    '#005f5f'
-      white:   '#ffffff'
+      white:   '#000000'
     bright:
+      black:   '#555555'
+      red:     '#f46e6e'
+      green:   '#78e878'
+      yellow:  '#c6ba8b'
+      blue:    '#3939ff'
+      magenta: '#d50096'
+      cyan:    '#00adad'
+      white:   '#292929'
+
+  envy: &envy
+    primary:
+      background: '#eeeeee'
+      foreground: '#000000'
+    normal:
       black:   '#000000'
-      red:     '#be5046'
-      green:   '#005f00'
-      yellow:  '#ffff80'
-      blue:    '#000087'
-      magenta: '#87005f'
-      cyan:    '#005f5f'
-      white:   '#ffffff'
+      red:     '#AF0000'
+      green:   '#005F00'
+      yellow:  '#D75F00'
+      blue:    '#005FD7'
+      magenta: '#5F00FF'
+      cyan:    '#0087AF'
+      white:   '#444444'
+    bright:
+      black:   '#2a2a2a'
+      red:     '#ea0000'
+      green:   '#00ad00'
+      yellow:  '#D75F00'
+      blue:    '#005FD7'
+      magenta: '#5F00FF'
+      cyan:    '#0087AF'
+      white:   '#444444'
 
   solarized_light: &solarized_light
     primary:
@@ -192,7 +219,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: /bin/zsh
+  program: /bin/fish
 
 mouse:
   hide_when_typing: false

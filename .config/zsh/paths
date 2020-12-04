@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.yarn/bin"
-export PATH="$PATH:$HOME/nodejs/bin"
-export PATH="$PATH:$HOME/.emacs.d/bin"
-export PATH="$PATH:$HOME/scripts"
