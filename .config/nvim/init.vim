@@ -10,16 +10,15 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'jiangmiao/auto-pairs'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'airblade/vim-rooter'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/jsonc.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'neoclide/jsonc.vim'
 Plug 'dag/vim-fish'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
@@ -54,22 +53,16 @@ exec "nohlsearch"
 autocmd FileType json set filetype=jsonc
 autocmd FileType c,cpp setlocal shiftwidth=4 softtabstop=4 tabstop=4
 autocmd FileType zsh set filetype=sh
+autocmd FileType markdown,text set nonu nornu signcolumn=no
 autocmd bufnewfile,bufread *.tsx set filetype=typescript.tsx " TEMP
 
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_contrast_light = 'medium'
-let g:gruvbox_bold = 1
-let g:gruvbox_italic = 1
+" Gruvbox configuration and tweaks
+source /home/parelkobra/.config/nvim/color/config/gruvbox.vim
 
 set background=dark
 colorscheme gruvbox
 
-hi CursorLineNr ctermbg=NONE guibg=NONE
-hi clear SignColumn
-hi link SignColumn LineNr
-
-" Toggle colorcolumn
-function! ToogleCC()
+function! ToggleColorColumn()
     if &colorcolumn == ''
         set colorcolumn=80
     else
@@ -77,9 +70,12 @@ function! ToogleCC()
     endif
 endfun
 
-" Run fzf excluding ignored files by git
 function! FilesEnhanced()
-  call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))
+  if !empty(glob("./.git"))
+    call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))
+  else
+    :Files
+  endif
 endfun
 
 command! Vimrc :e $MYVIMRC
@@ -95,7 +91,7 @@ map <silent> <C-q> :bdelete<CR>
 
 map <silent> <F5> :set list!<CR>
 map <silent> <F6> :set nu! \| set rnu!<CR>
-map <silent> <F7> :call ToogleCC()<CR>
+map <silent> <F7> :call ToggleColorColumn()<CR>
 map <silent> <Space> :nohlsearch<CR>
 
 nmap <C-j> <C-w><C-j>

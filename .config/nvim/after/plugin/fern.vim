@@ -1,5 +1,6 @@
 " lambdalisue/fern-renderer-nerdfont.vim
 let g:fern#renderer = "nerdfont"
+let g:fern#drawer_width = 27
 
 augroup my-glyph-palette
   autocmd! *
@@ -21,5 +22,6 @@ endfunction
 augroup fern-custom
   autocmd! *
   autocmd FileType fern set nornu nonu
+  autocmd FileType fern set signcolumn=no
   autocmd FileType fern call s:custom_mappings()
 augroup END

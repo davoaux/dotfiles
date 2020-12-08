@@ -4,8 +4,7 @@ autocmd! FileType fzf set laststatus=0 noshowmode noruler
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
 
-" Customize fzf colors to match your color scheme
-"
+" Match fzf colorscheme
 " Alt:
 " 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
 let g:fzf_colors =

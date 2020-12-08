@@ -21,6 +21,10 @@ scrolling:
 # family: Ubuntu Mono
 # family: GoMono Nerd Font
 # family: Iosevka
+# family: Victor Mono
+# family: IBM Plex Mono
+# family: Source Code Pro
+# family: Hack
 # family: lucy tewi
 # family: xos4 Terminus
 # family: cherry
@@ -35,22 +39,18 @@ scrolling:
 
 font:
   normal:
-    # family: JetBrainsMono Nerd Font
-    family: Ubuntu Mono
+    family: JetBrainsMono Nerd Font
     style: Regular
   bold:
-    # family: JetBrainsMono Nerd Font
-    family: Ubuntu Mono
+    family: JetBrainsMono Nerd Font
     style: Bold
   italic:
-    # family: JetBrainsMono Nerd Font
-    family: Ubuntu Mono
+    family: JetBrainsMono Nerd Font
     style: Italic
   bold_italic:
-    # family: JetBrainsMono Nerd Font
-    family: Ubuntu Mono
+    family: JetBrainsMono Nerd Font
     style: Bold Italic
-  size: 12.0
+  size: 11.5
   offset:
     x: 0
     y: 0
@@ -121,14 +121,14 @@ schemes:
       cyan:    '#005f5f'
       white:   '#000000'
     bright:
-      black:   '#555555'
-      red:     '#f46e6e'
-      green:   '#78e878'
-      yellow:  '#c6ba8b'
-      blue:    '#3939ff'
-      magenta: '#d50096'
-      cyan:    '#00adad'
-      white:   '#292929'
+      black:   '#ffffff'
+      red:     '#FF0000'
+      green:   '#005F00'
+      yellow:  '#a09150'
+      blue:    '#0000AF'
+      magenta: '#87005f'
+      cyan:    '#005f5f'
+      white:   '#000000'
 
   envy: &envy
     primary:
@@ -204,6 +204,29 @@ schemes:
       magenta: '#6c71c4' # violet
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
+
+  spacegray: &spacegray
+    primary:
+      background: '#111314'
+      foreground: '#B7BBB7'
+    normal:
+      black:   '#2C2F33'
+      red:     '#B04C50'
+      green:   '#919652'
+      yellow:  '#E2995C'
+      blue:    '#66899D'
+      magenta: '#8D6494'
+      cyan:    '#527C77'
+      white:   '#606360'
+    bright:
+      black:   '#4B5056'
+      red:     '#B04C50'
+      green:   '#94985B'
+      yellow:  '#E2995C'
+      blue:    '#66899D'
+      magenta: '#8D6494'
+      cyan:    '#527C77'
+      white:   '#DDE3DC'
 
 colors: *gruvbox_dark
 draw_bold_text_with_bright_colors: true

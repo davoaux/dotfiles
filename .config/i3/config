@@ -159,20 +159,12 @@ bar {
 
   colors {
     background #141414
-    statusline #e1e1e1
-    separator #e1e1e1
+    statusline #c4c4c4
+    separator #c4c4c4
 
     # <colorclass> <border> <background> <text>
-    # gruvbox dark hard
-    #focused_workspace  #1d2021 #1d2021 #ebdbb2
-    #active_workspace   #333333 #ff0000 #ebdbb2
-    #inactive_workspace #1d2021 #1d2021 #665c54
-    #urgent_workspace   #1d2021 #1d2021 #fb4934
-    #binding_mode       #d79921 #d79921 #1d2021
-
-    # shirotelin/envy
-    focused_workspace  #141414 #141414 #e1e1e1
-    active_workspace   #333333 #ff0000 #e1e1e1
+    focused_workspace  #141414 #141414 #c4c4c4
+    active_workspace   #333333 #ff0000 #c4c4c4
     inactive_workspace #141414 #141414 #665c54
     urgent_workspace   #fb4934 #fb4934 #000000
     binding_mode       #d79921 #d79921 #1d2021
@@ -180,4 +172,3 @@ bar {
 }
 
 exec --no-startup-id $HOME/scripts/curlock.sh
-exec_always --no-startup-id picom --experimental-backends --config $HOME/.config/picom/picom.conf &
