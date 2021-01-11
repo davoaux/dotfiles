@@ -1,10 +1,3 @@
-" Always show the signcolumn
-if has("patch-8.1.1564")
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
@@ -30,8 +23,8 @@ else
 endif
 
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gy <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -53,5 +46,4 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-clangd',
       \ 'coc-eslint',
-      \ 'coc-prettier',
       \ ]

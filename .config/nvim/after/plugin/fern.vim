@@ -1,12 +1,11 @@
-" lambdalisue/fern-renderer-nerdfont.vim
-let g:fern#renderer = "nerdfont"
-let g:fern#drawer_width = 27
+let g:fern#renderer#default#expanded_symbol = " "
+let g:fern#renderer#default#collapsed_symbol = " "
+let g:fern#renderer#default#leaf_symbol = "  "
+let g:fern#drawer_width = 25
 
-augroup my-glyph-palette
-  autocmd! *
-  autocmd FileType fern call glyph_palette#apply()
-  autocmd FileType nerdtree,startify call glyph_palette#apply()
-augroup END
+function! FernHighlights() abort 
+  hi FernBranchText gui=NONE
+endfun
 
 function! s:custom_mappings() abort
   nmap <buffer> <tab> <Plug>(fern-action-choice)
@@ -18,6 +17,11 @@ function! s:custom_mappings() abort
   nmap <buffer> r <Plug>(fern-action-rename)
   nmap <buffer> <C-L> <C-W><C-L>
 endfunction
+
+augroup FernHighlightTweaks
+  autocmd!
+  autocmd FileType fern call FernHighlights()
+augroup END
 
 augroup fern-custom
   autocmd! *

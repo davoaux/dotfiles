@@ -21,10 +21,13 @@ scrolling:
 # family: Ubuntu Mono
 # family: GoMono Nerd Font
 # family: Iosevka
-# family: Victor Mono
+# family: Inconsolata
 # family: IBM Plex Mono
 # family: Source Code Pro
+# family: Victor Mono
 # family: Hack
+# family: Menlo
+# family: MonacoB Nerd Font Mono
 # family: lucy tewi
 # family: xos4 Terminus
 # family: cherry
@@ -39,18 +42,22 @@ scrolling:
 
 font:
   normal:
-    family: JetBrainsMono Nerd Font
+    # family: Hack
+    family: MesloLGSDZ Nerd Font Mono
     style: Regular
   bold:
-    family: JetBrainsMono Nerd Font
+    # family: Hack
+    family: MesloLGSDZ Nerd Font Mono
     style: Bold
   italic:
-    family: JetBrainsMono Nerd Font
+    # family: Hack
+    family: MesloLGSDZ Nerd Font Mono
     style: Italic
   bold_italic:
-    family: JetBrainsMono Nerd Font
+    # family: Hack
+    family: MesloLGSDZ Nerd Font Mono
     style: Bold Italic
-  size: 11.5
+  size: 10.5
   offset:
     x: 0
     y: 0
@@ -205,30 +212,30 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
-  spacegray: &spacegray
+  off: &off
     primary:
-      background: '#111314'
-      foreground: '#B7BBB7'
+      background: '#151515'
+      foreground: '#C6C6C6'
     normal:
-      black:   '#2C2F33'
-      red:     '#B04C50'
-      green:   '#919652'
-      yellow:  '#E2995C'
-      blue:    '#66899D'
-      magenta: '#8D6494'
-      cyan:    '#527C77'
-      white:   '#606360'
+      black: '#212121'
+      red: '#dc322f'
+      green: '#80A66A'
+      yellow: '#FFDD33'
+      blue: '#8bacb9'
+      magenta: '#C6C6C6'
+      cyan: '#C6C6C6'
+      white: '#FFFFFF'
     bright:
-      black:   '#4B5056'
-      red:     '#B04C50'
-      green:   '#94985B'
-      yellow:  '#E2995C'
-      blue:    '#66899D'
-      magenta: '#8D6494'
-      cyan:    '#527C77'
-      white:   '#DDE3DC'
+      black: '#414141'
+      red: '#ff5a56'
+      green: '#97B586'
+      yellow: '#FFDD33'
+      blue: '#9fcfe2'
+      magenta: '#C6C6C6'
+      cyan: '#C6C6C6'
+      white: '#FDFDFD'
 
-colors: *gruvbox_dark
+colors: *off
 draw_bold_text_with_bright_colors: true
 
 background_opacity: 1

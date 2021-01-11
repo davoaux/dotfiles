@@ -1,17 +1,17 @@
 {
   "clangd.enabled": true,
   "clangd.disableDiagnostics": false,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "typescript",
-    "css",
-    "html",
-    "markdown"
-  ],
-  "diagnostic.errorSign": "✘",
-  "diagnostic.warningSign": "",
-  "diagnostic.infoSign": "כֿ",
-  "eslint.filetypes": [
+  /* "coc.preferences.formatOnSaveFiletypes": [ */
+  /*   "javascript", */
+  /*   "typescript", */
+  /*   "css", */
+  /*   "html", */
+  /*   "markdown" */
+  /* ], */
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",

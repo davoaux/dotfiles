@@ -22,6 +22,14 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
-
-
+" 'highlight': 'Todo',
+let g:fzf_layout =
+\ {'up':'~90%',
+\ 'window': {
+  \ 'width': 0.8,
+  \ 'height': 0.8,
+  \ 'yoffset':0.5,
+  \ 'xoffset': 0.5,
+  \ 'highlight': 'Normal',
+  \ 'border': 'rounded' }
+  \}

@@ -14,6 +14,8 @@ playlist_display_mode = "classic"
 message_delay_time = "1"
 playlist_disable_highlight_delay = 1
 
+execute_on_song_change = dunstify -r 16 "$(mpc --format '%title% \n%artist% - %album%' current)"
+
 now_playing_prefix = "$(5)"
 now_playing_suffix = "$0"
 selected_item_prefix = "$(11)"
