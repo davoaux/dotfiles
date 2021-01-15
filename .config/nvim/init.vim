@@ -27,11 +27,11 @@ set history=50
 set ignorecase smartcase hlsearch
 set incsearch
 set hidden
-set laststatus=2
+set laststatus=0
 set showmode
 set lcs=tab:»-,eol:↲,precedes:«,space:·
 set mouse=a
-set nu
+set nonu
 set nowrap
 set nocul
 set nobackup nowritebackup
@@ -74,15 +74,17 @@ endfun
 
 command! Vimrc :e $MYVIMRC
 command! Stack :e $HOME/workspace/STACK.md
-command! ReloadConfig :source $MYVIMRC
 
-map <silent> <C-n> :Fern . -drawer -toggle<CR>
 map <silent> <leader>n :Fern %:h -drawer -toggle<CR>
 map <silent> <leader>c :ColorizerToggle<CR>
+map <silent> <leader>r :source $MYVIMRC<CR>
+
+map <silent> <C-n> :Fern . -drawer -toggle<CR>
 map <silent> <C-f> :CocFix<CR>
 map <silent> <C-p> :call FilesEnhanced()<CR>
 map <silent> <C-b> :Buffers<CR>
 map <silent> <C-q> :bdelete<CR>
+
 map <silent> <F5> :set list!<CR>
 map <silent> <F6> :set nu! \| set rnu! \| set cul!<CR>
 map <silent> <F7> :call ToggleColorColumn()<CR>

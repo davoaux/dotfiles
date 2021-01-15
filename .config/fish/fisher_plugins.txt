@@ -1,0 +1,4 @@
+jorgebucaran/fisher
+fishpkg/fish-git-util
+mattgreen/lucid.fish
+jorgebucaran/autopair.fish

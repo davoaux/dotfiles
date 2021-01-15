@@ -3,8 +3,8 @@ env:
 
 window:
   padding:
-    x: 0
-    y: 0
+    x: 20
+    y: 20
   dynamic_padding: true
   decorations: full
   dynamic_title: true
@@ -26,6 +26,7 @@ scrolling:
 # family: Source Code Pro
 # family: Victor Mono
 # family: Hack
+# family: MesloLGSDZ Nerd Font Mono
 # family: Menlo
 # family: MonacoB Nerd Font Mono
 # family: lucy tewi
@@ -42,22 +43,18 @@ scrolling:
 
 font:
   normal:
-    # family: Hack
-    family: MesloLGSDZ Nerd Font Mono
+    family: Hack
     style: Regular
   bold:
-    # family: Hack
-    family: MesloLGSDZ Nerd Font Mono
+    family: Hack
     style: Bold
   italic:
-    # family: Hack
-    family: MesloLGSDZ Nerd Font Mono
+    family: Hack
     style: Italic
   bold_italic:
-    # family: Hack
-    family: MesloLGSDZ Nerd Font Mono
+    family: Hack
     style: Bold Italic
-  size: 10.5
+  size: 9.5
   offset:
     x: 0
     y: 0
@@ -214,7 +211,7 @@ schemes:
 
   off: &off
     primary:
-      background: '#151515'
+      background: '#0E0E0E'
       foreground: '#C6C6C6'
     normal:
       black: '#212121'
