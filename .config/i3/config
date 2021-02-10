@@ -1,6 +1,7 @@
 set $mod Mod4
 
-font pango: SF UI Display Medium 10
+#font pango:monospace 8
+font pango: RobotoMono Nerd Font 8
 
 floating_modifier $mod
 
@@ -58,16 +59,16 @@ bindsym $mod+g move absolute position center
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
-set $ws1 "1:dev"
-set $ws2 "2:web"
-set $ws3 "3:media"
-set $ws4 "4:chat"
-set $ws5 "5:misc"
-set $ws6 "6:6 temp"
-set $ws7 "7:7 temp"
-set $ws8 "8:8 temp"
-set $ws9 "9:9 temp"
-set $ws10 "10:10 temp"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -92,10 +93,17 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 assign [class="Chromium"] $ws2
-# spotify wont work using assign because it doesn't set the class hints when mapping the window
-for_window [class="Spotify"] move to workspace $ws3
+# Doesn't work
+#assign [class="Firefox"] $ws2
 assign [class="discord"] $ws4
 assign [class="Steam"] $ws5
+
+# spotify wont work using assign because it doesn't set the class hints when mapping the window
+for_window [class="Spotify"] move to workspace $ws3
+for_window [class="Firefox"] move to workspace $ws2
+
+for_window [class="Nemo"] floating enable
+for_window [class="^sxiv$"] floating enable
 
 for_window [class="^Steam$" title="^Friends List$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
@@ -125,15 +133,16 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
-client.focused          #285577 #285577 #FFFFFF #285577   #285577
-client.focused_inactive #5F676A #5F676A #FFFFFF #5F676A   #5F676A
-client.unfocused        #202124 #202124 #888888 #202124   #202124
-client.urgent           #900000 #900000 #FFFFFF #900000   #900000
+client.focused          #303030 #303030 #FFFFFF #303030   #303030
+client.focused_inactive #181818 #181818 #FFFFFF #181818   #181818
+client.unfocused        #181818 #181818 #888888 #181818   #181818
+client.urgent           #dc322f #dc322f #FFFFFF #dc322f   #dc322f
 client.placeholder      #0C0C0C #0C0C0C #FFFFFF #0C0C0C   #0C0C0C
 
 client.background       #FFFFFF
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
+smart_borders on
 gaps inner 0
 
 set $mode_gaps_inner inner gaps
@@ -149,20 +158,18 @@ mode "$mode_gaps_inner" {
 }
 
 bar {
-  status_command i3blocks
-  position top
-  #font pango: cherry 8
-  font pango: GoMono Nerd Font 9
-  #height 20
-  height 25
-  strip_workspace_numbers no
-  strip_workspace_name yes
-
+  status_command i3status
+  #font pango: monospace 8
+  font pango: RobotoMono Nerd Font 8
+  #font pango: Roboto 9
+  position bottom
+  strip_workspace_numbers yes
+  strip_workspace_name no
   colors {
     background #070707
     statusline #c4c4c4
-    separator #c4c4c4
-
+    separator #333333
+                                                
     # <colorclass> <border> <background> <text>
     focused_workspace  #070707 #070707 #c4c4c4
     active_workspace   #333333 #ff0000 #c4c4c4

@@ -1,21 +1,17 @@
 #!/usr/bin/env bash
 
-option1="Shutdown"
-option2="Lock"
-option3="Reboot"
-option4="Suspend"
+opt1="Shutdown"
+opt2="Lock"
+opt3="Reboot"
+opt4="Suspend"
 
-list="$option1\n$option2\n$option3\n$option4"
+list="$opt1\n$opt2\n$opt3\n$opt4"
 
-opt=$(
-  echo -e $list |
-  rofi -dmenu -config ~/.config/rofi/powermenu.rasi \
-  -location 3 -xoffset -15 -yoffset 40 -lines 4 -i
-)
+opt=$(echo -e $list | rofi -dmenu -lines 4 -i)
 
 case $opt in
-  $option1) systemctl poweroff -i;;
-  $option2) betterlockscreen -l dimblur;;
-  $option3) systemctl reboot -i;;
-  $option4) systemctl suspend -i;;
+  $opt1) systemctl poweroff -i;;
+  $opt2) betterlockscreen -l dimblur;;
+  $opt3) systemctl reboot -i;;
+  $opt4) systemctl suspend -i;;
 esac

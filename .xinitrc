@@ -17,5 +17,4 @@ $HOME/scripts/mssets.sh &
 dunst &
 
 exec i3
-#exec 2bwm
-#exec dwm
+# exec 2bwm

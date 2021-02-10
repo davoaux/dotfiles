@@ -3,7 +3,7 @@ let g:fern#renderer#default#collapsed_symbol = " "
 let g:fern#renderer#default#leaf_symbol = "  "
 let g:fern#drawer_width = 25
 
-function! FernHighlights() abort 
+function! s:custom_highlights() abort 
   hi FernBranchText gui=NONE
 endfun
 
@@ -18,14 +18,10 @@ function! s:custom_mappings() abort
   nmap <buffer> <C-L> <C-W><C-L>
 endfunction
 
-augroup FernHighlightTweaks
-  autocmd!
-  autocmd FileType fern call FernHighlights()
-augroup END
-
 augroup fern-custom
   autocmd! *
   autocmd FileType fern set nornu nonu
   autocmd FileType fern set signcolumn=no
   autocmd FileType fern call s:custom_mappings()
+  autocmd FileType fern call s:custom_highlights()
 augroup END

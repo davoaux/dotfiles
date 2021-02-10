@@ -1,7 +1,15 @@
-set default-bg "#22242D"
-set recolor "false"
-set recolor-darkcolor "#F0F0F0"
-set recolor-lightcolor "#383C4A"
+set default-fg "#EFEFEF"
+set default-bg "#0A0A0A"
+set recolor true
+set recolor-keephue true
+set recolor-reverse-video false
+#set recolor-darkcolor "#F1F1F1"
+#set recolor-lightcolor "#0A0A0A"
+
+set statusbar-basename false
+set window-title-basename false
+
+set selection-clipboard clipboard
 
 unmap t
 map t set recolor "true"

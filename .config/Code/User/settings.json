@@ -1,0 +1,94 @@
+{
+    "breadcrumbs.enabled": false,
+    "editor.formatOnSave": true,
+    "editor.fontLigatures": true,
+    // "editor.fontFamily": "Hack",
+    // "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "Inconsolata",
+    "editor.fontSize": 15,
+    "editor.lineNumbers": "off",
+    "editor.minimap.enabled": false,
+    "editor.folding": false,
+    "editor.cursorBlinking": "solid",
+    "editor.renderIndentGuides": false,
+    "editor.renderLineHighlight": "none",
+    "editor.renderWhitespace": "none",
+    "editor.overviewRulerBorder": false, // ?
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.decorations.badges": true,
+    "explorer.openEditors.visible": 0,
+    "terminal.integrated.fontSize": 14,
+    "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": 0,
+    "workbench.editor.showTabs": false,
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": false,
+    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "Alabaster",
+    "workbench.iconTheme": null,
+    "eslint.packageManager": "yarn",
+    "vim.leader": "<space>",
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.surround": false,
+    "vim.sneak": false,
+    "vim.camelCaseMotion.enable": false,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<C-n>"],
+            "commands": ["workbench.action.toggleSidebarVisibility"],
+        },
+        {
+            "before": ["<C-b>"],
+            "commands": ["workbench.action.showAllEditors"],
+        },
+        {
+            "before": ["<C-f>"],
+            "commands": ["editor.action.quickFix"],
+        },
+        {
+            "before": ["<C-h>"],
+            "commands": [":nohlsearch"]
+        },
+        {
+            "before": ["<C-q>"],
+            "commands": ["workbench.action.closeActiveEditor"]
+        },
+        {
+            "before": ["<C-k>"],
+            "commands": ["editor.action.showHover"]
+        },
+        {
+            "before": ["leader", "c"],
+            "commands": ["workbench.action.selectTheme"]
+        },
+        {
+            "before": ["<C-j>"],
+            "commands": ["workbench.action.terminal.toggleTerminal"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["leader", "o"],
+            "commands": ["workbench.action.splitEditor"],
+        },
+        {
+            "before": ["[", "g"],
+            "commands": ["editor.action.marker.prevInFiles"],
+        },
+        {
+            "before": ["]", "g"],
+            "commands": ["editor.action.marker.nextInFiles"],
+        }
+    ],
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "omnisharp.enableRoslynAnalyzers": true,
+}

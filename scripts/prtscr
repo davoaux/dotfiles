@@ -3,33 +3,30 @@
 DIR=$HOME/pictures/Screenshots
 NAME=$(date +%Y%m%d_%H%M%S)
 
-option1="Whole screen"
-option2="Currently focused window"
-option3="Select screen section"
-list="$option1\n$option2\n$option3"
+opt1="Whole screen"
+opt2="Currently focused window"
+opt3="Select screen section"
 
-notification() {
+list="$opt1\n$opt2\n$opt3"
+
+notify() {
   notify-send "Screenshot ($NAME.png) saved at $DIR"
 }
 
 menu() {
-  choice=$(
-    echo -e $list |
-    rofi -dmenu -config ~/.config/rofi/scrot.rasi \
-    -location 3 -xoffset -15 -yoffset 40 -lines 3 -i
-  )
+  choice=$(echo -e $list | rofi -dmenu -lines 3 -i)
   case $choice in
-    $option1) 
+    $opt1) 
       scrot -d 1 $DIR/$NAME.png
-      notification
+      notify
       ;;
-    $option2) 
+    $opt2) 
       scrot -d 1 -u $DIR/$NAME.png
-      notification
+      notify
       ;;
-    $option3) 
+    $opt3) 
       scrot -s $DIR/$NAME.png
-      notification
+      notify
       ;;
   esac
 }
@@ -38,7 +35,7 @@ while [[ $# -gt 0 ]]; do
   case $1 in
     -f)
       scrot -d 1 $DIR/$NAME.png
-      notification
+      notify
       exit 0;
       ;;
     *)

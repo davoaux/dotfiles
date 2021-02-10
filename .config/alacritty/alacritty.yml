@@ -1,12 +1,11 @@
-env:
+ebnv:
   TERM: xterm-256color
 
 window:
   padding:
-    x: 20
+    x: 10
     y: 20
   dynamic_padding: true
-  decorations: full
   dynamic_title: true
   title: Alacritty
 
@@ -29,6 +28,7 @@ scrolling:
 # family: MesloLGSDZ Nerd Font Mono
 # family: Menlo
 # family: MonacoB Nerd Font Mono
+# family: k knxt
 # family: lucy tewi
 # family: xos4 Terminus
 # family: cherry
@@ -44,17 +44,21 @@ scrolling:
 font:
   normal:
     family: Hack
+    family: RobotoMono Nerd Font
     style: Regular
   bold:
     family: Hack
+    family: RobotoMono Nerd Font
     style: Bold
   italic:
     family: Hack
+    family: RobotoMono Nerd Font
     style: Italic
   bold_italic:
     family: Hack
+    family: RobotoMono Nerd Font
     style: Bold Italic
-  size: 9.5
+  size: 10
   offset:
     x: 0
     y: 0
@@ -86,30 +90,6 @@ schemes:
       magenta: '#d3869b'
       cyan:    '#8ec07c'
       white:   '#ebdbb2'
-
-  gruvbox_light: &gruvbox_light
-    primary:
-      # contrast = #f9f5d7 #fbf1c7 #f2e5bc
-      background: '#fbf1c7'
-      foreground: '#3c3836'
-    normal:
-      black:   '#fbf1c7'
-      red:     '#cc241d'
-      green:   '#98971a'
-      yellow:  '#d79921'
-      blue:    '#458588'
-      magenta: '#b16286'
-      cyan:    '#689d6a'
-      white:   '#7c6f64'
-    bright:
-      black:   '#928374'
-      red:     '#9d0006'
-      green:   '#79740e'
-      yellow:  '#b57614'
-      blue:    '#076678'
-      magenta: '#8f3f71'
-      cyan:    '#427b58'
-      white:   '#3c3836'
 
   shirotelin: &shirotelin
     primary:
@@ -157,80 +137,51 @@ schemes:
       cyan:    '#0087AF'
       white:   '#444444'
 
-  solarized_light: &solarized_light
-    primary:
-      background: '#fdf6e3' # base3
-      foreground: '#657b83' # base00
-    cursor:
-      text:   '#fdf6e3' # base3
-      cursor: '#657b83' # base00
-    normal:
-      black:   '#073642' # base02
-      red:     '#dc322f' # red
-      green:   '#859900' # green
-      yellow:  '#b58900' # yellow
-      blue:    '#268bd2' # blue
-      magenta: '#d33682' # magenta
-      cyan:    '#2aa198' # cyan
-      white:   '#eee8d5' # base2
-    bright:
-      black:   '#002b36' # base03
-      red:     '#cb4b16' # orange
-      green:   '#586e75' # base01
-      yellow:  '#657b83' # base00
-      blue:    '#839496' # base0
-      magenta: '#6c71c4' # violet
-      cyan:    '#93a1a1' # base1
-      white:   '#fdf6e3' # base3
-
-  solarized_dark: &solarized_dark
-    primary:
-      background: '#002b36' # base03
-      foreground: '#839496' # base0
-    cursor:
-      text:   '#002b36' # base03
-      cursor: '#839496' # base0
-    normal:
-      black:   '#073642' # base02
-      red:     '#dc322f' # red
-      green:   '#859900' # green
-      yellow:  '#b58900' # yellow
-      blue:    '#268bd2' # blue
-      magenta: '#d33682' # magenta
-      cyan:    '#2aa198' # cyan
-      white:   '#eee8d5' # base2
-    bright:
-      black:   '#002b36' # base03
-      red:     '#cb4b16' # orange
-      green:   '#586e75' # base01
-      yellow:  '#657b83' # base00
-      blue:    '#839496' # base0
-      magenta: '#6c71c4' # violet
-      cyan:    '#93a1a1' # base1
-      white:   '#fdf6e3' # base3
-
   off: &off
     primary:
-      background: '#0E0E0E'
+      background: '#0A0A0A'
       foreground: '#C6C6C6'
     normal:
       black: '#212121'
-      red: '#dc322f'
+      red: '#DC322F'
       green: '#80A66A'
       yellow: '#FFDD33'
-      blue: '#8bacb9'
-      magenta: '#C6C6C6'
-      cyan: '#C6C6C6'
+      blue: '#8BACB9'
+      magenta: '#926ECE'
+      cyan: '#72C6B9'
       white: '#FFFFFF'
     bright:
       black: '#414141'
-      red: '#ff5a56'
+      red: '#FF5A56'
       green: '#97B586'
-      yellow: '#FFDD33'
-      blue: '#9fcfe2'
-      magenta: '#C6C6C6'
-      cyan: '#C6C6C6'
+      yellow: '#FFEA7F'
+      blue: '#9FCFE2'
+      magenta: '#AD92Db'
+      cyan: '#A6EFE3'
       white: '#FDFDFD'
+
+  distilled: &distilled
+    primary:
+      background: '#24364b'
+      foreground: '#e4e4dd'
+    normal:
+      black: '#24364b'
+      red: '#e76d6d'
+      green: '#88c563'
+      yellow: '#ecb534'
+      blue: '#65baf5'
+      magenta: '#ae8fc1'
+      cyan: '#69c5b4'
+      white: '#e4e4dd'
+    bright:
+      black: '#6194ba'
+      red: '#edbabf'
+      green: '#bfedba'
+      yellow: '#dfc56d'
+      blue: '#9fcce7'
+      magenta: '#cebaee'
+      cyan: '#85f1a1'
+      white: '#a5b1bf'
 
 colors: *off
 draw_bold_text_with_bright_colors: true

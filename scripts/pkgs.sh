@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 case $1 in
-	g) output='';;
-	*) output='';;
+  g) output='';;
+  *) output='';;
 esac
 
 pkgs=$(pacman -Qu | wc -l)

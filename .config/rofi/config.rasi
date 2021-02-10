@@ -1,55 +1,55 @@
 configuration{
-    show-icons: false;
-    lines: 3;
-    columns: 2;
+  show-icons: false;
+  lines: 3;
+  columns: 2;
 }
 
 * {
-    background:                  rgba (0,0,0, 70 % );
-    background-color:            transparent;
-    foreground:                  #777777;
-    selected-normal-foreground:  #ffffff;
-    normal-foreground:           @foreground;
-    alternate-normal-foreground: @foreground;
-    spacing:                     30px;
-    font: 						           "SF UI Display Light 15";
-    text-color: 				         @normal-foreground;
+  background: rgba (0,0,0, 70 % );
+  background-color: transparent;
+  foreground: #777777;
+  selected-normal-foreground: #FFFFFF;
+  normal-foreground: @foreground;
+  alternate-normal-foreground: @foreground;
+  spacing: 50px;
+  font: "Roboto Regular 20";
+  text-color: @normal-foreground;
 }
 
 #window {
-    fullscreen:       true;
-    background-color: @background;
+  fullscreen: true;
+  background-color: @background;
 }
 
 #scrollbar {
-    handle-width: 0px ;
-    handle-color: @selected-normal-foreground;
+  handle-width: 0px ;
+  handle-color: @selected-normal-foreground;
 }
 
 #mainbox {
-    spacing: @spacing;
-    padding: 30%;
+  spacing: @spacing;
+  padding: 22%;
 }
 
 #listview {
-    scrollbar:      false;
-    lines:          3;
-    spacing:        @spacing;
-    fixed-height:   true;
+  scrollbar: false;
+  lines: 3;
+  spacing: @spacing;
+  fixed-height: true;
 }
 
 #element.selected.normal {
-    text-color:       @selected-normal-foreground;
+  text-color: @selected-normal-foreground;
 }
 
 #inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-    spacing:    2;
+  children: [ prompt,textbox-prompt-colon,entry,case-indicator ];
+  spacing: 2;
 }
 
 #textbox-prompt-colon {
-    expand:     false;
-    str:        ":";
-    margin:     0px 0.3em 0em 0em ;
+  expand: false;
+  str: ":";
+  margin: 0px 0.3em 0em 0em;
 }
 
