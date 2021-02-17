@@ -4,6 +4,11 @@
         "command": "-workbench.action.files.newUntitledFile"
     },
     {
+        "key": "ctrl+n",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "editorFocus || explorerViewletVisible || terminalFocus"
+    },
+    {
         "key": "ctrl+b",
         "command": "-workbench.action.toggleSidebarVisibility"
     },

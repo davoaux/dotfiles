@@ -4,6 +4,7 @@
     "editor.fontLigatures": true,
     // "editor.fontFamily": "Hack",
     // "editor.fontFamily": "Fira Code",
+    "editor.codeLens": false,
     "editor.fontFamily": "Inconsolata",
     "editor.fontSize": 15,
     "editor.lineNumbers": "off",
@@ -14,6 +15,7 @@
     "editor.renderLineHighlight": "none",
     "editor.renderWhitespace": "none",
     "editor.overviewRulerBorder": false, // ?
+    "editor.scrollbar.vertical": "hidden",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.decorations.badges": true,
@@ -26,8 +28,8 @@
     "workbench.activityBar.visible": false,
     "workbench.sideBar.location": "left",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Alabaster",
-    "workbench.iconTheme": null,
+    "workbench.colorTheme": "Anirak",
+    "workbench.iconTheme": "quill-icons-minimal",
     "eslint.packageManager": "yarn",
     "vim.leader": "<space>",
     "vim.hlsearch": true,
@@ -37,8 +39,8 @@
     "vim.camelCaseMotion.enable": false,
     "vim.normalModeKeyBindings": [
         {
-            "before": ["<C-n>"],
-            "commands": ["workbench.action.toggleSidebarVisibility"],
+            "before": ["<C-x>"],
+            "commands": ["workbench.view.extensions"],
         },
         {
             "before": ["<C-b>"],
@@ -49,7 +51,7 @@
             "commands": ["editor.action.quickFix"],
         },
         {
-            "before": ["<C-h>"],
+            "before": ["leader", "h"],
             "commands": [":nohlsearch"]
         },
         {
@@ -76,11 +78,11 @@
         },
         {
             "before": ["[", "g"],
-            "commands": ["editor.action.marker.prevInFiles"],
+            "commands": ["editor.action.marker.prev"],
         },
         {
             "before": ["]", "g"],
-            "commands": ["editor.action.marker.nextInFiles"],
+            "commands": ["editor.action.marker.next"],
         }
     ],
     "[typescriptreact]": {
