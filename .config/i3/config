@@ -92,19 +92,15 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-assign [class="Chromium"] $ws2
-# Doesn't work
-#assign [class="Firefox"] $ws2
+assign [class="Chromium|firefox"] $ws2
+assign [class="hl2_linux"] $ws3
 assign [class="discord"] $ws4
 assign [class="Steam"] $ws5
 
 # spotify wont work using assign because it doesn't set the class hints when mapping the window
 for_window [class="Spotify"] move to workspace $ws3
-for_window [class="Firefox"] move to workspace $ws2
 
-for_window [class="Nemo"] floating enable
-for_window [class="^sxiv$"] floating enable
-
+for_window [class="Pcmanfm"] floating enable
 for_window [class="^Steam$" title="^Friends List$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
@@ -133,15 +129,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
-client.focused          #303030 #303030 #FFFFFF #303030   #303030
-client.focused_inactive #181818 #181818 #FFFFFF #181818   #181818
-client.unfocused        #181818 #181818 #888888 #181818   #181818
+client.focused          #080808 #080808 #FFFFFF #080808   #080808
+client.focused_inactive #8a8a8a #8a8a8a #FFFFFF #8a8a8a   #8a8a8a
+client.unfocused        #8a8a8a #8a8a8a #080808 #8a8a8a   #8a8a8a
 client.urgent           #dc322f #dc322f #FFFFFF #dc322f   #dc322f
 client.placeholder      #0C0C0C #0C0C0C #FFFFFF #0C0C0C   #0C0C0C
 
 client.background       #FFFFFF
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 smart_borders on
 gaps inner 0
 
@@ -159,23 +155,23 @@ mode "$mode_gaps_inner" {
 
 bar {
   status_command i3status
-  #font pango: monospace 8
-  font pango: RobotoMono Nerd Font 8
-  #font pango: Roboto 9
+  # font pango: RobotoMono Nerd Font 8
+  font pango: cherry 8
   position bottom
+  height 25
   strip_workspace_numbers yes
   strip_workspace_name no
   colors {
-    background #070707
-    statusline #c4c4c4
-    separator #333333
+    background #080808
+    statusline #f1f1f1
+    separator #080808
                                                 
     # <colorclass> <border> <background> <text>
-    focused_workspace  #070707 #070707 #c4c4c4
-    active_workspace   #333333 #ff0000 #c4c4c4
-    inactive_workspace #070707 #070707 #665c54
-    urgent_workspace   #dc322f #dc322f #000000
-    binding_mode       #008ec4 #008ec4 #000000
+    focused_workspace  #080808 #080808 #f1f1f1
+    active_workspace   #333333 #ff0000 #5f5f5f
+    inactive_workspace #080808 #080808 #5f5f5f
+    urgent_workspace   #080808 #080808 #dc322f
+    binding_mode       #080808 #080808 #00afff
   }
 }
 

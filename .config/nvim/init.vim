@@ -3,7 +3,6 @@ filetype plugin on
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'lambdalisue/fern.vim'
-Plug 'pbrisbin/vim-colors-off'
 Plug 'jiangmiao/auto-pairs'
 Plug 'romainl/vim-cool'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -13,9 +12,18 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" colorschemes
+Plug 'parelkobra/vim-off-black'
+Plug 'stillwwater/vim-nebula'
+Plug 'https://gitlab.com/yorickpeterse/happy_hacking.vim.git'
+Plug 'axvr/photon.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'Leon-Plickat/paige'
 
 call plug#end()
 
@@ -27,11 +35,11 @@ set smartcase
 set hlsearch
 set incsearch
 set hidden
-set laststatus=0
+set laststatus=2
 set showmode
 set lcs=tab:»-,eol:↲,precedes:«,space:·
 set mouse=a
-set nonumber
+set number
 set nowrap
 set nocul
 set nobackup
@@ -43,8 +51,8 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
-set scrolloff=10
-set signcolumn=yes
+set scrolloff=5
+set signcolumn=no
 set termguicolors
 set clipboard+=unnamedplus
 set colorcolumn=
@@ -64,7 +72,8 @@ autocmd! FileType zsh              set filetype=sh
 autocmd! bufnewfile,bufread *.tsx  set filetype=typescript.tsx " TEMP
 
 set background=dark
-colorscheme off
+" colorscheme nebula
+colorscheme paige
 
 function! ToggleColorColumn()
     if &colorcolumn == ''
@@ -121,8 +130,7 @@ function! s:statusline_expr()
   let ro  = "%{&readonly ? '[RO] ' : ''}"
   let ft  = "%{len(&filetype) ? &filetype.' ' : ''}"
   let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
-  let sep = ' %= '
   let pos = ' %-8(%l:%c%)'
-  return '%f %<'.mod.ro.sep.fug.ft.'%*'.pos
+  return '%f %<'.mod.ro.' %= '.fug.' '.ft.'%*'.pos
 endfunction
 let &statusline = s:statusline_expr()

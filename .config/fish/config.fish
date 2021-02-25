@@ -96,8 +96,7 @@ abbr wv 'cd $HOME/pictures/misc/.c/v && ls'
 
 # FZF colorschemes
 set off "'fg:#c6c6c6,fg+:#c6c6c6,bg:#0a0a0a,bg+:#0a0a0a,border:#212121,prompt:#fdfdfd,pointer:#dc322f,info:#c6c6c6,spinner:#80a66a'"
-set envy "'fg:#000000,fg+:#000000,bg:#eeeeee,bg+:#eeeeee,border:#2a2a2a,prompt:#fdfdfd,pointer:#af0000,info:#000000,spinner:#005f00'"
 set gruvbox_dark_hard "'fg:#ebdbb2,fg+:#ebdbb2,bg:#1d2021,bg+:#1d2021,border:#ebdbb2,prompt:#fb4934,pointer:#fb4934,info:#8ec07c,spinner:#b8bb26'"
-set distilled "'fg:#e4e4dd,fg+:#e4e4dd,bg:#24364b,bg+:#24364b,border:#6194ba,prompt:#e76d6d,pointer:#e76d6d,info:#65baf5,spinner:#88c563'"
 
-set -x FZF_DEFAULT_OPTS "--height 40% --reverse --color "$off
+#set -x FZF_DEFAULT_OPTS "--height 40% --reverse --color "$off
+set -x FZF_DEFAULT_OPTS "--height 40% --reverse"

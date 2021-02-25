@@ -63,16 +63,9 @@ static void snap(const Arg *arg)
     Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
     maxhalf(&arg2);
 
-    if (arg->i == 1)
-    {
-        Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_LEFT};
-        teleport(&arg3);
-    }
-    else
-    {
-        Arg arg3 = {.i=TWOBWM_TELEPORT_BOTTOM_RIGHT};
-        teleport(&arg3);
-    }
+    Arg arg3 = {.i = arg->i == 1 ? TWOBWM_TELEPORT_BOTTOM_LEFT
+        : TWOBWM_TELEPORT_BOTTOM_RIGHT};
+    teleport(&arg3);
 }
 
 static void killandfocus(const Arg *arg)

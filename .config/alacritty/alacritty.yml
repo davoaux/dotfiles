@@ -3,8 +3,8 @@ ebnv:
 
 window:
   padding:
-    x: 10
-    y: 20
+    x: 5
+    y: 5
   dynamic_padding: true
   dynamic_title: true
   title: Alacritty
@@ -31,6 +31,7 @@ scrolling:
 # family: k knxt
 # family: lucy tewi
 # family: xos4 Terminus
+# family: erus erusfont
 # family: cherry
 # family: Dina
 # family: cozette
@@ -43,19 +44,15 @@ scrolling:
 
 font:
   normal:
-    family: Hack
     family: RobotoMono Nerd Font
     style: Regular
   bold:
-    family: Hack
     family: RobotoMono Nerd Font
     style: Bold
   italic:
-    family: Hack
     family: RobotoMono Nerd Font
     style: Italic
   bold_italic:
-    family: Hack
     family: RobotoMono Nerd Font
     style: Bold Italic
   size: 10
@@ -91,52 +88,6 @@ schemes:
       cyan:    '#8ec07c'
       white:   '#ebdbb2'
 
-  shirotelin: &shirotelin
-    primary:
-      background: '#ffffff'
-      foreground: '#000000'
-    normal:
-      black:   '#ffffff'
-      red:     '#FF0000'
-      green:   '#005F00'
-      yellow:  '#a09150'
-      blue:    '#0000AF'
-      magenta: '#87005f'
-      cyan:    '#005f5f'
-      white:   '#000000'
-    bright:
-      black:   '#ffffff'
-      red:     '#FF0000'
-      green:   '#005F00'
-      yellow:  '#a09150'
-      blue:    '#0000AF'
-      magenta: '#87005f'
-      cyan:    '#005f5f'
-      white:   '#000000'
-
-  envy: &envy
-    primary:
-      background: '#eeeeee'
-      foreground: '#000000'
-    normal:
-      black:   '#000000'
-      red:     '#AF0000'
-      green:   '#005F00'
-      yellow:  '#D75F00'
-      blue:    '#005FD7'
-      magenta: '#5F00FF'
-      cyan:    '#0087AF'
-      white:   '#444444'
-    bright:
-      black:   '#2a2a2a'
-      red:     '#ea0000'
-      green:   '#00ad00'
-      yellow:  '#D75F00'
-      blue:    '#005FD7'
-      magenta: '#5F00FF'
-      cyan:    '#0087AF'
-      white:   '#444444'
-
   off: &off
     primary:
       background: '#0A0A0A'
@@ -160,30 +111,53 @@ schemes:
       cyan: '#A6EFE3'
       white: '#FDFDFD'
 
-  distilled: &distilled
+  nebula: &nebula
     primary:
-      background: '#24364b'
-      foreground: '#e4e4dd'
+      background: '#0a121d'
+      foreground: '#c9cbd1'
     normal:
-      black: '#24364b'
-      red: '#e76d6d'
-      green: '#88c563'
-      yellow: '#ecb534'
-      blue: '#65baf5'
-      magenta: '#ae8fc1'
-      cyan: '#69c5b4'
-      white: '#e4e4dd'
+      black: '#000000'
+      red: '#d65e76'
+      green: '#a3be8c'
+      yellow: '#d6c619'
+      blue: '#20bbfc'
+      magenta: '#9a58de'
+      cyan: '#20a5ba'
+      white: '#FFFFFF'
     bright:
-      black: '#6194ba'
-      red: '#edbabf'
-      green: '#bfedba'
-      yellow: '#dfc56d'
-      blue: '#9fcce7'
-      magenta: '#cebaee'
-      cyan: '#85f1a1'
-      white: '#a5b1bf'
+      black: '#414141'
+      red: '#FF5A56'
+      green: '#97B586'
+      yellow: '#ffff87'
+      blue: '#9FCFE2'
+      magenta: '#bbaaee'
+      cyan: '#8de5ec'
+      white: '#FDFDFD'
 
-colors: *off
+  paige: &paige
+    primary:
+      background: '#ffffff'
+      foreground: '#080808'
+    normal:
+      black: '#FFFFFF'
+      red: '#FF005F'
+      green: '#AFD700'
+      yellow: '#FFD700'
+      blue: '#00AFFF'
+      magenta: '#AF87FF'
+      cyan: '#32F3E7'
+      white: '#000000'
+    bright:
+      black: '#FFFFFF'
+      red: '#FF005F'
+      green: '#AFD700'
+      yellow: '#FFD700'
+      blue: '#00AFFF'
+      magenta: '#AF87FF'
+      cyan: '#32F3E7'
+      white: '#000000'
+
+colors: *paige
 draw_bold_text_with_bright_colors: true
 
 background_opacity: 1
