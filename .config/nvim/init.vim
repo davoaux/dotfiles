@@ -19,11 +19,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " colorschemes
 Plug 'parelkobra/vim-off-black'
-Plug 'stillwwater/vim-nebula'
-Plug 'https://gitlab.com/yorickpeterse/happy_hacking.vim.git'
-Plug 'axvr/photon.vim'
-Plug 'lifepillar/vim-solarized8'
 Plug 'Leon-Plickat/paige'
+Plug 'arcticicestudio/nord-vim'
+Plug 'gruvbox-community/gruvbox'
 
 call plug#end()
 
@@ -61,6 +59,8 @@ set inccommand=nosplit
 exe "nohlsearch"
 
 let mapleader = " "
+
+" netrw
 let g:netrw_banner = 0
 let g:netrw_dirhistmax = 0
 let g:netrw_liststyle = 0
@@ -72,7 +72,6 @@ autocmd! FileType zsh              set filetype=sh
 autocmd! bufnewfile,bufread *.tsx  set filetype=typescript.tsx " TEMP
 
 set background=dark
-" colorscheme nebula
 colorscheme paige
 
 function! ToggleColorColumn()
@@ -124,13 +123,4 @@ cmap WQ wq
 cmap wQ wq
 cmap Q q
 
-" https://github.com/junegunn/dotfiles/blob/master/vimrc
-function! s:statusline_expr()
-  let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
-  let ro  = "%{&readonly ? '[RO] ' : ''}"
-  let ft  = "%{len(&filetype) ? &filetype.' ' : ''}"
-  let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
-  let pos = ' %-8(%l:%c%)'
-  return '%f %<'.mod.ro.' %= '.fug.' '.ft.'%*'.pos
-endfunction
-let &statusline = s:statusline_expr()
+source $HOME/.config/nvim/after/statusline.vim

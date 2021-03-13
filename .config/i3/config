@@ -101,6 +101,7 @@ assign [class="Steam"] $ws5
 for_window [class="Spotify"] move to workspace $ws3
 
 for_window [class="Pcmanfm"] floating enable
+for_window [class="sxiv"] floating enable
 for_window [class="^Steam$" title="^Friends List$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
@@ -129,12 +130,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
-client.focused          #080808 #080808 #FFFFFF #080808   #080808
+client.focused          #ffffff #ffffff #080808 #ffffff   #ffffff
 client.focused_inactive #8a8a8a #8a8a8a #FFFFFF #8a8a8a   #8a8a8a
 client.unfocused        #8a8a8a #8a8a8a #080808 #8a8a8a   #8a8a8a
 client.urgent           #dc322f #dc322f #FFFFFF #dc322f   #dc322f
 client.placeholder      #0C0C0C #0C0C0C #FFFFFF #0C0C0C   #0C0C0C
-
 client.background       #FFFFFF
 
 for_window [class="^.*"] border pixel 1
@@ -155,7 +155,6 @@ mode "$mode_gaps_inner" {
 
 bar {
   status_command i3status
-  # font pango: RobotoMono Nerd Font 8
   font pango: cherry 8
   position bottom
   height 25
@@ -170,7 +169,7 @@ bar {
     focused_workspace  #080808 #080808 #f1f1f1
     active_workspace   #333333 #ff0000 #5f5f5f
     inactive_workspace #080808 #080808 #5f5f5f
-    urgent_workspace   #080808 #080808 #dc322f
+    urgent_workspace   #dc322f #080808 #dc322f
     binding_mode       #080808 #080808 #00afff
   }
 }

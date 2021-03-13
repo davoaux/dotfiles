@@ -54,6 +54,14 @@ function config --description 'Browse my config files'
   end
 end
 
+function record --description 'Record video of my screen'
+  ffmpeg -f x11grab -i :0.0 out.mkv
+end
+
+function opdf
+  zathura $argv --fork
+end
+
 abbr vi nvim
 abbr sudovi 'sudo nvim'
 abbr l 'ls -lah'

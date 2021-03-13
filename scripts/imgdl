@@ -1,0 +1,19 @@
+#!/bin/fish
+#
+# Download each url in each line of a text file passed as an argument
+
+if test -z "$argv"
+  echo Argument missing
+  exit
+end
+
+if ! test -e "$argv[1]"
+  echo File missing
+  exit
+end
+
+set -l files (cat "$argv[1]")
+
+for f in $files
+  wget $f
+end
