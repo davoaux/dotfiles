@@ -130,7 +130,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
-client.focused          #ffffff #ffffff #080808 #ffffff   #ffffff
+client.focused          #080808 #080808 #FFFFFF #080808   #080808
 client.focused_inactive #8a8a8a #8a8a8a #FFFFFF #8a8a8a   #8a8a8a
 client.unfocused        #8a8a8a #8a8a8a #080808 #8a8a8a   #8a8a8a
 client.urgent           #dc322f #dc322f #FFFFFF #dc322f   #dc322f
@@ -139,7 +139,7 @@ client.background       #FFFFFF
 
 for_window [class="^.*"] border pixel 1
 smart_borders on
-gaps inner 0
+gaps inner 15
 
 set $mode_gaps_inner inner gaps
 

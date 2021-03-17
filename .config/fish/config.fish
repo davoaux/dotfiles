@@ -1,7 +1,8 @@
 set fish_greeting
 
 set -gx PATH /usr/local/sbin /usr/bin /usr/bin/core_perl ~/.local/bin \
-~/.yarn/bin ~/.emacs.d/bin ~/.dotnet/tools ~/scripts $PATH
+~/.yarn/bin ~/.emacs.d/bin ~/.dotnet/tools ~/.local/share/gem/ruby/2.7.0/bin \
+~/scripts $PATH
 
 set -x SHELL fish
 set -x TERMINAL alacritty

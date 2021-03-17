@@ -20,7 +20,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " colorschemes
 Plug 'parelkobra/vim-off-black'
 Plug 'Leon-Plickat/paige'
-Plug 'arcticicestudio/nord-vim'
 Plug 'gruvbox-community/gruvbox'
 
 call plug#end()
