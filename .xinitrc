@@ -9,8 +9,8 @@ xsetroot -cursor_name left_ptr
 unclutter --timeout 2 --jitter 3 --exclude-root &
 
 # Set wallpaper
-# $HOME/.fehbg &
-xsetroot -solid "#525252"
+$HOME/.fehbg &
+# xsetroot -solid "#525252"
 
 # Mouse settings
 $HOME/scripts/mssets.sh &

@@ -7,10 +7,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'romainl/vim-cool'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'airblade/vim-rooter'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -18,9 +19,8 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " colorschemes
-Plug 'parelkobra/vim-off-black'
-Plug 'Leon-Plickat/paige'
 Plug 'gruvbox-community/gruvbox'
+Plug 'arzg/vim-substrata'
 
 call plug#end()
 
@@ -64,14 +64,28 @@ let g:netrw_banner = 0
 let g:netrw_dirhistmax = 0
 let g:netrw_liststyle = 0
 
-autocmd! FileType c,cpp            set shiftwidth=4 softtabstop=4 tabstop=4
-autocmd! FileType markdown,text    set nonu nornu signcolumn=no textwidth=150
-autocmd! FileType json             set filetype=jsonc
-autocmd! FileType zsh              set filetype=sh
-autocmd! bufnewfile,bufread *.tsx  set filetype=typescript.tsx " TEMP
+autocmd! filetype c,cpp                 set shiftwidth=4 softtabstop=4 tabstop=4
+autocmd! filetype markdown,text         set nonu nornu signcolumn=no textwidth=150
+autocmd! filetype json                  set filetype=jsonc
+autocmd! filetype zsh                   set filetype=sh
+autocmd! bufnewfile,bufread *.jbuilder  set filetype=ruby
+autocmd! bufnewfile,bufread *.tsx       set filetype=typescript.tsx " TEMP
 
-set background=dark
-colorscheme paige
+colorscheme substrata
+
+" https://github.com/junegunn/dotfiles/blob/master/vimrc
+function! s:statusline_expr()
+  let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
+  let ro  = "%{&readonly ? '[RO] ' : ''}"
+  let ft  = "%{len(&filetype) ? &filetype.' ' : ''}"
+  let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
+  let sep = ' %= '
+  let pos = ' %-5(%l:%c%V%) '
+  let pct = ' %p '
+
+  return ' %F %<'.mod.ro.fug.sep.ft.pos.'%*'.pct
+endfunction
+let &statusline = s:statusline_expr()
 
 function! ToggleColorColumn()
     if &colorcolumn == ''
@@ -93,6 +107,11 @@ endfun
 command! Vimrc :e $MYVIMRC
 command! Stack :e $HOME/workspace/STACK.md
 
+command! WQ wq
+command! Wq wq
+command! W w
+command! Q q
+
 map <silent> <leader>n :Fern %:h -drawer -toggle<CR>
 map <silent> <leader>c :ColorizerToggle<CR>
 map <silent> <leader>r :source $MYVIMRC<CR>
@@ -107,6 +126,8 @@ map <silent> <F5> :set list!<CR>
 map <silent> <F6> :set nu! \| set rnu! \| set cul!<CR>
 map <silent> <F7> :call ToggleColorColumn()<CR>
 
+nnoremap <leader>t m`^i- [ ] <esc>``5l
+
 nmap <C-j> <C-w><C-j>
 nmap <C-k> <C-w><C-k>
 nmap <C-l> <C-w><C-l>
@@ -116,10 +137,3 @@ map <Up> <Nop>
 map <Down> <Nop>
 map <Left> <Nop>
 map <Right> <Nop>
-
-cmap W w
-cmap WQ wq
-cmap wQ wq
-cmap Q q
-
-source $HOME/.config/nvim/after/statusline.vim
