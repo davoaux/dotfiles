@@ -117,14 +117,14 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes' 'i3-msg exit'"
 
 mode "resize" {
-        bindsym h resize shrink width 1 px or 1 ppt
-        bindsym j resize grow height 1 px or 1 ppt
-        bindsym k resize shrink height 1 px or 1 ppt
-        bindsym l resize grow width 1 px or 1 ppt
+    bindsym h resize shrink width 1 px or 1 ppt
+    bindsym j resize grow height 1 px or 1 ppt
+    bindsym k resize shrink height 1 px or 1 ppt
+    bindsym l resize grow width 1 px or 1 ppt
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -138,39 +138,39 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 for_window [class="^.*"] border pixel 1
 smart_borders on
-# gaps inner 15
+gaps inner 15
 
 set $mode_gaps_inner inner gaps
 
 bindsym $mod+Shift+g mode "$mode_gaps_inner"
 
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner all plus 5
-        bindsym minus gaps inner all minus 5
-        bindsym 0     gaps inner all set 0
+    bindsym plus  gaps inner all plus 5
+    bindsym minus gaps inner all minus 5
+    bindsym 0     gaps inner all set 0
 
-        bindsym Escape mode "default"
+    bindsym Escape mode "default"
 }
 
 bar {
-  status_command i3status
-  font pango: cherry 8
-  position bottom
-  height 25
-  strip_workspace_numbers yes
-  strip_workspace_name no
-  colors {
-    background #080808
-    statusline #f1f1f1
-    separator #080808
-                                                
-    # <colorclass> <border> <background> <text>
-    focused_workspace  #080808 #080808 #f1f1f1
-    active_workspace   #333333 #ff0000 #5f5f5f
-    inactive_workspace #080808 #080808 #5f5f5f
-    urgent_workspace   #dc322f #080808 #dc322f
-    binding_mode       #080808 #080808 #00afff
-  }
+    status_command i3status
+    font pango: cherry 8
+    position top
+    height 25
+    strip_workspace_numbers yes
+    strip_workspace_name no
+    colors {
+        background #202124
+        statusline #D6D6D7
+        separator #202124
+
+        # <colorclass> <border> <background> <text>
+        focused_workspace  #202124 #202124 #D6D6D7
+        active_workspace   #202124 #ff0000 #535353
+        inactive_workspace #202124 #202124 #535353
+        urgent_workspace   #dc322f #202124 #dc322f
+        binding_mode       #202124 #202124 #2E9EF4
+    }
 }
 
 exec --no-startup-id $HOME/scripts/curlock.sh

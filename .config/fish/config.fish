@@ -1,7 +1,7 @@
 set fish_greeting
 
 set -gx PATH /usr/local/sbin /usr/bin /usr/bin/core_perl ~/.local/bin \
-~/.yarn/bin ~/.emacs.d/bin ~/.dotnet/tools ~/.local/share/gem/ruby/2.7.0/bin \
+~/.yarn/bin ~/.emacs.d/bin ~/.dotnet/tools ~/.local/share/gem/ruby/3.0.0/bin \
 ~/scripts $PATH
 
 set -x SHELL fish
@@ -9,8 +9,10 @@ set -x TERMINAL alacritty
 set -x TERM screen-256color-bce
 set -x VISUAL nvim
 set -x EDITOR $VISUAL
-set -x BROWSER firefox
+set -x BROWSER chromium
 set -x LANG 'en_US.UTF-8'
+set -x MANPAGER 'nvim +Man!'
+set -x MANWIDTH 999
 
 # set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 set -x XDG_CONFIG_HOME $HOME/.config
@@ -19,8 +21,6 @@ set -x XDG_DATA_HOME $HOME/.local/share
 set -x GTK2_RC_FILES $XDG_CONFIG_HOME/gtk-2.0/gtkrc
 set -x LESSHISTFILE "-"
 set -x NODE_REPL_HISTORY $XDG_DATA_HOME/node_repl_history
-
-source $__fish_config_dir/.env.fish
 
 if status is-login
   if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
@@ -34,6 +34,10 @@ function fish_user_key_bindings
   fish_vi_key_bindings
   fzf_key_bindings
   bind -M insert -k nul accept-autosuggestion
+end
+
+function __fish_command_not_found_handler --on-event fish_command_not_found
+    echo "fish: Unknown command '$argv'"
 end
 
 function mkcd --description 'Create and change to a new directory'
@@ -78,7 +82,7 @@ abbr zathura 'zathura --fork'
 abbr shrc "$EDITOR $XDG_CONFIG_HOME/fish/config.fish"
 abbr i3rc "$EDITOR $XDG_CONFIG_HOME/i3/config"
 abbr termrc "$EDITOR $XDG_CONFIG_HOME/alacritty/alacritty.yml"
-abbr vimrc "$EDITOR $XDG_CONFIG_HOME/nvim/init.vim"
+abbr vimrc "$EDITOR $XDG_CONFIG_HOME/nvim/init.lua"
 abbr reload "source $__fish_config_dir/config.fish"
 
 # git
