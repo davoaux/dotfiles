@@ -56,7 +56,9 @@ local function check_git_workspace()
   return gitdir and #gitdir > 0 and #gitdir < #filepath
 end
 
-local function git_icon() return check_git_workspace() and '' or '' end
+local function git_icon()
+  return check_git_workspace() and '' or ''
+end
 
 require('lualine').setup({
   options = {
