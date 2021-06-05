@@ -17,8 +17,6 @@ paq 'nvim-telescope/telescope.nvim'
 paq 'neovim/nvim-lspconfig'
 paq 'hrsh7th/nvim-compe'
 
--- 'tpope/vim-rails'
--- 'neoclide/coc.nvim', { 'branch': 'release' }
 -- 'leafgarland/typescript-vim'
 -- 'MaxMEllon/vim-jsx-pretty'
 -- 'prettier/vim-prettier', { 'do': 'yarn install' }

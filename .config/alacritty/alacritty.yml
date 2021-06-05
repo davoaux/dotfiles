@@ -57,7 +57,7 @@ font:
   bold_italic:
     family: Inconsolata
     style: Bold Italic
-  size: 12.5
+  size: 12
   offset:
     x: 0
     y: 0
