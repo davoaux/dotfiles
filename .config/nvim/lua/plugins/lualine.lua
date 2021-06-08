@@ -6,9 +6,6 @@ local colors = {
   blue         = '#83a598',
   purple       = '#d3869b',
   yellow       = '#fe8019',
-  gray         = '#a89984',
-  darkgray     = '#3c3836',
-  lightgray    = '#504945',
   inactivegray = '#7c6f64',
   transparent  = '#1d2021',
 }
@@ -19,36 +16,32 @@ custom_gruvbox = {
   normal = {
     a = {bg = colors.green, fg = colors.black},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
-    c = {bg = colors.transparent, fg = colors.gray},
+    c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
   insert = {
     a = {bg = colors.blue, fg = colors.black},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
-    c = {bg = colors.transparent, fg = colors.gray},
+    c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
   visual = {
     a = {bg = colors.yellow, fg = colors.black},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
-    c = {bg = colors.transparent, fg = colors.gray},
+    c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
   replace = {
     a = {bg = colors.red, fg = colors.black},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
-    c = {bg = colors.transparent, fg = colors.gray},
+    c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
   command = {
     a = {bg = colors.purple, fg = colors.black},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
-    c = {bg = colors.transparent, fg = colors.gray},
+    c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
   inactive = {
-    a = {bg = colors.darkgray, fg = colors.inactivegray},
+    c = {bg = colors.transparent, fg = colors.inactivegray, gui = 'none'},
   }
 }
-
-local function mode_whitespace()
-  return ' '
-end
 
 local function check_git_workspace()
   local filepath = vim.fn.expand('%:p:h')
@@ -58,6 +51,10 @@ end
 
 local function git_icon()
   return check_git_workspace() and '' or ''
+end
+
+local function mode_whitespace()
+  return ' '
 end
 
 require('lualine').setup({
@@ -73,8 +70,9 @@ require('lualine').setup({
     lualine_c = {
       {git_icon, color = {fg = '#F1502F'}, left_padding = 2, right_padding = 0},
       {'branch', icon = '', padding = 0},
+      'filename'
     },
-    lualine_x = {'filename', 'filetype', 'location'},
+    lualine_x = {'filetype', 'location'},
     lualine_y = {},
     lualine_z = {},
   },

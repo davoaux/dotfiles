@@ -1,48 +1,30 @@
 #!/usr/bin/env bash
 
-DIR=$HOME/pictures/Screenshots
-NAME=$(date +%Y%m%d_%H%M%S)
-
-opt1="Whole screen"
-opt2="Currently focused window"
-opt3="Select screen section"
-
-list="$opt1\n$opt2\n$opt3"
+dir=$HOME/pictures/Screenshots
+fname=$(date +%Y%m%d_%H%M%S)
+ac=('Whole screen' 'Currently focused window' 'Select screen section')
 
 notify() {
-  notify-send "Screenshot ($NAME.png) saved at $DIR"
+  notify-send "Screenshot ($fname.png) saved at $dir"
 }
 
 menu() {
-  choice=$(echo -e $list | rofi -dmenu -lines 3 -i)
-  case $choice in
-    $opt1) 
-      scrot -d 1 $DIR/$NAME.png
-      notify
-      ;;
-    $opt2) 
-      scrot -d 1 -u $DIR/$NAME.png
-      notify
-      ;;
-    $opt3) 
-      scrot -s $DIR/$NAME.png
-      notify
-      ;;
+  opt=$(printf "${ac[0]}\n${ac[1]}\n${ac[2]}" | rofi -dmenu -i)
+
+  case $opt in
+    ${ac[0]}) scrot -d 1 $dir/$fname.png    ;;
+    ${ac[1]}) scrot -d 1 -u $dir/$fname.png ;;
+    ${ac[2]}) scrot -s $dir/$fname.png      ;;
+    *) exit 1;;
   esac
+
+  notify
 }
 
-while [[ $# -gt 0 ]]; do
-  case $1 in
-    -f)
-      scrot -d 1 $DIR/$NAME.png
-      notify
-      exit 0;
+case $1 in
+  -f) scrot -d 1 $dir/$fname.png;
+      notify;
+      exit 0
       ;;
-    *)
-      echo "Unknown argument: $1"
-      exit 1
-      ;;
-  esac
-done
-
-menu
+  *)  menu;;
+esac

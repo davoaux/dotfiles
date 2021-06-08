@@ -22,11 +22,5 @@ clock() {
   date '+%a, %B %d %H:%M'
 }
 
-output=""
-output="${output}ws: $(workspaces)   ";
-output="${output}mem: $(memused)   ";
-output="${output}cpu: $(cpuload)   ";
-output="${output}vol: $(volume)   ";
-output="${output}$(clock)"
-    
+output="$(workspaces)/10   $(memused)   $(cpuload)   $(volume)   $(clock)"
 notify-send "$output"

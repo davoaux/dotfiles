@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
 
-opt1="Shutdown"
-opt2="Lock"
-opt3="Reboot"
-opt4="Suspend"
+ac=(Shutdown Lock Reboot Suspend)
 
-list="$opt1\n$opt2\n$opt3\n$opt4"
-
-opt=$(echo -e $list | rofi -dmenu -lines 4 -i)
+opt=$(printf "${ac[0]}\n${ac[1]}\n${ac[2]}\n${ac[3]}" | rofi -dmenu -i)
 
 case $opt in
-  $opt1) systemctl poweroff -i;;
-  $opt2) betterlockscreen -l dimblur;;
-  $opt3) systemctl reboot -i;;
-  $opt4) systemctl suspend -i;;
+  ${ac[0]}) systemctl poweroff -i       ;;
+  ${ac[1]}) betterlockscreen -l dimblur ;;
+  ${ac[2]}) systemctl reboot -i         ;;
+  ${ac[3]}) systemctl suspend -i        ;;
 esac

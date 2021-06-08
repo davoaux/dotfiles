@@ -47,7 +47,7 @@ scrolling:
 font:
   normal:
     family: Inconsolata
-    style: Medium
+    style: Regular
   bold:
     family: Inconsolata
     style: Bold
