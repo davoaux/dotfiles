@@ -27,6 +27,7 @@ scrolling:
 # family: Monoid
 # family: Source Code Pro
 # family: Victor Mono
+# family: JuliaMono
 # family: Hack
 # family: MesloLGSDZ Nerd Font Mono
 # family: Menlo
@@ -46,18 +47,18 @@ scrolling:
 
 font:
   normal:
-    family: Inconsolata
+    family: Input
     style: Regular
   bold:
-    family: Inconsolata
+    family: Input
     style: Bold
   italic:
-    family: Inconsolata
+    family: Input
     style: Italic
   bold_italic:
-    family: Inconsolata
+    family: Input
     style: Bold Italic
-  size: 12
+  size: 10.5
   offset:
     x: 0
     y: 0

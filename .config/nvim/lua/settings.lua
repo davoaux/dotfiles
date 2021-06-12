@@ -1,7 +1,4 @@
-local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
-local g = vim.g
+local o, wo, bo, g = vim.o, vim.wo, vim.bo, vim.g
 
 g.netrw_banner = 0
 g.netrw_dirhistmax = 0
@@ -48,4 +45,4 @@ bo.expandtab = true
 g.background = 'dark'
 g.gruvbox_contrast_dark = 'hard'
 g.gruvbox_sign_column = 'bg0'
-vim.cmd('colorscheme gruvbox')
+vim.cmd [[colorscheme gruvbox]]

@@ -5,6 +5,7 @@ autocmd! filetype c,cpp setlocal shiftwidth=4 softtabstop=4 tabstop=4
 autocmd! filetype markdown,text set nonu nornu signcolumn=no textwidth=150
 autocmd! filetype json setlocal filetype=jsonc
 autocmd! filetype zsh setlocal filetype=sh
+autocmd! bufnewfile,bufread *.fish setlocal filetype=fish
 autocmd! bufnewfile,bufread *.jbuilder setlocal filetype=ruby
 autocmd! bufnewfile,bufread *.tsx setlocal filetype=typescript.tsx
 

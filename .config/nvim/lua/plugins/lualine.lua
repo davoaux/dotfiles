@@ -14,27 +14,27 @@ local custom_gruvbox = require'lualine.themes.gruvbox'
 
 custom_gruvbox = {
   normal = {
-    a = {bg = colors.green, fg = colors.black},
+    a = {bg = colors.green},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
     c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
   insert = {
-    a = {bg = colors.blue, fg = colors.black},
+    a = {bg = colors.blue},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
     c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
   visual = {
-    a = {bg = colors.yellow, fg = colors.black},
+    a = {bg = colors.yellow},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
     c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
   replace = {
-    a = {bg = colors.red, fg = colors.black},
+    a = {bg = colors.red},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
     c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
   command = {
-    a = {bg = colors.purple, fg = colors.black},
+    a = {bg = colors.purple},
     b = {bg = colors.black, fg = colors.white, gui = 'bold'},
     c = {bg = colors.transparent, fg = colors.white, gui = 'bold'},
   },
@@ -66,11 +66,11 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = {{mode_whitespace, padding = 0}},
-    lualine_b = {'mode'},
+    lualine_b = {},
     lualine_c = {
-      {git_icon, color = {fg = '#F1502F'}, left_padding = 2, right_padding = 0},
-      {'branch', icon = '', padding = 0},
-      'filename'
+      'filename',
+      {git_icon, color = {fg = '#F1502F'}, right_padding = 0},
+      {'branch', icon = '', padding = 0}
     },
     lualine_x = {'filetype', 'location'},
     lualine_y = {},

@@ -1,34 +1,50 @@
 vim.cmd 'packadd paq-nvim'
-local paq = require('paq-nvim').paq
-paq{'savq/paq-nvim', opt = true}
 
-paq 'jiangmiao/auto-pairs'
-paq 'romainl/vim-cool'
-paq 'terrortylor/nvim-comment'
-paq 'airblade/vim-rooter'
-paq 'norcalli/nvim-colorizer.lua'
-paq 'gruvbox-community/gruvbox'
-paq 'hoob3rt/lualine.nvim'
-paq 'kyazdani42/nvim-web-devicons'
-paq 'kyazdani42/nvim-tree.lua'
-paq 'nvim-lua/popup.nvim'
-paq 'nvim-lua/plenary.nvim'
-paq 'nvim-telescope/telescope.nvim'
-paq 'neovim/nvim-lspconfig'
-paq 'hrsh7th/nvim-compe'
+require 'paq-nvim' {
+  'savq/paq-nvim',
 
--- 'leafgarland/typescript-vim'
--- 'MaxMEllon/vim-jsx-pretty'
--- 'prettier/vim-prettier', { 'do': 'yarn install' }
+  -- LSP
+  'neovim/nvim-lspconfig',
+  'hrsh7th/nvim-compe',
 
-require('settings')
-require('cmd')
-require('mappings')
-require('lsp')
+  -- Tree-sitter
+  {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd 'TSUpdate' end},
 
-require('plugins/nvim-comment')
-require('plugins/colorizer')
-require('plugins/lualine')
-require('plugins/nvim-tree')
-require('plugins/telescope')
-require('plugins/nvim-compe')
+  -- Telescope
+  'nvim-lua/popup.nvim',
+  'nvim-lua/plenary.nvim',
+  'nvim-telescope/telescope.nvim',
+
+  -- File explorer
+  'kyazdani42/nvim-web-devicons',
+  'kyazdani42/nvim-tree.lua',
+
+  -- UI
+  'hoob3rt/lualine.nvim',
+  'rktjmp/lush.nvim',
+  'npxbr/gruvbox.nvim',
+
+  -- Misc
+  'jiangmiao/auto-pairs',
+  'romainl/vim-cool',
+  'terrortylor/nvim-comment',
+  'airblade/vim-rooter',
+  'norcalli/nvim-colorizer.lua',
+
+-- 'leafgarland/typescript-vim',
+-- 'MaxMEllon/vim-jsx-pretty',
+-- {'prettier/vim-prettier', run='yarn install'},
+}
+
+require 'settings'
+require 'cmd'
+require 'mappings'
+require 'lsp'
+
+require 'plugins/colorizer'
+require 'plugins/lualine'
+require 'plugins/nvim-comment'
+require 'plugins/nvim-compe'
+require 'plugins/nvim-tree'
+require 'plugins/nvim-treesitter'
+require 'plugins/telescope'

@@ -5,6 +5,7 @@ vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_auto_close = 1
 vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_hide_dotfiles = 1
+vim.g.nvim_tree_git_hl = 0
 vim.g.nvim_tree_bindings = {
   ["l"]       = tree_cb("edit"),
   ["<CR>"]    = tree_cb("cd"),

@@ -130,13 +130,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
-client.focused          #4C7899 #285577 #FFFFFF #2E9EF4   #285577
+client.focused          #3c3836 #3c3836 #d5c4a1 #3c3836   #3c3836
 client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
-client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+client.unfocused        #333333 #1d2021 #888888 #292D2E   #222222
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 smart_borders on
 gaps inner 15
 
@@ -160,16 +160,16 @@ bar {
     strip_workspace_numbers yes
     strip_workspace_name no
     colors {
-        background #202124
+        background #1d2021
         statusline #D6D6D7
-        separator #202124
+        separator #1d2021
 
         # <colorclass> <border> <background> <text>
-        focused_workspace  #202124 #202124 #D6D6D7
-        active_workspace   #202124 #ff0000 #535353
-        inactive_workspace #202124 #202124 #535353
-        urgent_workspace   #dc322f #202124 #dc322f
-        binding_mode       #202124 #202124 #2E9EF4
+        focused_workspace  #1d2021 #1d2021 #D6D6D7
+        active_workspace   #1d2021 #ff0000 #535353
+        inactive_workspace #1d2021 #1d2021 #535353
+        urgent_workspace   #fb4934 #1d2021 #fb4934
+        binding_mode       #1d2021 #1d2021 #fabd2f
     }
 }
 
