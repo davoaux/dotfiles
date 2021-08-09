@@ -14,6 +14,10 @@ vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", options)
 vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({'delta': +4})", options)
 vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({'delta': -4})", options)
 
+options = { noremap = true, silent = true, expr = true }
+vim.api.nvim_set_keymap("i", '<Tab>',   "pumvisible() ? '<C-n>' : '<Tab>'", options)
+vim.api.nvim_set_keymap("i", '<S-Tab>', "pumvisible() ? '<C-p>' : '<S-Tab>'", options)
+
 -- VSCODE LIKE TAB COMPLETION BEHAVIOUR
 --
 -- local t = function(str)

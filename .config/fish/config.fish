@@ -14,7 +14,6 @@ set -x LANG 'en_US.UTF-8'
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 
-# set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_DATA_HOME $HOME/.local/share
@@ -22,9 +21,11 @@ set -x GTK2_RC_FILES $XDG_CONFIG_HOME/gtk-2.0/gtkrc
 set -x LESSHISTFILE "-"
 set -x NODE_REPL_HISTORY $XDG_DATA_HOME/node_repl_history
 
+source ~/.config/fish/.secrets
+
 if status is-login
   if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-    $HOME/scripts/strtupx
+    startx
   end
 end
 
@@ -42,14 +43,6 @@ end
 
 function mkcd --description 'Create and change to a new directory'
   mkdir $argv; and cd $argv
-end
-
-function notes --description 'Browse my personal notes'
-  cd $HOME/documents/notes
-  set --local note (ls | fzf --height 100% --preview 'cat {}')
-  if test -n "$note"
-    nvim "$HOME/documents/notes/$note"
-  end
 end
 
 function config --description 'Browse my config files'
@@ -104,14 +97,7 @@ abbr vswap 'cd $HOME/.local/share/nvim/swap && ls && rm -I *'
 abbr wget 'wget --hsts-file=$XDG_CACHE_HOME/wget-hsts'
 
 # bookmarks
-abbr stack '$EDITOR $HOME/workspace/STACK.md'
+abbr stack '$EDITOR $HOME/workspace/STACK.org'
 abbr wv 'cd $HOME/pictures/misc/.c/v && ls'
 
-# FZF colorschemes
-set off "'fg:#c6c6c6,fg+:#c6c6c6,bg:#0a0a0a,bg+:#0a0a0a,border:#212121,prompt:#fdfdfd,pointer:#dc322f,info:#c6c6c6,spinner:#80a66a'"
-set gruvbox_dark_hard "'fg:#ebdbb2,fg+:#ebdbb2,bg:#1d2021,bg+:#1d2021,border:#ebdbb2,prompt:#fb4934,pointer:#fb4934,info:#8ec07c,spinner:#b8bb26'"
-set seoul256 "'fg:#d0d0d0,fg+:#d0d0d0,bg:#4b4b4b,bg+:#4b4b4b,border:#d0d0d0,prompt:#85add4,pointer:#d68787,info:#5f885f,spinner:#85add4'"
-set seoul256_light "'fg:#4e4e4e,fg+:#4e4e4e,bg:#e1e1e1,bg+:#e1e1e1,border:#4e4e4e,prompt:#5f87ae,pointer:#af5f5f,info:#5f885f,spinner:#5f87ae'"
-
-#set -x FZF_DEFAULT_OPTS "--no-mouse --height=100% --color "$seoul256
 set -x FZF_DEFAULT_OPTS "--no-mouse --height=100%"

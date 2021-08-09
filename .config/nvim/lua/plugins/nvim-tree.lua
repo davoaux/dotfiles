@@ -7,11 +7,11 @@ vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_hide_dotfiles = 1
 vim.g.nvim_tree_git_hl = 0
 vim.g.nvim_tree_bindings = {
-  ["l"]       = tree_cb("edit"),
-  ["<CR>"]    = tree_cb("cd"),
-  ["h"]       = tree_cb("close_node"),
-  ["!"]       = tree_cb("toggle_dotfiles"),
-  ["<BS>"]    = tree_cb("dir_up"),
+  { key = 'h', cb = tree_cb('close_node') },
+  { key = 'l', cb = tree_cb('edit') },
+  { key = '<cr>', cb = tree_cb('cd') },
+  { key = '!', cb = tree_cb('toggle_dotfiles') },
+  { key = '<bs>', cb = tree_cb('dir_up') }
 }
 
 local opts = { noremap = true, silent = true }

@@ -1,32 +1,27 @@
-local map = vim.api.nvim_set_keymap
-local wo = vim.wo
+local keymap, wo = vim.api.nvim_set_keymap, vim.wo
 
 vim.g.mapleader = ' '
 
-local opts = { noremap = true, silent = true }
+local opts = require 'utils'.opts
 
-map('n', '<leader>t', 'm`^i- [ ] <esc>``5l', opts)
-map('n', '<leader>i', '<cmd>sp<cr>', opts)
-map('n', '<leader>o', '<cmd>vsp<cr>', opts)
-map('n', '<c-q>', '<cmd>bdelete<cr>', opts)
-map('n', '<f5>', '<cmd>set list!<cr>', opts)
-map('n', '<f6>', '<cmd>lua toggle_colorcolumn()<cr>', opts)
-map('n', 'H', '^', opts)
-map('n', 'L', '$', opts)
-map('n', '<c-j>', '<c-w><c-j>', opts)
-map('n', '<c-k>', '<c-w><c-k>', opts)
-map('n', '<c-l>', '<c-w><c-l>', opts)
-map('n', '<c-h>', '<c-w><c-h>', opts)
-map('n', '<up>', '', opts)
-map('n', '<down>', '', opts)
-map('n', '<left>', '', opts)
-map('n', '<right>', '', opts)
+keymap('n', '<leader>t',  'm`^i- [ ] <esc>``5l',       opts)
+keymap('n', '<leader>i',  '<cmd>sp<cr>',               opts)
+keymap('n', '<leader>o',  '<cmd>vsp<cr>',              opts)
+keymap('n', '<c-q>',      '<cmd>bdelete<cr>',          opts)
+keymap('n', '<f5>',       '<cmd>set list!<cr>',        opts)
+keymap('n', '<f6>',       '<cmd>lua toggle_cc()<cr>',  opts)
+keymap('n', 'H',          '^',                         opts)
+keymap('n', 'L',          '$',                         opts)
+keymap('n', '<c-j>',      '<c-w><c-j>',                opts)
+keymap('n', '<c-k>',      '<c-w><c-k>',                opts)
+keymap('n', '<c-l>',      '<c-w><c-l>',                opts)
+keymap('n', '<c-h>',      '<c-w><c-h>',                opts)
+keymap('n', '<up>',       '',                          opts)
+keymap('n', '<down>',     '',                          opts)
+keymap('n', '<left>',     '',                          opts)
+keymap('n', '<right>',    '',                          opts)
 
-function toggle_colorcolumn()
-  if wo.colorcolumn == '' then
-    wo.colorcolumn = '80'
-  else
-    wo.colorcolumn = ''
-  end
+function toggle_cc()
+  wo.colorcolumn = (wo.colorcolumn == '' and '80' or '')
 end
 

@@ -2,6 +2,11 @@ local o, wo, bo, g = vim.o, vim.wo, vim.bo, vim.g
 
 g.netrw_banner = 0
 g.netrw_dirhistmax = 0
+g.netrw_nogx = 1
+
+g.loaded_node_provider = 0
+g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0
 
 o.history = 100
 o.ignorecase = true
@@ -10,7 +15,7 @@ o.hlsearch = true
 o.incsearch = true
 o.hidden = true
 o.laststatus = 2
-o.showmode = false
+o.showmode = true
 o.lcs = 'tab:»-,eol:↲,precedes:«,space:·'
 o.mouse = 'a'
 o.backup = false
@@ -43,6 +48,4 @@ bo.expandtab = true
 
 -- colorscheme
 g.background = 'dark'
-g.gruvbox_contrast_dark = 'hard'
-g.gruvbox_sign_column = 'bg0'
-vim.cmd [[colorscheme gruvbox]]
+vim.cmd [[colorscheme highlite]]
