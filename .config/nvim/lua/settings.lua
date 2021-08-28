@@ -47,5 +47,5 @@ bo.tabstop = 2
 bo.expandtab = true
 
 -- colorscheme
-g.background = 'dark'
-vim.cmd [[colorscheme highlite]]
+g.background = 'light'
+vim.cmd [[colorscheme rams]]

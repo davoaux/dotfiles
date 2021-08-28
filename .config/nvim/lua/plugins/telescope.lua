@@ -3,7 +3,7 @@ local map, actions = vim.api.nvim_set_keymap, require 'telescope.actions'
 local default_pickers_settings = {
   previewer = false,
   prompt_title = false,
-  theme = 'dropdown',
+  theme = 'ivy',
 }
 
 require('telescope').setup {

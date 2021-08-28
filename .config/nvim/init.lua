@@ -20,7 +20,7 @@ require 'paq-nvim' {
   'kyazdani42/nvim-tree.lua',
 
   -- UI
-  'Iron-E/nvim-highlite',
+  'stefanvanburen/rams.vim',
   -- 'glepnir/galaxyline.nvim',
 
   -- Misc
@@ -28,6 +28,7 @@ require 'paq-nvim' {
   'romainl/vim-cool',
   'terrortylor/nvim-comment',
   'airblade/vim-rooter',
+  -- 'ahmedkhalf/project.nvim', -- better (?) vim-rooter alternative
   'norcalli/nvim-colorizer.lua',
 }
 

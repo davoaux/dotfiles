@@ -33,6 +33,7 @@ scrolling:
 # family: MonacoB Nerd Font Mono
 # family: lucy tewi
 # family: erus erusfont
+# family: UW Ttyp0
 # family: cherry
 # family: cozette
 # family: unifont
@@ -45,18 +46,18 @@ scrolling:
 
 font:
   normal:
-    family: Terminus
+    family: Input
     style: Regular
   bold:
-    family: Terminus
+    family: Input
     style: Bold
   italic:
-    family: Terminus
+    family: Input
     style: Italic
   bold_italic:
-    family: Terminus
+    family: Input
     style: Bold Italic
-  size: 10
+  size: 10.5
   offset:
     x: 0
     y: 0
@@ -112,30 +113,33 @@ schemes:
       cyan:    '#00AACB'
       white:   '#AAAAAA'
 
-  highline: &highline
+  rams: &rams
     primary:
-      background: '#202020'
-      foreground: '#c0c0c0'
+      background: '0xEEEEEE'
+      foreground: '0x4D4D4C'
+    cursor:
+      text: CellBackground
+      cursor: '0xEE483E'
     normal:
-      black:   '#505050'
-      red:     '#ee4a59'
-      green:   '#22ff22'
-      yellow:  '#f4c069'
-      blue:    '#7766ff'
-      magenta: '#bb0099'
-      cyan:    '#33dbc3'
-      white:   '#e9e9e9'
+      black:   '0x4D4D4C'
+      red:     '0xD7005F'
+      green:   '0x718C00'
+      yellow:  '0xD75F00'
+      blue:    '0x4271AE'
+      magenta: '0x8959A8'
+      cyan:    '0x3E999F'
+      white:   '0xEDEDED'
     bright:
-      black:   '#808080'
-      red:     '#ff4090'
-      green:   '#99ff99'
-      yellow:  '#f0df33'
-      blue:    '#95c5ff'
-      magenta: '#d5508f'
-      cyan:    '#2bff99'
-      white:   '#ffffff'
+      black:   '0x969694'
+      red:     '0xD7005F'
+      green:   '0x718C00'
+      yellow:  '0xD75F00'
+      blue:    '0x4271AE'
+      magenta: '0x8959A8'
+      cyan:    '0x3E999F'
+      white:   '0xF5F5F5'
 
-colors: *highline
+colors: *rams
 draw_bold_text_with_bright_colors: true
 
 background_opacity: 1

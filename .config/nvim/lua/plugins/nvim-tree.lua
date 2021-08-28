@@ -6,6 +6,7 @@ vim.g.nvim_tree_auto_close = 1
 vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_hide_dotfiles = 1
 vim.g.nvim_tree_git_hl = 0
+vim.g.nvim_tree_width = 28
 vim.g.nvim_tree_bindings = {
   { key = 'h', cb = tree_cb('close_node') },
   { key = 'l', cb = tree_cb('edit') },
