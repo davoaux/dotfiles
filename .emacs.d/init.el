@@ -1,8 +1,12 @@
 (setq inhibit-startup-screen t)
 
+;; lsp-mode recomended settings for performance
+(setq gc-cons-threshold 100000000
+      read-process-output-max (* 1024 1024))
+
 ;; Disable backup and autosave files
-(setq auto-save-default nil)
-(setq make-backup-files nil)
+(setq auto-save-default nil
+      make-backup-files nil)
 
 (require 'package)
 
@@ -26,20 +30,23 @@
  ;; Disable GUI elements
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-
 (menu-bar-mode -1)
-(set-fringe-mode 1) ; sign column size
+(fringe-mode '(nil . 0))
 
-(setq visible-bell t)
+(setq visible-bell nil
+      ring-bell-function #'ignore)
 
 ;; Set font
-(set-face-attribute 'default nil :font "JetBrains Mono" :height 99)
+(setq current-font "Source Code Pro")
+(set-face-attribute 'default nil
+		    :font current-font
+		    :height 90
+		    :weight 'normal)
 
 (blink-cursor-mode 0)
 (show-paren-mode 1)
-;; (setq show-paren-style 'parenthesis)
 
-(global-display-line-numbers-mode)
+;; (global-display-line-numbers-mode)
 (column-number-mode)
 
 ;; Disable line numbers for some modes (change to just display line numbers on prog-mode?)
@@ -51,19 +58,22 @@
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+(add-hook 'prog-mode-hook
+	  (lambda ()
+	    (interactive)
+	    (setq show-trailing-whitespace 1)))
+
 ;; Autopair matching delimiters
 (electric-pair-mode t)
 
-;; Set ESC to quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; set ESC to quit prompts
 (global-set-key (kbd "C-x q") 'kill-buffer-and-window)
 
+(defalias 'yes-or-no-p 'y-or-n-p) ; test this out
+
 (use-package ivy
-  :init
-  (bind-key "C-x b" 'ivy-switch-buffer)
-  :config
-  (ivy-mode 1))
+  :bind ("C-x b" . ivy-switch-buffer)
+  :config (ivy-mode 1))
 
 (use-package counsel
   :after ivy
@@ -89,13 +99,32 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-key] . helpful-key))
 
-(use-package gruvbox-theme
-  :config
-  (load-theme 'gruvbox-dark-medium t)
-  (set-face-background 'line-number "#282828")
-  (set-face-background 'line-number-current-line "#282828")
-  (set-face-foreground 'line-number-current-line "#a1958b")
-  (set-face-attribute 'line-number-current-line nil :font "JetBrains Mono" :weight 'bold))
+;; Recurring themes
+
+;;; (use-package gruvbox-theme
+;;   :config
+;;   (load-theme 'gruvbox-dark-medium t)
+;;   (set-face-background 'line-number "#282828")
+;;   (set-face-background 'line-number-current-line "#282828")
+;;   (set-face-foreground 'line-number-current-line "#a1958b"))
+
+;; (use-package constant-theme
+;;   :config (load-theme 'constant t))
+
+;; (use-package minimal-theme
+;;   :config (load-theme 'minimal-light t))
+
+(use-package sketch-themes
+  :config (load-theme 'sketch-white t))
+
+;; Unknown theme ‘gruvbox-dark-medium’
+;; (custom-theme-set-faces 'gruvbox-dark-medium
+;; 			`(line-number (:background "#282828"))
+;; 			`(line-number-current-line (:foreground "#a1958b" :background "#282828")))
+
+;; gruvbox.el theme definitions
+;; (line-number                               (:foreground gruvbox-dark4 :background gruvbox-dark1))
+;; (line-number-current-line                  (:foreground gruvbox-bright_orange :background gruvbox-dark2))
 
 (use-package minions
   :config (minions-mode 1))
@@ -108,8 +137,18 @@
 	evil-undo-system 'undo-fu)
   :config (evil-mode 1))
 
-(use-package undo-fu
-  :after evil)
+(use-package evil-leader
+  :after evil
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key
+    "q" 'evil-quit
+    "i" 'split-window-below
+    "o" 'split-window-right
+    "n" 'treemacs))
+
+(use-package undo-fu :after evil)
 
 (use-package evil-commentary
   :after evil
@@ -133,40 +172,61 @@
 	      ("C-x p" . projectile-find-file)
 	      ("C-x g" . counsel-projectile-rg))
   :init
-  (when (file-directory-p "~/workspace")
-    (setq projectile-project-search-path '("~/workspace"))))
+  (setq projectile-project-search-path '("~/Workspace"
+					 "~/go/src/github.com/parelkobra/")))
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
 (use-package company
+  :init
+  (setq company-minimum-prefix-length 1
+	company-idle-delay 0.0
+	company-global-modes '(not eshell-mode
+				   org-mode
+				   help-mode
+				   message-mode))
   :hook (after-init . global-company-mode)
   :bind ("C-SPC" . company-complete))
 
-(use-package go-mode)
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-l"
+	lsp-headerline-breadcrumb-enable nil)
+  :hook ((go-mode . lsp-deferred)
+	 (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp lsp-deferred)
+
+;; TODO: set this shortcuts
+;; "gr"          references     (lsp)
+;; "K"           hover          (lsp-ui?)
+;; "<C-f>"       code_action    (lsp)
+;; "<leader>rn"  rename         (lsp)
+;; "<leader>f"   formatting     (go-mode (gofmt)/lsp)
+
+(use-package flymake
+  :config (evil-define-key 'normal prog-mode-map
+	    "[g" 'flymake-goto-prev-error
+	    "]g" 'flymake-goto-next-error))
+
+(use-package go-mode
+  :bind
+  ("<f5>" . compile)
+  ("<f6>" . recompile)
+  :hook (go-mode . (lambda ()
+		     (setq tab-width 4))))
 
 (defun dr/org-mode-setup ()
   (org-indent-mode t)
-  (visual-line-mode t))
+  (visual-line-mode t)
+  (org-superstar-mode 1))
+
+(use-package org-superstar)
 
 (use-package org
+  :after org-superstar
   :hook (org-mode . dr/org-mode-setup)
   :config
   (setq org-ellipsis " ▼"
-	org-hide-emphasis-markers t))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("8b8fd1c936a20b5ca6afe22e081798ffb5e7498021515accadc20aab3517d402" "fd23280005748f3d1e15d2ce612dbe7003d7d551b5debd4287b6eeafd8994413" "6b5c518d1c250a8ce17463b7e435e9e20faa84f3f7defba8b579d4f5925f60c1" default))
- '(package-selected-packages
-   '(timu-spacegrey-theme tommyh-theme sorcery-theme minions company go-mode counsel-projectile projectile treemacs-all-the-icons evil-commentary evil helpful gruvbox-theme counsel ivy-rich which-key use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+	org-hide-emphasis-markers t)
+  (evil-define-key 'normal org-mode-map "gx" 'org-open-at-point))
