@@ -1,0 +1,2 @@
+# Prevent CS hud files to be recognized as ReScript
+*.res linguist-detectable=false
