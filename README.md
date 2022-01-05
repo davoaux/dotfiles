@@ -1,17 +1,15 @@
 # dotfiles
 
-This repository contains configuration files for programs that I use (or used to use) on a day to day basis, as well as some scripts.
+This repository contains configuration files for programs that I use (or used to use) on a day to day basis.
 
 ## Install
 
-```
-cd ~
-git clone https://github.com/davoaux/dotfiles.git --depth=1
-cd dotfiles
+Clone the repository and use [stow](https://www.gnu.org/software/stow/) to create the symlinks of the packages you want
 
-# Link a particular package (e.g. nvim)
-stow nvim
-
-# Or all of them
-stow */
+```sh
+git clone https://github.com/davoaux/dotfiles.git ~/.dotfiles --depth=1
+cd ~/.dotfiles
+stow nvim zsh x # and so on, or use */ instead to symlink all the packages
 ```
+
+You can pass the `n` and `v` options to **stow** in order preview the changes before modifying the filesystem
