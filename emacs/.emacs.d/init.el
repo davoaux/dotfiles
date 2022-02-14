@@ -37,11 +37,12 @@
       ring-bell-function #'ignore)
 
 ;; Set font
-(setq current-font "Source Code Pro")
+;; "Source Code Pro"
+(setq current-font "JetBrains Mono")
 (set-face-attribute 'default nil
 		    :font current-font
-		    :height 90
-		    :weight 'normal)
+		    :height 95
+		    :weight 'extra-light)
 
 (blink-cursor-mode 0)
 (show-paren-mode 1)
@@ -69,7 +70,7 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; set ESC to quit prompts
 (global-set-key (kbd "C-x q") 'kill-buffer-and-window)
 
-(defalias 'yes-or-no-p 'y-or-n-p) ; test this out
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (use-package ivy
   :bind ("C-x b" . ivy-switch-buffer)
@@ -81,6 +82,10 @@
 
 (use-package ivy-rich
   :init (ivy-rich-mode 1))
+
+(use-package all-the-icons-ivy-rich
+  :after (ivy ivy-rich all-the-icons)
+  :init (all-the-icons-ivy-rich-mode 1))
 
 (use-package which-key
   :init (which-key-mode)
@@ -99,32 +104,15 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-key] . helpful-key))
 
-;; Recurring themes
+(use-package nano-theme
+  :config (load-theme 'nano-light t)
+  :custom-face (trailing-whitespace ((t (:background "#ff8a8a")))))
 
-;;; (use-package gruvbox-theme
-;;   :config
-;;   (load-theme 'gruvbox-dark-medium t)
-;;   (set-face-background 'line-number "#282828")
-;;   (set-face-background 'line-number-current-line "#282828")
-;;   (set-face-foreground 'line-number-current-line "#a1958b"))
-
-;; (use-package constant-theme
-;;   :config (load-theme 'constant t))
-
-;; (use-package minimal-theme
-;;   :config (load-theme 'minimal-light t))
-
-(use-package sketch-themes
-  :config (load-theme 'sketch-white t))
-
-;; Unknown theme ‘gruvbox-dark-medium’
-;; (custom-theme-set-faces 'gruvbox-dark-medium
-;; 			`(line-number (:background "#282828"))
-;; 			`(line-number-current-line (:foreground "#a1958b" :background "#282828")))
-
-;; gruvbox.el theme definitions
-;; (line-number                               (:foreground gruvbox-dark4 :background gruvbox-dark1))
-;; (line-number-current-line                  (:foreground gruvbox-bright_orange :background gruvbox-dark2))
+;; (use-package sketch-themes
+;;   :config (load-theme 'sketch-white t)
+;;   :custom-face
+;;   (mode-line ((t (:background "#efefef" :foreground "#212121" :box (:line-width 5 :color "#efefef")))))
+;;   (mode-line-inactive ((t (:background "#dddddd" :foreground "#efefef" :box (:line-width 5 :color "#dddddd"))))))
 
 (use-package minions
   :config (minions-mode 1))
@@ -134,7 +122,9 @@
   (setq evil-want-C-u-scroll t
 	evil-shift-width 2
 	evil-echo-state nil
-	evil-undo-system 'undo-fu)
+	evil-undo-system 'undo-fu
+	evil-want-keybinding nil
+	evil-want-integration t)
   :config (evil-mode 1))
 
 (use-package evil-leader
@@ -145,8 +135,7 @@
   (evil-leader/set-key
     "q" 'evil-quit
     "i" 'split-window-below
-    "o" 'split-window-right
-    "n" 'treemacs))
+    "o" 'split-window-right))
 
 (use-package undo-fu :after evil)
 
@@ -154,7 +143,15 @@
   :after evil
   :config (evil-commentary-mode))
 
-(use-package treemacs)
+(use-package evil-collection
+  :after evil
+  :config (evil-collection-init 'magit))
+
+(use-package magit
+  :config (evil-leader/set-key "g" 'magit))
+
+(use-package treemacs
+  :config (evil-leader/set-key "n" 'treemacs))
 
 (use-package all-the-icons)
 
@@ -173,7 +170,7 @@
 	      ("C-x g" . counsel-projectile-rg))
   :init
   (setq projectile-project-search-path '("~/Workspace"
-					 "~/go/src/github.com/parelkobra/")))
+					 "~/go/src/github.com/davoaux")))
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
@@ -189,34 +186,40 @@
   :hook (after-init . global-company-mode)
   :bind ("C-SPC" . company-complete))
 
+;; TODO "K" hover lsp-ui
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-l"
 	lsp-headerline-breadcrumb-enable nil)
   :hook ((go-mode . lsp-deferred)
 	 (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp lsp-deferred)
+  :commands lsp lsp-deferred
+  :config (evil-define-key 'normal lsp-mode-map
+	    "gr" 'lsp-find-references))
 
-;; TODO: set this shortcuts
-;; "gr"          references     (lsp)
-;; "K"           hover          (lsp-ui?)
-;; "<C-f>"       code_action    (lsp)
-;; "<leader>rn"  rename         (lsp)
-;; "<leader>f"   formatting     (go-mode (gofmt)/lsp)
-
-(use-package flymake
+(use-package flycheck
   :config (evil-define-key 'normal prog-mode-map
-	    "[g" 'flymake-goto-prev-error
-	    "]g" 'flymake-goto-next-error))
+	    "[g" 'flycheck-previous-error
+	    "]g" 'flycheck-next-error))
+
+(use-package tide)
+
+(use-package typescript-mode
+  :after tide
+  :hook ((typescript-mode . tide-setup)
+	 (typescript-mode . tide-hl-identifier-mode)))
+
+(use-package web-mode
+  :mode ("\\.tsx" . web-mode)
+  :hook (web-mode . typescript-mode))
 
 (use-package go-mode
   :bind
   ("<f5>" . compile)
   ("<f6>" . recompile)
-  :hook (go-mode . (lambda ()
-		     (setq tab-width 4))))
+  :config (evil-leader/set-key-for-mode 'go-mode "f" 'gofmt))
 
-(defun dr/org-mode-setup ()
+(defun my/org-mode-setup ()
   (org-indent-mode t)
   (visual-line-mode t)
   (org-superstar-mode 1))
@@ -225,7 +228,7 @@
 
 (use-package org
   :after org-superstar
-  :hook (org-mode . dr/org-mode-setup)
+  :hook (org-mode . my/org-mode-setup)
   :config
   (setq org-ellipsis " ▼"
 	org-hide-emphasis-markers t)

@@ -1,25 +1,40 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+setopt hist_ignore_all_dups
+setopt hist_reduce_blanks
+setopt share_history
+
 unsetopt autocd
+
 bindkey -v
 export KEYTIMEOUT=1
 
 autoload -Uz compinit
 compinit
 
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/bin
-#export GOPATH=$(go env GOPATH)
+export PATH=$PATH:/usr/local/go/bin
 
-export EDITOR=vim
-#export EDITOR=nvim
-#export MANPAGER='nvim +Man!'
+if type go > /dev/null 2>&1; then
+  export GOPATH=$(go env GOPATH)
+  export PATH=$PATH:$GOPATH/bin
+fi
+
+if type nvim > /dev/null 2>&1; then
+  export EDITOR=nvim
+  export MANPAGER='nvim +Man!'
+  alias vimrc="$EDITOR $HOME/.config/nvim/init.lua"
+  alias vi=nvim
+else
+  export EDITOR=vim
+  alias vimrc="$EDITOR $HOME/.vimrc"
+  alias vi=vim
+fi
 
 if (grep -qEi "(microsoft|WSL)" /proc/version &>/dev/null); then
-	export DISPLAY=$(ip route | awk '{print $3; exit}'):0
-	export LIBGL_ALWAYS_INDIRECT=1
+  export DISPLAY=$(ip route | awk '{print $3; exit}'):0
+  export LIBGL_ALWAYS_INDIRECT=1
 fi
 
 # Set up prompt theme
@@ -33,6 +48,9 @@ fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
 # TODO:
 # - autopair
 # - completion
@@ -41,10 +59,10 @@ prompt pure
 
 alias ls='ls --color=auto'
 alias l='ls -lah'
+alias grep='grep --color=auto'
 alias rm='rm -i'
 
 alias zshrc="$EDITOR $HOME/.zshrc"
-alias vimrc="$EDITOR $HOME/.vimrc"
 alias reload="source $HOME/.zshrc"
 
 alias g=git
