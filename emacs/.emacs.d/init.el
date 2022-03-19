@@ -41,8 +41,9 @@
 (setq current-font "JetBrains Mono")
 (set-face-attribute 'default nil
 		    :font current-font
-		    :height 95
-		    :weight 'extra-light)
+		    :height 92
+		    :weight 'normal)
+		    ;; :weight 'extra-light)
 
 (blink-cursor-mode 0)
 (show-paren-mode 1)
@@ -67,16 +68,23 @@
 ;; Autopair matching delimiters
 (electric-pair-mode t)
 
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; set ESC to quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-x q") 'kill-buffer-and-window)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(use-package diminish
+  :config
+  (diminish 'eldoc-mode)
+  (diminish 'auto-revert-mode))
+
 (use-package ivy
+  :diminish ivy-mode
   :bind ("C-x b" . ivy-switch-buffer)
   :config (ivy-mode 1))
 
 (use-package counsel
+  :diminish counsel-mode
   :after ivy
   :config (counsel-mode))
 
@@ -88,6 +96,7 @@
   :init (all-the-icons-ivy-rich-mode 1))
 
 (use-package which-key
+  :diminish which-key-mode
   :init (which-key-mode)
   :config
   (setq which-key-delay 0.5)
@@ -104,18 +113,18 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-key] . helpful-key))
 
-(use-package nano-theme
-  :config (load-theme 'nano-light t)
-  :custom-face (trailing-whitespace ((t (:background "#ff8a8a")))))
+;; (use-package nano-theme
+;;   :config (load-theme 'nano-light t)
+;;   :custom-face (trailing-whitespace ((t (:background "#ff8a8a")))))
+
+(use-package sketch-themes
+  :config (load-theme 'sketch-black t))
 
 ;; (use-package sketch-themes
-;;   :config (load-theme 'sketch-white t)
+;;   :config (load-theme 'sketch-white t))
 ;;   :custom-face
 ;;   (mode-line ((t (:background "#efefef" :foreground "#212121" :box (:line-width 5 :color "#efefef")))))
 ;;   (mode-line-inactive ((t (:background "#dddddd" :foreground "#efefef" :box (:line-width 5 :color "#dddddd"))))))
-
-(use-package minions
-  :config (minions-mode 1))
 
 (use-package evil
   :init
@@ -140,10 +149,12 @@
 (use-package undo-fu :after evil)
 
 (use-package evil-commentary
+  :diminish evil-commentary-mode
   :after evil
   :config (evil-commentary-mode))
 
 (use-package evil-collection
+  :diminish evil-collection-unimpaired-mode
   :after evil
   :config (evil-collection-init 'magit))
 
@@ -163,6 +174,7 @@
   :after (treemacs evil))
 
 (use-package projectile
+  :diminish projectile-mode
   :config (projectile-mode)
   :bind (:map projectile-mode-map
 	      ("C-c p" . projectile-command-map)
@@ -176,6 +188,7 @@
   :config (counsel-projectile-mode))
 
 (use-package company
+  :diminish company-mode
   :init
   (setq company-minimum-prefix-length 1
 	company-idle-delay 0.0
@@ -198,6 +211,7 @@
 	    "gr" 'lsp-find-references))
 
 (use-package flycheck
+  :diminish flycheck-mode
   :config (evil-define-key 'normal prog-mode-map
 	    "[g" 'flycheck-previous-error
 	    "]g" 'flycheck-next-error))
@@ -227,6 +241,7 @@
 (use-package org-superstar)
 
 (use-package org
+  :diminish org-indent-mode visual-line-mode
   :after org-superstar
   :hook (org-mode . my/org-mode-setup)
   :config

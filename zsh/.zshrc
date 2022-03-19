@@ -13,23 +13,13 @@ export KEYTIMEOUT=1
 autoload -Uz compinit
 compinit
 
-export PATH=$PATH:$HOME/bin
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/bin:/usr/local/go/bin:/usr/local/nodejs/bin
+export EDITOR=nvim
+export MANPAGER='nvim +Man!'
 
 if type go > /dev/null 2>&1; then
   export GOPATH=$(go env GOPATH)
   export PATH=$PATH:$GOPATH/bin
-fi
-
-if type nvim > /dev/null 2>&1; then
-  export EDITOR=nvim
-  export MANPAGER='nvim +Man!'
-  alias vimrc="$EDITOR $HOME/.config/nvim/init.lua"
-  alias vi=nvim
-else
-  export EDITOR=vim
-  alias vimrc="$EDITOR $HOME/.vimrc"
-  alias vi=vim
 fi
 
 if (grep -qEi "(microsoft|WSL)" /proc/version &>/dev/null); then
@@ -61,8 +51,10 @@ alias ls='ls --color=auto'
 alias l='ls -lah'
 alias grep='grep --color=auto'
 alias rm='rm -i'
+alias vi=nvim
 
 alias zshrc="$EDITOR $HOME/.zshrc"
+alias vimrc="$EDITOR $HOME/.config/nvim/init.lua"
 alias reload="source $HOME/.zshrc"
 
 alias g=git
