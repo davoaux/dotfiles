@@ -54,7 +54,7 @@ alias rm='rm -i'
 alias vi=nvim
 
 alias zshrc="$EDITOR $HOME/.zshrc"
-alias vimrc="$EDITOR $HOME/.config/nvim/init.lua"
+alias vimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias reload="source $HOME/.zshrc"
 
 alias g=git
