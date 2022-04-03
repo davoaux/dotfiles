@@ -44,6 +44,11 @@ let g:jetpack#ignore_patterns = [
 call jetpack#begin(g:vimrc.pkg.plugins)
 call jetpack#add('tani/vim-jetpack')
 call jetpack#add('nvim-treesitter/nvim-treesitter', { 'do': {-> 'TSUpdate'} })
+call jetpack#add('neovim/nvim-lspconfig')
+call jetpack#add('hrsh7th/nvim-cmp')
+call jetpack#add('hrsh7th/cmp-nvim-lsp')
+call jetpack#add('saadparwaiz1/cmp_luasnip')
+call jetpack#add('L3MON4D3/LuaSnip')
 call jetpack#add('terrortylor/nvim-comment')
 call jetpack#add('romainl/vim-cool')
 call jetpack#add('jiangmiao/auto-pairs')
@@ -137,6 +142,64 @@ require('nvim_comment').setup {
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
   indent = { enable = true }
+}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+local lspconfig = require('lspconfig')
+
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    -- on_attach = my_custom_on_attach,
+    capabilities = capabilities,
+  }
+end
+
+local luasnip = require 'luasnip'
+
+local cmp = require 'cmp'
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end,
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
 }
 EOF
 

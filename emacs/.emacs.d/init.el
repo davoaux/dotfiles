@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t -*-
+
 (setq inhibit-startup-screen t)
 
 ;; lsp-mode recomended settings for performance
@@ -7,6 +9,8 @@
 ;; Disable backup and autosave files
 (setq auto-save-default nil
       make-backup-files nil)
+
+(setq native-comp-async-report-warnings-errors nil)
 
 (require 'package)
 
@@ -22,8 +26,7 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(eval-when-compile
-  (require 'use-package))
+(eval-when-compile (require 'use-package))
 
 (setq use-package-always-ensure t)
 
@@ -41,18 +44,19 @@
 (setq current-font "JetBrains Mono")
 (set-face-attribute 'default nil
 		    :font current-font
-		    :height 92
-		    :weight 'normal)
-		    ;; :weight 'extra-light)
+		    :height 90
+		    :weight 'bold) ;; bold medium normal light extra-light)
 
 (blink-cursor-mode 0)
 (show-paren-mode 1)
 
-;; (global-display-line-numbers-mode)
+(global-display-line-numbers-mode)
 (column-number-mode)
 
 ;; Disable line numbers for some modes (change to just display line numbers on prog-mode?)
 (dolist (mode '(org-mode-hook
+		lisp-interaction-mode-hook
+		gomoku-mode-hook
 		dired-mode-hook
 		treemacs-mode-hook
 		compilation-mode-hook
@@ -113,13 +117,22 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-key] . helpful-key))
 
+(defun night-owl/ivy-format-function-line (cands)
+  "Transform CANDS into a string for minibuffer."
+  (let ((str (ivy-format-function-line cands)))
+    (font-lock-append-text-property 0 (length str) 'face 'ivy-not-current str)
+    str))
+
+;; (use-package hybrid-reverse-theme :config (load-theme 'hybrid-reverse t))
+;; (use-package sketch-themes :config (load-theme 'sketch-black t))
+;; (use-package arjen-grey-theme :config (load-theme 'arjen-grey t))
+(use-package night-owl-theme
+  :config
+  (setq ivy-format-function #'night-owl/ivy-format-function-line)
+  (load-theme 'night-owl t))
 ;; (use-package nano-theme
 ;;   :config (load-theme 'nano-light t)
 ;;   :custom-face (trailing-whitespace ((t (:background "#ff8a8a")))))
-
-(use-package sketch-themes
-  :config (load-theme 'sketch-black t))
-
 ;; (use-package sketch-themes
 ;;   :config (load-theme 'sketch-white t))
 ;;   :custom-face
@@ -199,7 +212,11 @@
   :hook (after-init . global-company-mode)
   :bind ("C-SPC" . company-complete))
 
-;; TODO "K" hover lsp-ui
+(use-package lsp-ui
+  :after lsp-mode
+  :init (setq lsp-ui-doc-position 'at-point)
+  :config (evil-define-key 'normal lsp-mode-map "K" 'lsp-ui-doc-show))
+
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-l"
@@ -207,8 +224,7 @@
   :hook ((go-mode . lsp-deferred)
 	 (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp lsp-deferred
-  :config (evil-define-key 'normal lsp-mode-map
-	    "gr" 'lsp-find-references))
+  :config (evil-define-key 'normal lsp-mode-map "gr" 'lsp-find-references))
 
 (use-package flycheck
   :diminish flycheck-mode
