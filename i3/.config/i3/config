@@ -7,16 +7,16 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
-bindsym $mod+d exec rofi -show drun
-bindsym $mod+Shift+q exec ~/scripts/powermenu
-bindsym $mod+p exec ~/scripts/popup
+bindsym $mod+d exec dmenu_run
+bindsym $mod+Shift+q exec ~/bin/powermenu
+bindsym $mod+p exec ~/bin/popup
 
-bindsym $mod+Shift+Print exec ~/scripts/prtscr -f
-bindsym $mod+Print exec ~/scripts/prtscr
+bindsym $mod+Shift+Print exec ~/bin/prtscr -f
+bindsym $mod+Print exec ~/bin/prtscr
 
-bindsym $mod+F6 exec ~/scripts/vol -
-bindsym $mod+F7 exec ~/scripts/vol +
-bindsym $mod+F8 exec ~/scripts/vol !
+bindsym $mod+F6 exec ~/bin/vol -
+bindsym $mod+F7 exec ~/bin/vol +
+bindsym $mod+F8 exec ~/bin/vol !
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down

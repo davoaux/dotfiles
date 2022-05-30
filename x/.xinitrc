@@ -10,8 +10,8 @@ setxkbmap us
 
 # dunst &
 
-# $HOME/.fehbg &
-xsetroot -solid "#525252"
+$HOME/.fehbg &
+# xsetroot -solid "#525252"
 
 xinput --set-prop 'Kingsis Peripherals ZOWIE Gaming mouse' 'libinput Accel Speed' -0.2 &
 xinput --set-prop 'Kingsis Peripherals ZOWIE Gaming mouse' 'libinput Accel Profile Enabled' 0, 1 &
