@@ -49,6 +49,8 @@ call jetpack#add('hrsh7th/nvim-cmp')
 call jetpack#add('hrsh7th/cmp-nvim-lsp')
 call jetpack#add('saadparwaiz1/cmp_luasnip')
 call jetpack#add('L3MON4D3/LuaSnip')
+call jetpack#add('nvim-lua/plenary.nvim')
+call jetpack#add('nvim-telescope/telescope.nvim')
 call jetpack#add('terrortylor/nvim-comment')
 call jetpack#add('romainl/vim-cool')
 call jetpack#add('jiangmiao/auto-pairs')
@@ -117,12 +119,15 @@ let g:fern#renderer#default#root_symbol      = '~ '
 
 nnoremap H ^
 nnoremap L $
-nnoremap <Leader>t m`^i- [ ] <esc>``5l'
-nnoremap <Leader>i <Cmd>sp<CR>
-nnoremap <Leader>o <Cmd>vsp<CR>
-nnoremap <C-q> <Cmd>bdelete<CR>
-nnoremap <C-n> <Cmd>:Fern . -drawer -toggle<CR>
-nnoremap <F5> <Cmd>set list!<CR>
+nnoremap <leader>t m`^i- [ ] <esc>``5l'
+nnoremap <leader>i <cmd>sp<cr>
+nnoremap <leader>o <cmd>vsp<cr>
+nnoremap <C-q> <cmd>bdelete<cr>
+nnoremap <C-n> <cmd>:Fern . -drawer -toggle<cr>
+nnoremap <F5> <cmd>set list!<cr>
+
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-b> <cmd>Telescope buffers<cr>
 
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
@@ -144,6 +149,14 @@ require('nvim-treesitter.configs').setup {
   indent = { enable = true }
 }
 
+require('telescope').setup {
+  pickers = {
+    find_files = { theme = "ivy" },
+    buffers    = { theme = "ivy" }
+  }
+}
+
+-- LSP/completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
