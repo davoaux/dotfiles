@@ -12,29 +12,55 @@
 
 (setq native-comp-async-report-warnings-errors nil)
 
-(require 'package)
+;; Set straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                           ("org" . "https://orgmode.org/elpa/")
-                           ("elpa" . "https://elpa.gnu.org/packages/")))
+;; Set package.el
+;; (require 'package)
+;;
+;; (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+;;                            ("org" . "https://orgmode.org/elpa/")
+;;                            ("elpa" . "https://elpa.gnu.org/packages/")))
+;; (package-initialize)
+;;
+;; (unless package-archive-contents
+;;   (package-refresh-contents))
+;;
+;; (unless (package-installed-p 'use-package)
+;;   (package-install 'use-package))
+;;
+;; (eval-when-compile (require 'use-package))
 
-(package-initialize)
-
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-(eval-when-compile (require 'use-package))
-
-(setq use-package-always-ensure t)
+;; (setq use-package-always-ensure t)    ; if using package.el
+(setq straight-use-package-by-default t) ; if using straight.el
 
  ;; Disable GUI elements
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(fringe-mode '(nil . 0))
+(fringe-mode '(nil . nil))
+
+;; Add frame borders and window dividers
+(modify-all-frames-parameters
+ '((right-divider-width . 20)
+   (internal-border-width . 20)))
+(dolist (face '(window-divider
+                window-divider-first-pixel
+                window-divider-last-pixel))
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default :background)))
+(set-face-background 'fringe (face-attribute 'default :background))
 
 (setq visible-bell nil
       ring-bell-function #'ignore)
@@ -44,13 +70,13 @@
 (setq current-font "JetBrains Mono")
 (set-face-attribute 'default nil
 		    :font current-font
-		    :height 90
+		    :height 94
 		    :weight 'bold) ;; bold medium normal light extra-light)
 
 (blink-cursor-mode 0)
 (show-paren-mode 1)
 
-(global-display-line-numbers-mode)
+;; (global-display-line-numbers-mode)
 (column-number-mode)
 
 ;; Disable line numbers for some modes (change to just display line numbers on prog-mode?)
@@ -117,27 +143,26 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-key] . helpful-key))
 
-(defun night-owl/ivy-format-function-line (cands)
-  "Transform CANDS into a string for minibuffer."
-  (let ((str (ivy-format-function-line cands)))
-    (font-lock-append-text-property 0 (length str) 'face 'ivy-not-current str)
-    str))
+;; (defun night-owl/ivy-format-function-line (cands)
+;;   "Transform CANDS into a string for minibuffer."
+;;   (let ((str (ivy-format-function-line cands)))
+;;     (font-lock-append-text-property 0 (length str) 'face 'ivy-not-current str)
+;;     str))
 
-;; (use-package hybrid-reverse-theme :config (load-theme 'hybrid-reverse t))
-;; (use-package sketch-themes :config (load-theme 'sketch-black t))
-;; (use-package arjen-grey-theme :config (load-theme 'arjen-grey t))
-(use-package night-owl-theme
+;; (use-package night-owl-theme
+;;   :config
+;;   (setq ivy-format-function #'night-owl/ivy-format-function-line)
+;;   (load-theme 'night-owl t))
+
+(use-package lambda-themes
+  :straight (:type git :host github :repo "lambda-emacs/lambda-themes")
+  :custom
+  (lambda-themes-set-italic-comments t)
+  (lambda-themes-set-italic-keywords t)
+  ;; (lambda-themes-set-variable-pitch t)
+  (lambda-themes-set-variable-pitch nil)
   :config
-  (setq ivy-format-function #'night-owl/ivy-format-function-line)
-  (load-theme 'night-owl t))
-;; (use-package nano-theme
-;;   :config (load-theme 'nano-light t)
-;;   :custom-face (trailing-whitespace ((t (:background "#ff8a8a")))))
-;; (use-package sketch-themes
-;;   :config (load-theme 'sketch-white t))
-;;   :custom-face
-;;   (mode-line ((t (:background "#efefef" :foreground "#212121" :box (:line-width 5 :color "#efefef")))))
-;;   (mode-line-inactive ((t (:background "#dddddd" :foreground "#efefef" :box (:line-width 5 :color "#dddddd"))))))
+  (load-theme 'lambda-light t))
 
 (use-package evil
   :init
@@ -178,10 +203,6 @@
   :config (evil-leader/set-key "n" 'treemacs))
 
 (use-package all-the-icons)
-
-(use-package treemacs-all-the-icons
-  :after (treemacs all-the-icons)
-  :config (treemacs-load-theme "all-the-icons"))
 
 (use-package treemacs-evil
   :after (treemacs evil))
@@ -249,18 +270,20 @@
   ("<f6>" . recompile)
   :config (evil-leader/set-key-for-mode 'go-mode "f" 'gofmt))
 
-(defun my/org-mode-setup ()
-  (org-indent-mode t)
-  (visual-line-mode t)
-  (org-superstar-mode 1))
-
-(use-package org-superstar)
+(use-package org-modern
+  :config (global-org-modern-mode))
 
 (use-package org
   :diminish org-indent-mode visual-line-mode
-  :after org-superstar
-  :hook (org-mode . my/org-mode-setup)
+  :after org-modern
+  :hook (org-mode . org-hide-block-all)
   :config
-  (setq org-ellipsis " ▼"
-	org-hide-emphasis-markers t)
+  (setq org-auto-align-tags nil
+	org-tags-column 0
+	org-catch-invisible-edits 'show-and-error
+	org-special-ctrl-a/e t
+	org-insert-heading-respect-content t
+	org-hide-emphasis-markers t
+	org-pretty-entities t
+	org-ellipsis "…")
   (evil-define-key 'normal org-mode-map "gx" 'org-open-at-point))

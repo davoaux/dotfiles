@@ -43,6 +43,10 @@ if [[ ! -d $HOME/.zsh/pure ]]; then
 fi
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
+
+export PURE_PROMPT_SYMBOL="$"
+export PURE_PROMPT_VICMD_SYMBOL="<$>"
+
 prompt pure
 
 #source /usr/local/share/chruby/chruby.sh
