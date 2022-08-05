@@ -12,6 +12,11 @@
 
 (setq native-comp-async-report-warnings-errors nil)
 
+;; https://www.reddit.com/r/emacs/comments/qil2qh/symbols_function_definition_is_void/
+;; For some weird reason I don't yet understand, declaring this function as nil
+;; seems to fix some org-mode issues I'm getting by using org-modern
+(defun native-comp-available-p () nil)
+
 ;; Set straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -26,24 +31,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Set package.el
-;; (require 'package)
-;;
-;; (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-;;                            ("org" . "https://orgmode.org/elpa/")
-;;                            ("elpa" . "https://elpa.gnu.org/packages/")))
-;; (package-initialize)
-;;
-;; (unless package-archive-contents
-;;   (package-refresh-contents))
-;;
-;; (unless (package-installed-p 'use-package)
-;;   (package-install 'use-package))
-;;
-;; (eval-when-compile (require 'use-package))
-
-;; (setq use-package-always-ensure t)    ; if using package.el
-(setq straight-use-package-by-default t) ; if using straight.el
+(setq straight-use-package-by-default t)
 
  ;; Disable GUI elements
 (scroll-bar-mode -1)
@@ -84,7 +72,6 @@
 		lisp-interaction-mode-hook
 		gomoku-mode-hook
 		dired-mode-hook
-		treemacs-mode-hook
 		compilation-mode-hook
 		helpful-mode-hook
 		eshell-mode-hook))
@@ -103,6 +90,13 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Ensure environment variables inside Emacs look the same as in the user's shell
+(use-package exec-path-from-shell
+  :straight (:type git :host github :repo "purcell/exec-path-from-shell")
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
 (use-package diminish
   :config
   (diminish 'eldoc-mode)
@@ -120,6 +114,8 @@
 
 (use-package ivy-rich
   :init (ivy-rich-mode 1))
+
+(use-package all-the-icons)
 
 (use-package all-the-icons-ivy-rich
   :after (ivy ivy-rich all-the-icons)
@@ -199,13 +195,21 @@
 (use-package magit
   :config (evil-leader/set-key "g" 'magit))
 
-(use-package treemacs
-  :config (evil-leader/set-key "n" 'treemacs))
-
-(use-package all-the-icons)
-
-(use-package treemacs-evil
-  :after (treemacs evil))
+(use-package neotree
+  :config
+  (setq neo-theme 'nerd
+	neo-smart-open t
+	projectile-switch-project-action 'neotree-projectile-action)
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+  (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "!") 'neotree-hidden-file-toggle)
+  (evil-leader/set-key "n" 'neotree-toggle))
 
 (use-package projectile
   :diminish projectile-mode

@@ -96,12 +96,12 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-" let g:gruvbox_contrast_dark='hard'
-" try
-"   colorscheme gruvbox
-" catch /.*/
-"   colorscheme default
-" endtry
+let g:gruvbox_contrast_dark='hard'
+try
+  colorscheme gruvbox
+catch /.*/
+  colorscheme default
+endtry
 
 autocmd! filetype json setlocal filetype=jsonc
 autocmd! filetype zsh setlocal filetype=sh
