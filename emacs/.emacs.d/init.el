@@ -39,16 +39,16 @@
 (menu-bar-mode -1)
 (fringe-mode '(nil . nil))
 
-;; Add frame borders and window dividers
-(modify-all-frames-parameters
- '((right-divider-width . 20)
-   (internal-border-width . 20)))
-(dolist (face '(window-divider
-                window-divider-first-pixel
-                window-divider-last-pixel))
-  (face-spec-reset-face face)
-  (set-face-foreground face (face-attribute 'default :background)))
-(set-face-background 'fringe (face-attribute 'default :background))
+;; ;; Add frame borders and window dividers
+;; (modify-all-frames-parameters
+;;  '((right-divider-width . 20)
+;;    (internal-border-width . 20)))
+;; (dolist (face '(window-divider
+;;                 window-divider-first-pixel
+;;                 window-divider-last-pixel))
+;;   (face-spec-reset-face face)
+;;   (set-face-foreground face (face-attribute 'default :background)))
+;; (set-face-background 'fringe (face-attribute 'default :background))
 
 (setq visible-bell nil
       ring-bell-function #'ignore)
@@ -64,7 +64,7 @@
 (blink-cursor-mode 0)
 (show-paren-mode 1)
 
-;; (global-display-line-numbers-mode)
+(global-display-line-numbers-mode)
 (column-number-mode)
 
 ;; Disable line numbers for some modes (change to just display line numbers on prog-mode?)
@@ -72,6 +72,7 @@
 		lisp-interaction-mode-hook
 		gomoku-mode-hook
 		dired-mode-hook
+		neotree-mode-hook
 		compilation-mode-hook
 		helpful-mode-hook
 		eshell-mode-hook))
@@ -139,26 +140,31 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-key] . helpful-key))
 
-;; (defun night-owl/ivy-format-function-line (cands)
-;;   "Transform CANDS into a string for minibuffer."
-;;   (let ((str (ivy-format-function-line cands)))
-;;     (font-lock-append-text-property 0 (length str) 'face 'ivy-not-current str)
-;;     str))
+(defun night-owl/ivy-format-function-line (cands)
+  "Transform CANDS into a string for minibuffer."
+  (let ((str (ivy-format-function-line cands)))
+    (font-lock-append-text-property 0 (length str) 'face 'ivy-not-current str)
+    str))
 
-;; (use-package night-owl-theme
-;;   :config
-;;   (setq ivy-format-function #'night-owl/ivy-format-function-line)
-;;   (load-theme 'night-owl t))
-
-(use-package lambda-themes
-  :straight (:type git :host github :repo "lambda-emacs/lambda-themes")
-  :custom
-  (lambda-themes-set-italic-comments t)
-  (lambda-themes-set-italic-keywords t)
-  ;; (lambda-themes-set-variable-pitch t)
-  (lambda-themes-set-variable-pitch nil)
+(use-package night-owl-theme
   :config
-  (load-theme 'lambda-light t))
+  (setq ivy-format-function #'night-owl/ivy-format-function-line)
+  (load-theme 'night-owl t))
+
+;; (use-package lambda-themes
+;;   :straight (:type git :host github :repo "lambda-emacs/lambda-themes")
+;;   :custom
+;;   (lambda-themes-set-italic-comments t)
+;;   (lambda-themes-set-italic-keywords t)
+;;   ;; (lambda-themes-set-variable-pitch t)
+;;   (lambda-themes-set-variable-pitch nil)
+;;   :config
+;;   (load-theme 'lambda-light t))
+
+;; https://github.com/greduan/emacs-theme-gruvbox/issues/192
+;; (use-package gruvbox-theme
+;;   :straight (:type git :host github :repo "greduan/emacs-theme-gruvbox")
+;;   :config (load-theme 'gruvbox-light-medium t))
 
 (use-package evil
   :init

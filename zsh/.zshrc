@@ -14,14 +14,19 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-export PATH=$PATH:$HOME/bin:/usr/local/go/bin:/usr/local/nodejs/bin
-export EDITOR=nvim
-export MANPAGER='nvim +Man!'
+export PATH="$HOME/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
+export PATH="/usr/local/nodejs/bin:$PATH"
+export PNPM_HOME="/home/davoaux/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 
 if type go > /dev/null 2>&1; then
   export GOPATH=$(go env GOPATH)
-  export PATH=$PATH:$GOPATH/bin
+  export PATH="$GOPATH/bin:$PATH"
 fi
+
+export EDITOR=nvim
+export MANPAGER='nvim +Man!'
 
 if (grep -qEi "(microsoft|WSL)" /proc/version &>/dev/null); then
   export DISPLAY=$(ip route | awk '{print $3; exit}'):0
@@ -67,9 +72,3 @@ alias copyp='rsync -aP'
 alias zshrc="$EDITOR $HOME/.zshrc"
 alias vimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias reload="source $HOME/.zshrc"
-
-alias g=git
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gs='git status --short'
-alias ga='git add -p'
-alias gp='git push'
