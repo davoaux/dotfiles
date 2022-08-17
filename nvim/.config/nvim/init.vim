@@ -131,10 +131,8 @@ nnoremap <F5> <cmd>set list!<cr>
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <C-b> <cmd>Telescope buffers<cr>
 
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
-nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> :m +1<cr>
+nnoremap <C-k> :m -2<cr>
 
 nnoremap <Up>     <Nop>
 nnoremap <Down>   <Nop>

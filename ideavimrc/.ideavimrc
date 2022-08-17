@@ -1,0 +1,27 @@
+let mapleader=" "
+
+Plug 'tpope/vim-commentary'
+
+set visualbell
+set noerrorbells
+set number
+set scrolloff=5
+set incsearch
+set clipboard+=unnamed
+set idearefactormode=keep
+set ideajoin
+set NERDTree
+let g:NERDTreeMapActivateNode="l"
+let g:NERDTreeMapJumpParent="h"
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+nmap <c-j> :m +1<cr>
+nmap <c-k> :m -2<cr>
+nmap <c-p> <Action>(GotoFile)
+nmap <c-s-p> <Action>(GotoAction)
+nmap <c-s-o> <Action>(OptimizeImports)
+nmap <leader>q <Action>(CloseEditor)
+nmap <leader>n :NERDTreeToggle<cr>
+nmap <leader>i <Action>(SplitHorizontally)
+nmap <leader>o <Action>(SplitVertically)
