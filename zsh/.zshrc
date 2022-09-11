@@ -72,3 +72,4 @@ alias copyp='rsync -aP'
 alias zshrc="$EDITOR $HOME/.zshrc"
 alias vimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias reload="source $HOME/.zshrc"
+

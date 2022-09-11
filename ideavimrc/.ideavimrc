@@ -16,12 +16,16 @@ let g:NERDTreeMapJumpParent="h"
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
+
 nmap <c-j> :m +1<cr>
 nmap <c-k> :m -2<cr>
 nmap <c-p> <Action>(GotoFile)
 nmap <c-s-p> <Action>(GotoAction)
 nmap <c-s-o> <Action>(OptimizeImports)
+nmap ]g <Action>(GotoNextError)
+nmap [g <Action>(GotoPreviousError)
 nmap <leader>q <Action>(CloseEditor)
 nmap <leader>n :NERDTreeToggle<cr>
 nmap <leader>i <Action>(SplitHorizontally)
 nmap <leader>o <Action>(SplitVertically)
+nmap <leader>f <Action>(ReformatCode)

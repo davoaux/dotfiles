@@ -58,7 +58,6 @@ call jetpack#add('jiangmiao/auto-pairs')
 call jetpack#add('lambdalisue/fern.vim')
 call jetpack#add('antoinemadec/FixCursorHold.nvim')
 call jetpack#add('ellisonleao/gruvbox.nvim')
-call jetpack#add('tpope/vim-vividchalk')
 call jetpack#end()
 
 set encoding=utf-8
@@ -92,14 +91,9 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
-
-" let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_dark='hard'
 try
-  colorscheme vividchalk
+  colorscheme gruvbox
 catch /.*/
   colorscheme default
 endtry
@@ -124,7 +118,7 @@ nnoremap L $
 nnoremap <leader>t m`^i- [ ] <esc>``5l'
 nnoremap <leader>i <cmd>sp<cr>
 nnoremap <leader>o <cmd>vsp<cr>
-nnoremap <C-q> <cmd>bdelete<cr>
+nnoremap <leader>q <cmd>bdelete<cr>
 nnoremap <C-n> <cmd>:Fern . -drawer -toggle<cr>
 nnoremap <F5> <cmd>set list!<cr>
 
@@ -164,8 +158,8 @@ local lspconfig = require('lspconfig')
 
 local opts = { noremap=true, silent=true }
 
-vim.keymap.set('n', '[d', 'vim.diagnostic.goto_prev', opts)
-vim.keymap.set('n', ']d', 'vim.diagnostic.goto_next', opts)
+vim.keymap.set('n', '[g', 'vim.diagnostic.goto_prev', opts)
+vim.keymap.set('n', ']g', 'vim.diagnostic.goto_next', opts)
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)

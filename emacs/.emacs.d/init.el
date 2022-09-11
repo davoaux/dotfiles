@@ -255,7 +255,9 @@
   :hook ((go-mode . lsp-deferred)
 	 (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp lsp-deferred
-  :config (evil-define-key 'normal lsp-mode-map "gr" 'lsp-find-references))
+  :config
+  (evil-define-key 'normal lsp-mode-map "gr" 'lsp-find-references)
+  (evil-leader/set-key-for-mode 'lsp-mode "c" 'lsp-execute-code-action))
 
 (use-package flycheck
   :diminish flycheck-mode

@@ -1,95 +1,101 @@
 {
-    "breadcrumbs.enabled": false,
-    "editor.formatOnSave": true,
-    "editor.fontLigatures": true,
-    // "editor.fontFamily": "Hack",
-    // "editor.fontFamily": "Fira Code",
-    "editor.codeLens": false,
-    "editor.fontFamily": "JetBrainsMono Nerd Font",
-    "editor.fontSize": 14,
-    "editor.lineNumbers": "off",
-    "editor.minimap.enabled": false,
-    "editor.folding": false,
-    "editor.cursorBlinking": "solid",
-    "editor.renderIndentGuides": false,
-    "editor.renderLineHighlight": "none",
-    "editor.renderWhitespace": "none",
-    "editor.overviewRulerBorder": false, // ?
-    "editor.scrollbar.vertical": "hidden",
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "explorer.decorations.badges": true,
-    "explorer.openEditors.visible": 0,
-    "terminal.integrated.fontSize": 14,
-    "window.menuBarVisibility": "toggle",
-    "window.zoomLevel": 0,
-    "workbench.editor.showTabs": false,
-    "workbench.statusBar.visible": true,
-    "workbench.activityBar.visible": false,
-    "workbench.sideBar.location": "left",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "GitHub Light",
-    "eslint.packageManager": "yarn",
-    "vim.leader": "<space>",
-    "vim.hlsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.surround": false,
-    "vim.sneak": false,
-    "vim.camelCaseMotion.enable": false,
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["<C-x>"],
-            "commands": ["workbench.view.extensions"],
-        },
-        {
-            "before": ["<C-b>"],
-            "commands": ["workbench.action.showAllEditors"],
-        },
-        {
-            "before": ["<C-f>"],
-            "commands": ["editor.action.quickFix"],
-        },
-        {
-            "before": ["leader", "h"],
-            "commands": [":nohlsearch"]
-        },
-        {
-            "before": ["<C-q>"],
-            "commands": ["workbench.action.closeActiveEditor"]
-        },
-        {
-            "before": ["<C-k>"],
-            "commands": ["editor.action.showHover"]
-        },
-        {
-            "before": ["leader", "c"],
-            "commands": ["workbench.action.selectTheme"]
-        },
-        {
-            "before": ["<C-j>"],
-            "commands": ["workbench.action.terminal.toggleTerminal"]
-        }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["leader", "o"],
-            "commands": ["workbench.action.splitEditor"],
-        },
-        {
-            "before": ["[", "g"],
-            "commands": ["editor.action.marker.prev"],
-        },
-        {
-            "before": ["]", "g"],
-            "commands": ["editor.action.marker.next"],
-        }
-    ],
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "breadcrumbs.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Source Code Pro",
+  "editor.fontSize": 14,
+  "editor.bracketPairColorization.enabled": false,
+  "editor.minimap.enabled": false,
+  "editor.minimap.renderCharacters": false,
+  "editor.folding": false,
+  "editor.tabSize": 4,
+  "editor.cursorBlinking": "solid",
+  "editor.renderWhitespace": "boundary",
+  "editor.renderLineHighlight": "none",
+  "editor.matchBrackets": "near",
+  "editor.occurrencesHighlight": false,
+  "editor.overviewRulerBorder": false,
+  "editor.scrollbar.vertical": "auto",
+  "editor.guides.indentation": false,
+  "explorer.confirmDelete": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.decorations.badges": false,
+  "explorer.openEditors.visible": 0,
+  "window.menuBarVisibility": "toggle",
+  "window.zoomLevel": 0,
+  "window.dialogStyle": "native",
+  "window.titleBarStyle": "native",
+  "workbench.editor.showTabs": false,
+  "workbench.editor.showIcons": false,
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": false,
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "welcomePage",
+  "workbench.iconTheme": null,
+  "workbench.colorCustomizations": {
+    "[Default Dark+]": {
+      "editor.background": "#0c0c0c",
+      "editorCursor.background": "#000000",
+      "editorCursor.foreground": "#00ff00",
+      "statusBar.background": "#000000",
+      // "sideBar.background": "#0c0c0c",
+      "editorSuggestWidget.selectedBackground": "#0c0c0c",
+      "editorSuggestWidget.selectedForeground": "#ffffff"
+    }
+  },
+  "vim.debug.silent": true,
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.surround": false,
+  "vim.sneak": false,
+  "vim.camelCaseMotion.enable": false,
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<C-x>"],
+      "commands": ["workbench.view.extensions"]
     },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    {
+      "before": ["<C-b>"],
+      "commands": ["workbench.action.showAllEditors"]
     },
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "omnisharp.enableRoslynAnalyzers": true,
+    {
+      "before": ["<C-f>"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["leader", "h"],
+      "commands": [":nohlsearch"]
+    },
+    {
+      "before": ["leader", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["leader", "c"],
+      "commands": ["workbench.action.selectTheme"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["leader", "o"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["[", "g"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "g"],
+      "commands": ["editor.action.marker.next"]
+    }
+  ]
 }

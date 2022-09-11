@@ -9,4 +9,4 @@
   ss = status --short
   cc = shortlog -sn --all
 [init]
-  defaultBranch = main
+	defaultBranch = main
