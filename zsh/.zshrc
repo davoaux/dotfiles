@@ -54,6 +54,15 @@ export PURE_PROMPT_VICMD_SYMBOL="<$>"
 
 prompt pure
 
+# Set up k8s context helper
+if [[ ! -d $HOME/.zsh/kube-ps1 ]]; then
+  mkdir -p $HOME/.zsh
+  git clone https://github.com/jonmosco/kube-ps1 $HOME/.zsh/kube-ps1 --depth=1
+fi
+
+source $HOME/.zsh/kube-ps1/kube-ps1.sh
+PROMPT='$(kube_ps1) '$PROMPT # or RPROMPT='$(kube_ps1)'
+
 #source /usr/local/share/chruby/chruby.sh
 #source /usr/local/share/chruby/auto.sh
 
@@ -66,10 +75,8 @@ alias ls='ls --color=auto'
 alias l='ls -lah'
 alias grep='grep --color=auto'
 alias rm='rm -i'
+alias k=kubectl
 alias vi=nvim
-alias copyp='rsync -aP'
 
-alias zshrc="$EDITOR $HOME/.zshrc"
-alias vimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias reload="source $HOME/.zshrc"
 
