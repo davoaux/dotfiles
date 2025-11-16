@@ -9,7 +9,8 @@ set scrolloff=5
 set incsearch
 set ignorecase
 set smartcase
-set clipboard+=unnamed
+set clipboard=unnamed
+set clipboard^=ideaput
 set idearefactormode=keep
 set ideajoin
 set NERDTree
@@ -30,7 +31,12 @@ nmap [g <Action>(GotoPreviousError)
 nmap <leader>q <Action>(CloseEditor)
 nmap <leader>n :NERDTreeToggle<cr>
 nmap <leader>g <Action>(Gradle.ExecuteTask)
+nmap <leader>m <Action>(Maven.ExecuteGoal)
 nmap <leader>i <Action>(SplitHorizontally)
 nmap <leader>o <Action>(SplitVertically)
+nmap <leader>r <Action>(RenameElement)
 nmap <leader>f <Action>(ReformatCode)
-
+" For formatting, especially comments
+" Depends on https://plugins.jetbrains.com/plugin/7234-wrap-to-column/
+" NOTE: vnoremap doesn't work with Actions
+"nmap gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)

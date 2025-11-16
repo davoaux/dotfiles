@@ -14,11 +14,16 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
+export JAVA_HOME="$HOME/.jdks/corretto-21.0.6/"
+
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
-export PATH="/usr/local/nodejs/bin:$PATH"
-export PNPM_HOME="/home/davoaux/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+
+# inellij bundled maven/gradle
+export PATH="/snap/intellij-idea-community/588/plugins/maven/lib/maven3/bin:$PATH"
+export PATH="$HOME/.gradle/wrapper/dists/gradle-8.10-bin/deqhafrv1ntovfmgh0nh3npr9/gradle-8.10/bin/:$PATH"
 
 if type go > /dev/null 2>&1; then
   export GOPATH=$(go env GOPATH)
@@ -60,11 +65,9 @@ if [[ ! -d $HOME/.zsh/kube-ps1 ]]; then
   git clone https://github.com/jonmosco/kube-ps1 $HOME/.zsh/kube-ps1 --depth=1
 fi
 
-source $HOME/.zsh/kube-ps1/kube-ps1.sh
-PROMPT='$(kube_ps1) '$PROMPT # or RPROMPT='$(kube_ps1)'
-
-#source /usr/local/share/chruby/chruby.sh
-#source /usr/local/share/chruby/auto.sh
+# Kubernetes prompt helper
+#source $HOME/.zsh/kube-ps1/kube-ps1.sh
+#PROMPT='$(kube_ps1) '$PROMPT # or RPROMPT='$(kube_ps1)'
 
 # TODO:
 # - completion
@@ -77,6 +80,22 @@ alias grep='grep --color=auto'
 alias rm='rm -i'
 alias k=kubectl
 alias vi=nvim
+alias fonts="fc-list : family | sort | uniq | fzf"
 
 alias reload="source $HOME/.zshrc"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pnpm
+export PNPM_HOME="/home/davoaux/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# nvm end

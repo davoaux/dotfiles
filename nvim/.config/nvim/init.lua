@@ -1,5 +1,3 @@
--- set updatetime=200
--- set clipboard+=unnamedplus
 -- set inccommand=nosplit
 -- set completeopt="menuone,noselect"
 -- set shortmess+=c
@@ -40,7 +38,7 @@ require("nvim-treesitter.configs").setup {
   }
 }
 
-local lspServers = { "gopls", "lua_ls", "bashls" }
+local lspServers = { "lua_ls", "gopls" }
 
 require("mason").setup()
 require("mason-lspconfig").setup {
@@ -67,24 +65,16 @@ cmp.setup({
   })
 })
 
-local on_attach_lsp = function(client, bufnr)
+local on_attach_lsp = function(_, bufnr)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>',
     { noremap = true, silent = true })
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',
     { noremap = true, silent = true })
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-a>', '<cmd>lua vim.lsp.buf.code_action()<CR>',
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-f>', '<cmd>lua vim.lsp.buf.code_action()<CR>',
     { noremap = true, silent = true })
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>',
-    { noremap = true, silent = true })
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>',
     { noremap = true, silent = true })
 end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -155,7 +145,9 @@ vim.o.number            = true
 vim.o.signcolumn        = 'no'
 vim.o.termguicolors     = true
 
-vim.opt.listchars       = {
+vim.opt.clipboard:append("unnamedplus")
+
+vim.opt.listchars = {
   tab = "»-",
   eol = "↲",
   precedes = "«",
@@ -169,7 +161,7 @@ vim.keymap.set('n', '<c-j>', ':m +1<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<c-k>', ':m -2<cr>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>i', '<cmd>split<cr>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>i', '<cmd>vsplit<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>o', '<cmd>vsplit<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>q', '<cmd>bdelete<cr>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<f5>', '<cmd>set list!<cr>', { noremap = true, silent = true })
@@ -184,8 +176,61 @@ vim.keymap.set('n', '<c-n>', ':NvimTreeToggle<cr>', { noremap = true, silent = t
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-p>', builtin.find_files, { noremap = true, silent = true })
 vim.keymap.set('n', '<c-b>', builtin.buffers, { noremap = true, silent = true })
-vim.keymap.set('n', '<c-f>', builtin.live_grep, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>f', builtin.live_grep, { noremap = true, silent = true })
 
--- don't work, use ]d/[d
--- vim.keymap.set('n', '[g', 'vim.diagnostic.goto_prev', { noremap = true, silent = true })
--- vim.keymap.set('n', ']g', 'vim.diagnostic.goto_next', { noremap = true, silent = true })
+-- local function diag_jump(direction)
+--   vim.diagnostic.jump({
+--     direction = direction,
+--     diagnostic = vim.diagnostic.get(0)
+--   })
+-- end
+
+-- vim.keymap.set('n', '[g', function() diag_jump("prev") end, { noremap = true, silent = true })
+-- vim.keymap.set('n', ']g', function() diag_jump("next") end, { noremap = true, silent = true })
+
+vim.diagnostic.config({ jump = { float = true } })
+
+vim.keymap.set('n', '[g', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic', silent = true })
+vim.keymap.set('n', ']g', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic', silent = true })
+
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>e', function() vim.diagnostic.setqflist() end, { noremap = true, silent = true })
+
+vim.api.nvim_create_user_command('FormatFile', function()
+  vim.lsp.buf.format({ async = true })
+end, {})
+
+vim.api.nvim_create_user_command('OrganizeImports', function()
+  -- only for go
+  local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+  for _, client in ipairs(clients) do
+    if client.name == "gopls" then
+      local params = vim.lsp.util.make_range_params()
+      params.context = { only = { "source.organizeImports" } }
+      local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+      for cid, res in pairs(result or {}) do
+        for _, r in pairs(res.result or {}) do
+          if r.edit then
+            local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+            vim.lsp.util.apply_workspace_edit(r.edit, enc)
+          end
+        end
+      end
+      return
+    end
+  end
+end, {})
+
+-- Format on save if the current buffer has an attached LSP in the configured LSP servers
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  callback = function()
+    local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+    for _, client in ipairs(clients) do
+      if vim.tbl_contains(lspServers, client.name) then
+        vim.lsp.buf.format({ async = false })
+        return
+      end
+    end
+  end,
+})
