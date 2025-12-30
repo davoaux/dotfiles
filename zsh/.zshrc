@@ -14,24 +14,17 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-export JAVA_HOME="$HOME/.jdks/corretto-21.0.6/"
-
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
-
-# inellij bundled maven/gradle
-export PATH="/snap/intellij-idea-community/588/plugins/maven/lib/maven3/bin:$PATH"
-export PATH="$HOME/.gradle/wrapper/dists/gradle-8.10-bin/deqhafrv1ntovfmgh0nh3npr9/gradle-8.10/bin/:$PATH"
 
 if type go > /dev/null 2>&1; then
   export GOPATH=$(go env GOPATH)
   export PATH="$GOPATH/bin:$PATH"
 fi
 
-export EDITOR=nvim
-export MANPAGER='nvim +Man!'
+#export EDITOR=nvim
+#export MANPAGER='nvim +Man!'
 
 if (grep -qEi "(microsoft|WSL)" /proc/version &>/dev/null); then
   export DISPLAY=$(ip route | awk '{print $3; exit}'):0
@@ -81,21 +74,8 @@ alias rm='rm -i'
 alias k=kubectl
 alias vi=nvim
 alias fonts="fc-list : family | sort | uniq | fzf"
-
 alias reload="source $HOME/.zshrc"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# pnpm
-export PNPM_HOME="/home/davoaux/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# nvm end
+if type fzf > /dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
