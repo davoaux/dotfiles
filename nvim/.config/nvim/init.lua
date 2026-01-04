@@ -27,63 +27,65 @@ bootstrap {
   "romainl/vim-cool",
 }
 
-require("nvim-treesitter.configs").setup {
-  ensure_installed = { "vim", "vimdoc", "go", "gomod", "lua" },
-  sync_install = true,
-  indent = {
-    enable = true
-  },
-  highlight = {
-    enable = true
-  }
-}
 
-local lspServers = { "lua_ls", "gopls" }
-
-require("mason").setup()
-require("mason-lspconfig").setup {
-  ensure_installed = lspServers
-}
-
-local cmp = require("cmp")
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.snippet.expand(args.body) -- native nvim snippets
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<c-space>'] = cmp.mapping.complete(),
-    ['<c-e>'] = cmp.mapping.abort(),
-    ['<cr>'] = cmp.mapping.confirm({ select = true }),
-  }),
-  sources = cmp.config.sources({
-    { name = "nvim_lsp" }
-  }, {
-    { name = "buffer" }
-  })
-})
-
-local on_attach_lsp = function(_, bufnr)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>',
-    { noremap = true, silent = true })
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',
-    { noremap = true, silent = true })
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-f>', '<cmd>lua vim.lsp.buf.code_action()<CR>',
-    { noremap = true, silent = true })
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>',
-    { noremap = true, silent = true })
+-- auto-install the following languages and enable highlights
+local treesitter_languages = { "go", "lua", "nix" }
+if #treesitter_languages > 0 then
+  require("nvim-treesitter").install(treesitter_languages)
+  for _, parser in ipairs(treesitter_languages) do
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = parser, -- in case that it's different for other languages I might need to modify this
+      callback = function() vim.treesitter.start() end,
+    })
+  end
 end
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-for _, server in ipairs(lspServers) do
-  require("lspconfig")[server].setup {
-    on_attach = on_attach_lsp,
-    capabilities = capabilities,
-  }
-end
+
+-- local lspServers = { "lua_ls", "gopls" }
+--
+-- require("mason").setup()
+-- require("mason-lspconfig").setup {
+--   ensure_installed = lspServers
+-- }
+
+-- local cmp = require("cmp")
+
+-- cmp.setup({
+--   snippet = {
+--     expand = function(args)
+--       vim.snippet.expand(args.body) -- native nvim snippets
+--     end,
+--   },
+--   mapping = cmp.mapping.preset.insert({
+--     ['<c-space>'] = cmp.mapping.complete(),
+--     ['<c-e>'] = cmp.mapping.abort(),
+--     ['<cr>'] = cmp.mapping.confirm({ select = true }),
+--   }),
+--   sources = cmp.config.sources({
+--     { name = "nvim_lsp" }
+--   }, {
+--     { name = "buffer" }
+--   })
+-- })
+
+-- local on_attach_lsp = function(_, bufnr)
+--   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>',
+--     { noremap = true, silent = true })
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',
+--     { noremap = true, silent = true })
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-f>', '<cmd>lua vim.lsp.buf.code_action()<CR>',
+--     { noremap = true, silent = true })
+--   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>',
+--     { noremap = true, silent = true })
+-- end
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- for _, server in ipairs(lspServers) do
+--   require("lspconfig")[server].setup {
+--     on_attach = on_attach_lsp,
+--     capabilities = capabilities,
+--   }
+-- end
 
 require("telescope").setup {
   pickers = {

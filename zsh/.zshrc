@@ -23,8 +23,8 @@ if type go > /dev/null 2>&1; then
   export PATH="$GOPATH/bin:$PATH"
 fi
 
-#export EDITOR=nvim
-#export MANPAGER='nvim +Man!'
+export EDITOR=nvim
+export MANPAGER='nvim +Man!'
 
 if (grep -qEi "(microsoft|WSL)" /proc/version &>/dev/null); then
   export DISPLAY=$(ip route | awk '{print $3; exit}'):0
