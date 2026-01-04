@@ -12,9 +12,13 @@
       jq
     ];
 
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/bin"
+      "/usr/local/go/bin"
+    ];
     sessionVariables = {
       # should the /usr/localgo/bin entry be set here?
-      PATH = "$HOME/.local/bin:$HOME/bin:/usr/local/go/bin:$PATH";
       EDITOR = "nvim";
       MANPAGER = "nvim +Man!";
     };
@@ -69,26 +73,31 @@
     }
     ];
 
-    initContent = lib.mkMerge [
-      # zsh completion
-      (lib.mkOrder 550 ''
-        zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-      '')
-      # pure-prompt-theme plugin
-      (lib.mkOrder 550 ''
-        PURE_PROMPT_SYMBOL="$"
-        PURE_PROMPT_VICMD_SYMBOL="<$>"
-      '')
-      # zsh-autopair plugin
-      (lib.mkOrder 1000 ''
-        autopair-init
-      '')
-      # pure-prompt-theme plugin
-      (lib.mkOrder 1000 ''
-        autoload -U promptinit; promptinit
-        prompt pure
-      '')
-    ];
+    initContent =
+      let
+        zshBeforeComp = lib.mkOrder 550;
+        zshGeneral = lib.mkOrder 1000;
+
+        autopairCfg = zshGeneral "autopair-init";
+        completionCfg = zshBeforeComp ''
+          zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+        '';
+        purePromptCfg = lib.mkMerge [
+          (zshBeforeComp ''
+            PURE_PROMPT_SYMBOL="$"
+            PURE_PROMPT_VICMD_SYMBOL="<$>"
+          '')
+          (zshGeneral ''
+            autoload -U promptinit; promptinit
+            prompt pure
+          '')
+        ];
+      in
+      lib.mkMerge [
+        autopairCfg
+        completionCfg
+        purePromptCfg
+      ];
 
     shellAliases = {
       ls = "ls --color=auto";
