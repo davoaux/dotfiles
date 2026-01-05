@@ -29,6 +29,7 @@
 
   imports = [
     ./modules/fzf.nix
+    ./modules/git.nix
     ./modules/zsh.nix
   ];
 
