@@ -14,7 +14,7 @@ print_volume() {
 }
 
 print_date() {
-  date +'%Y-%m-%d %X'
+  date +'%A, %B %d, %H:%M'
 }
 
-while printf "%s  %s  %s\n" "$(print_hdd_used)" "$(print_volume)" "$(print_date)"; do sleep 1; done
+while printf "%s   %s   %s\n" "$(print_hdd_used)" "$(print_volume)" "$(print_date)"; do sleep 1; done
