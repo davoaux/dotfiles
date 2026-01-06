@@ -12,6 +12,7 @@
       grim
       jq
       ripgrep
+      slurp
     ];
 
     sessionPath = [

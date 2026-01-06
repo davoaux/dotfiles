@@ -39,6 +39,7 @@ bindsym --locked $mod+F8 exec wpctl set-mute @DEFAULT_SINK@ toggle
     # bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
 bindsym Print exec grim
+bindsym $mod+Print exec grim -g "$(slurp)"
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -113,7 +114,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-for_window [app_id="org.gnome.Nautilus|org.gnome.eog"] floating enable
+for_window [app_id="org.gnome.Nautilus|org.gnome.Loupe"] floating enable
 for_window [class="^Steam$" title="^Friends List$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
