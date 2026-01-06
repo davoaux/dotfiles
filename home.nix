@@ -10,6 +10,7 @@
 
     packages = with pkgs; [
       jq
+      ripgrep
     ];
 
     sessionPath = [
