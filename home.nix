@@ -28,6 +28,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ./modules/foot.nix
     ./modules/fzf.nix
     ./modules/git.nix
     ./modules/zsh.nix
