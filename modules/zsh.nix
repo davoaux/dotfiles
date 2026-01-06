@@ -68,6 +68,13 @@
         purePromptCfg
       ];
 
+    # automatically start sway after login
+    loginExtra = ''
+      if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
+        exec sway --unsupported-gpu
+      fi
+    '';
+
     shellAliases = {
       ls = "ls --color=auto";
       l = "ls -lah";
