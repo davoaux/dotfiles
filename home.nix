@@ -9,6 +9,7 @@
     stateVersion = "25.11";
 
     packages = with pkgs; [
+      grim
       jq
       ripgrep
     ];
@@ -30,6 +31,8 @@
       MANPAGER = "nvim +Man!";
     };
   };
+
+  xdg.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

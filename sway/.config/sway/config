@@ -38,7 +38,7 @@ bindsym --locked $mod+F8 exec wpctl set-mute @DEFAULT_SINK@ toggle
     # bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     # bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    # bindsym Print exec grim
+bindsym Print exec grim
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -113,7 +113,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-for_window [app_id="org.gnome.Nautilus"] floating enable
+for_window [app_id="org.gnome.Nautilus|org.gnome.eog"] floating enable
 for_window [class="^Steam$" title="^Friends List$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
@@ -164,36 +164,23 @@ set $red #ae3838
 set $black #000000
 set $white #ffffff
 
+# nvim dark bg
 set $bg #14161b
 set $br #5c5c5c
-set $brbug #ff0000
 
 bar {
     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
     status_command $HOME/.config/sway/status.sh
 
     colors {
         statusline $white
-        # nvim dark background
-        background $bg
-        inactive_workspace $bg $bg $br
-        focused_workspace $bg $bg $white
+        background $black
+        inactive_workspace $black $black $br
+        focused_workspace $black $black $white
         binding_mode $red $red $black
     }
 }
-
-# class			border	background	text	indicator	child_border
-# background		n/a	#ffffff		n/a	n/a		n/a
-# focused		#4c7899	#285577		#ffffff	#2e9ef4		#285577
-# focused_inactive	#333333	#5f676a		#ffffff	#484e50		#5f676a
-# focused_tab_title	#333333	#5f676a		#ffffff	n/a		n/a
-# unfocused		#333333	#222222		#888888	#292d2e		#222222
-# urgent		#2f343a	#900000		#ffffff	#900000		#900000
-# placeholder		#000000	#0c0c0c		#ffffff	#000000		#0c0c0c
 
 # class                 border  backgr. text    indicator child_border
 client.focused          $br     $br     $bg     $br       $br
@@ -201,4 +188,4 @@ client.focused_inactive $bg     $bg     $br     $bg       $bg
 client.unfocused        $bg     $bg     $br     $bg       $bg
 client.urgent          	$br     $br     $br     $bg       $br 
 client.placeholder     	$br     $br     $br     $bg       $br 
-client.background 	$bg
+client.background 	    $bg

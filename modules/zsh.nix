@@ -1,9 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+
+    dotDir = "${config.xdg.configHome}/zsh";
 
     defaultKeymap = "viins";
     envExtra = ''
