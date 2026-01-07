@@ -1,6 +1,8 @@
 set $mod Mod4
+# fallback to monospace
+set $font SFUIDisplay-Medium
 
-font pango:monospace 10
+font pango:$font 12
 
 output * bg $HOME/pictures/wallpapers/2.jpg fill #333333
 
@@ -9,7 +11,7 @@ floating_modifier $mod
 bindsym $mod+Return exec foot
 bindsym $mod+q kill
 
-bindsym $mod+d exec --no-startup-id wmenu-run
+bindsym $mod+d exec --no-startup-id wmenu-run -f "$font 12" -l 10 -N 000000 -S 000000 -n 888888
 bindsym $mod+Shift+q exec ~/bin/powermenu
 
 bindsym --locked $mod+F6 exec wpctl set-volume \@DEFAULT_SINK\@ 5%-
