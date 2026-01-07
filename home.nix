@@ -9,10 +9,13 @@
     stateVersion = "25.11";
 
     packages = with pkgs; [
+      foot
       grim
       jq
+      mpv
       ripgrep
       slurp
+      sway
     ];
 
     sessionPath = [
@@ -40,6 +43,7 @@
     ./modules/foot.nix
     ./modules/fzf.nix
     ./modules/git.nix
+    ./modules/sway.nix
     ./modules/zsh.nix
   ];
 
