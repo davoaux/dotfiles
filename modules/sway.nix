@@ -8,5 +8,7 @@
       source = ../sway/status.sh;
       executable = true;
     };
+
+    "Pictures/wallpapers/file.jpg".source = ../wp/file.jpg;
   };
 }

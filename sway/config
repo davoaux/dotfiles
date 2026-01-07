@@ -4,7 +4,7 @@ set $font SFUIDisplay-Medium
 
 font pango:$font 12
 
-output * bg $HOME/pictures/wallpapers/2.jpg fill #333333
+output * bg $HOME/Pictures/wallpapers/file.jpg fill #333333
 
 floating_modifier $mod
 
