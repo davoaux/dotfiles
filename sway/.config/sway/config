@@ -1,20 +1,6 @@
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
 font pango:monospace 10
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-#exec --no-startup-id dex --autostart --environment i3
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-#exec --no-startup-id $HOME/scripts/curlock.sh
 
 output * bg $HOME/pictures/wallpapers/2.jpg fill #333333
 
@@ -25,19 +11,11 @@ bindsym $mod+q kill
 
 bindsym $mod+d exec --no-startup-id wmenu-run
 bindsym $mod+Shift+q exec ~/bin/powermenu
-# bindsym $mod+p exec ~/bin/popup
-
-# bindsym $mod+Shift+Print exec ~/bin/prtscr -f
-# bindsym $mod+Print exec ~/bin/prtscr
 
 bindsym --locked $mod+F6 exec wpctl set-volume \@DEFAULT_SINK\@ 5%-
 bindsym --locked $mod+F7 exec wpctl set-volume \@DEFAULT_SINK\@ 5%+
 bindsym --locked $mod+F8 exec wpctl set-mute @DEFAULT_SINK@ toggle
 
-    # Special keys to adjust brightness via brightnessctl
-    # bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    # bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
 bindsym Print exec grim
 bindsym $mod+Print exec grim -g "$(slurp)"
 
