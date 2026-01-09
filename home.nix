@@ -12,10 +12,10 @@
       foot
       grim
       jq
+      mako
       mpv
       ripgrep
       slurp
-      sway
     ];
 
     sessionPath = [
