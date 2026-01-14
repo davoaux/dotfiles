@@ -1,6 +1,7 @@
 set $mod Mod4
-# fallback to monospace
 set $font SFUIDisplay-Medium
+
+exec mako &
 
 font pango:$font 12
 

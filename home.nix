@@ -19,9 +19,8 @@
     ];
 
     sessionPath = [
-      "$HOME/.local/bin"
-      "$HOME/bin"
-      "/usr/local/go/bin" # should the /usr/localgo/bin entry be set here?
+      "${config.home.homeDirectory}/.local/bin"
+      "${config.home.homeDirectory}/bin"
     ];
 
     sessionVariables = {
@@ -39,12 +38,15 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  imports = [
-    ./modules/foot.nix
-    ./modules/fzf.nix
-    ./modules/git.nix
-    ./modules/sway.nix
-    ./modules/zsh.nix
-  ];
+  # Automatically imports all nix files in the modules directory
+  imports =
+    let
+      modulesDir = ./modules;
+    in
+    map (f: modulesDir + "/${f}")
+    (lib.filter
+      (lib.strings.hasSuffix ".nix")
+      (builtins.attrNames (builtins.readDir ./modules))
+    );
 
 }
