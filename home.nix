@@ -13,7 +13,6 @@
       grim
       jq
       mako
-      mpv
       ripgrep
       slurp
     ];
