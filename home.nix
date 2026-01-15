@@ -13,6 +13,7 @@
       grim
       jq
       mako
+      opencode
       ripgrep
       slurp
     ];
