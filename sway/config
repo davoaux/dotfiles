@@ -19,8 +19,8 @@ bindsym --locked $mod+F6 exec wpctl set-volume \@DEFAULT_SINK\@ 5%-
 bindsym --locked $mod+F7 exec wpctl set-volume \@DEFAULT_SINK\@ 5%+
 bindsym --locked $mod+F8 exec wpctl set-mute @DEFAULT_SINK@ toggle
 
-bindsym Print exec grim
-bindsym $mod+Print exec grim -g "$(slurp)"
+bindsym Print exec screenshot
+bindsym $mod+Print exec screenshot -c
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
