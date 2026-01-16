@@ -148,7 +148,10 @@ set $white #ffffff
 
 # nvim dark bg
 set $bg #14161b
-set $br #5c5c5c
+# inactive border
+set $ib #2b2d31
+# active border
+set $ab #5c5c5c
 
 bar {
     position top
@@ -158,16 +161,16 @@ bar {
     colors {
         statusline $white
         background $black
-        inactive_workspace $black $black $br
+        inactive_workspace $black $black $ab
         focused_workspace $black $black $white
         binding_mode $red $red $black
     }
 }
 
 # class                 border  backgr. text    indicator child_border
-client.focused          $br     $br     $bg     $br       $br
-client.focused_inactive $bg     $bg     $br     $bg       $bg
-client.unfocused        $bg     $bg     $br     $bg       $bg
-client.urgent          	$br     $br     $br     $bg       $br 
-client.placeholder     	$br     $br     $br     $bg       $br 
+client.focused          $ab     $ab     $black  $ab       $ab
+client.focused_inactive $ib     $ib     $ab     $ib       $ib
+client.unfocused        $ib     $ib     $ab     $ib       $ib
+client.urgent          	$ib     $ib     $ab     $ib       $ib
+client.placeholder     	$ib     $ib     $ab     $ib       $ib
 client.background 	    $bg
