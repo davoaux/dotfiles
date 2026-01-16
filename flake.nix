@@ -12,13 +12,24 @@
   outputs =
     { nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      linuxPkgs = nixpkgs.legacyPackages."x86_64-linux";
+      darwinPkgs = nixpkgs.legacyPackages."aarch64-darwin";
     in
     {
-      homeConfigurations."david" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home.nix ];
+      homeConfigurations = {
+        # Desktop
+        "tiramisu" = home-manager.lib.homeManagerConfiguration {
+          pkgs = linuxPkgs;
+          extraSpecialArgs = { hostProfile = "desktop"; };
+          modules = [ ./home/home.nix ];
+        };
+
+        # Work laptop (macOS arm64)
+        "GV-M-MJXVF4TNJX" = home-manager.lib.homeManagerConfiguration {
+          pkgs = darwinPkgs;
+          extraSpecialArgs = { hostProfile = "work-laptop"; };
+          modules = [ ./home/home.nix ];
+        };
       };
     };
 }

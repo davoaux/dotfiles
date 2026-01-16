@@ -70,8 +70,8 @@
         purePromptCfg
       ];
 
-    # automatically start sway after login
-    loginExtra = ''
+    # Linux-specific sway startup
+    loginExtra = lib.mkIf (pkgs.stdenv.isLinux) ''
       if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
         exec sway --unsupported-gpu
       fi
@@ -84,6 +84,7 @@
       k = "kubectl";
       vi = "nvim";
       fonts = "fc-list : family | sort | uniq | fzf";
+      hms = "home-manager switch --flake ${config.home.homeDirectory}/.dotfiles#$(hostname)";
     };
 
   };
