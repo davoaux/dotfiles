@@ -16,4 +16,4 @@ if [[ "$OSTYPE" = "linux"* ]]; then
   fi
 fi
 
-echo "Bootstrap complete. Run 'home-manager switch --flake ~/.dotfiles#$(hostname)' to finish setup"
+echo "Bootstrap complete. Run 'nix run home-manager -- switch --flake ~/.dotfiles#$(hostname)' to finish setup"
