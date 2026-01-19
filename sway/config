@@ -1,6 +1,7 @@
 set $mod Mod4
 set $font SFUIDisplay-Medium
 
+# starts notification daemon
 exec mako &
 
 font pango:$font 12

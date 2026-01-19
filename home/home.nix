@@ -30,6 +30,7 @@ in
 
     # Common packages, session path and variables shared across all profiles
     packages = with pkgs; [
+      fd
       fzf
       jq
       opencode
