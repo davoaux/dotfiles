@@ -16,18 +16,23 @@
       darwinPkgs = nixpkgs.legacyPackages."aarch64-darwin";
     in
     {
+      formatter."x86_64-linux" = nixpkgs.legacyPackages."x86_64-linux".nixfmt-tree;
       homeConfigurations = {
         # Desktop
         "tiramisu" = home-manager.lib.homeManagerConfiguration {
           pkgs = linuxPkgs;
-          extraSpecialArgs = { hostProfile = "desktop"; };
+          extraSpecialArgs = {
+            hostProfile = "desktop";
+          };
           modules = [ ./home/home.nix ];
         };
 
         # Work laptop (macOS arm64)
         "GV-M-MJXVF4TNJX" = home-manager.lib.homeManagerConfiguration {
           pkgs = darwinPkgs;
-          extraSpecialArgs = { hostProfile = "work-laptop"; };
+          extraSpecialArgs = {
+            hostProfile = "work-laptop";
+          };
           modules = [ ./home/home.nix ];
         };
       };

@@ -1,18 +1,25 @@
-{ config, pkgs, lib, hostProfile, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  hostProfile,
+  ...
+}:
 
 let
   # Function to retrieve modules to import
-  importFrom = dirs:
+  importFrom =
+    dirs:
     let
-      modulesDir = ../modules;
-      importDir = dir:
+      importDir =
+        collection:
         let
-          dirPath = modulesDir + "/${dir}";
+          modulesCollectionDir = ../modules + "/${collection}";
         in
-        map (f: dirPath + "/${f}")
-        (lib.filter
-          (lib.strings.hasSuffix ".nix")
-          (builtins.attrNames (builtins.readDir dirPath))
+        map (moduleFile: modulesCollectionDir + "/${moduleFile}") (
+          lib.filter (lib.strings.hasSuffix ".nix") (
+            builtins.attrNames (builtins.readDir modulesCollectionDir)
+          )
         );
     in
     lib.flatten (map importDir dirs);
@@ -29,13 +36,16 @@ in
     stateVersion = "25.11";
 
     # Common packages, session path and variables shared across all profiles
-    packages = with pkgs; [
-      fd
-      fzf
-      jq
-      opencode
-      ripgrep
-    ] ++ hostConfig.extraPackages;
+    packages =
+      with pkgs;
+      [
+        fd
+        fzf
+        jq
+        opencode
+        ripgrep
+      ]
+      ++ hostConfig.extraPackages;
 
     sessionPath = [
       "${config.home.homeDirectory}/.local/bin"
@@ -43,10 +53,10 @@ in
     ];
 
     sessionVariables = {
-      # Common session variables shared across all profiles
       EDITOR = "nvim";
       MANPAGER = "nvim +Man!";
-    } // hostConfig.extraSessionVariables;
+    }
+    // hostConfig.extraSessionVariables;
   };
 
   # Let Home Manager install and manage itself

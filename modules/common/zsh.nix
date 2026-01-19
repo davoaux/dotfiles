@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   programs.zsh = {
@@ -24,24 +29,24 @@
     autocd = false;
 
     plugins = [
-    {
-      name = "zsh-autopair";
-      src = pkgs.fetchFromGitHub {
-        owner = "hlissner";
-        repo = "zsh-autopair";
-        rev = "master";
-        sha256 = "sha256-3zvOgIi+q7+sTXrT+r/4v98qjeiEL4Wh64rxBYnwJvQ=";
-      };
-    }
-    {
-      name = "pure-prompt-theme";
-      src = pkgs.fetchFromGitHub {
-        owner = "sindresorhus";
-        repo = "pure";
-        rev = "main";
-        sha256 = "sha256-AZSxP2g6BWoxyiSQH7yzbbbfGcwD8jgnXPPfcYwJUL0=";
-      };
-    }
+      {
+        name = "zsh-autopair";
+        src = pkgs.fetchFromGitHub {
+          owner = "hlissner";
+          repo = "zsh-autopair";
+          rev = "master";
+          sha256 = "sha256-3zvOgIi+q7+sTXrT+r/4v98qjeiEL4Wh64rxBYnwJvQ=";
+        };
+      }
+      {
+        name = "pure-prompt-theme";
+        src = pkgs.fetchFromGitHub {
+          owner = "sindresorhus";
+          repo = "pure";
+          rev = "main";
+          sha256 = "sha256-AZSxP2g6BWoxyiSQH7yzbbbfGcwD8jgnXPPfcYwJUL0=";
+        };
+      }
     ];
 
     initContent =
