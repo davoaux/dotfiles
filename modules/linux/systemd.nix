@@ -17,13 +17,14 @@
           udevadm info -p /sys/"$1" | awk -v FS== '/DEVNAME/ {print $2}'
         }
 
+        nid=0
         stdbuf -oL -- udevadm monitor --udev -s block | while read -r -- _ _ event devpath _; do
           if [[ "$event" = add ]]; then
             devname=$(pathtoname "$devpath")
             udisksctl mount --block-device "$devname" --no-user-interaction
-            notify-send "USB Device connected" "Mounted $devname somewhere, perhaps /run/media/$USER/usbdrive" --expire-time=5000
+            nid=$(notify-send "USB Device connected" "Mounted $devname on /run/media/$USER" --expire-time=5000 -r $nid)
           elif [[ "$event" = remove ]]; then
-            notify-send "USB Device disconnected" "Device removed" --expire-time=5000
+            nid=$(notify-send "USB Device disconnected" "Device removed" --expire-time=5000 -r $nid)
           fi
         done
       ''}";
