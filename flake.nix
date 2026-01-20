@@ -12,15 +12,18 @@
   outputs =
     { nixpkgs, home-manager, ... }:
     let
-      linuxPkgs = nixpkgs.legacyPackages."x86_64-linux";
-      darwinPkgs = nixpkgs.legacyPackages."aarch64-darwin";
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
+      forSupportedSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
     in
     {
-      formatter."x86_64-linux" = nixpkgs.legacyPackages."x86_64-linux".nixfmt-tree;
+      formatter = forSupportedSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
       homeConfigurations = {
         # Desktop
         "tiramisu" = home-manager.lib.homeManagerConfiguration {
-          pkgs = linuxPkgs;
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = {
             hostProfile = "desktop";
           };
@@ -29,7 +32,7 @@
 
         # Work laptop (macOS arm64)
         "GV-M-MJXVF4TNJX" = home-manager.lib.homeManagerConfiguration {
-          pkgs = darwinPkgs;
+          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
           extraSpecialArgs = {
             hostProfile = "work-laptop";
           };
