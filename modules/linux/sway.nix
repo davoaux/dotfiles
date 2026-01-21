@@ -2,10 +2,10 @@
 
 {
   home.file = {
-    ".config/sway/config".source = ../../sway/config;
+    ".config/sway/config".source = ../../config/sway/config;
 
     ".config/sway/status.sh" = {
-      source = ../../sway/status.sh;
+      source = ../../config/sway/status.sh;
       executable = true;
     };
 
