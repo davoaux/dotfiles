@@ -8,6 +8,6 @@
   username = "david.ruiz";
   homeDirectory = "/Users/david.ruiz";
   extraPackages = [ ];
-  extraModules = [ ];
+  extraModules = [ "darwin" ];
   extraSessionVariables = { };
 }
