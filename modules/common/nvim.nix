@@ -9,6 +9,11 @@
 
     extraPackages = with pkgs; [
       tree-sitter
+
+      # language servers
+      bash-language-server
+      gopls
+      lua-language-server
     ];
   };
 

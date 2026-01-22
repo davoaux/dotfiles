@@ -6,7 +6,7 @@ bootstrap {
 
   { "nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
 
-  -- "neovim/nvim-lspconfig",
+  "neovim/nvim-lspconfig",
 
   -- "hrsh7th/cmp-nvim-lsp",
   -- "hrsh7th/nvim-cmp",
@@ -23,7 +23,7 @@ bootstrap {
 }
 
 -- auto-install the following languages and enable highlights
-local treesitter_languages = { "go", "lua", "nix" }
+local treesitter_languages = { "bash", "go", "lua", "nix" }
 if #treesitter_languages > 0 then
   require("nvim-treesitter").install(treesitter_languages)
   for _, parser in ipairs(treesitter_languages) do
@@ -33,6 +33,8 @@ if #treesitter_languages > 0 then
     })
   end
 end
+
+vim.lsp.enable({ "bashls", "gopls", "lua_ls" })
 
 -- local lspServers = { "lua_ls", "gopls" }
 --
