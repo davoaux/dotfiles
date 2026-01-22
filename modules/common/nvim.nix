@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -6,6 +6,10 @@
 
     viAlias = true;
     vimAlias = true;
+
+    extraPackages = with pkgs; [
+      tree-sitter
+    ];
   };
 
   home.file.".config/nvim" = {

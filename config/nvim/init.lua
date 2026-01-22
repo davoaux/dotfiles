@@ -4,7 +4,7 @@ local bootstrap = require("bootstrap").bootstrap_paq
 bootstrap {
   "savq/paq-nvim",
 
-  "nvim-treesitter/nvim-treesitter",
+  { "nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
 
   -- "neovim/nvim-lspconfig",
 
