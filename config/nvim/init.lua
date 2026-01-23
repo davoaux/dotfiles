@@ -34,54 +34,27 @@ if #treesitter_languages > 0 then
   end
 end
 
+-- LSP settings
+
 vim.lsp.enable({ "bashls", "gopls", "lua_ls" })
 
--- local lspServers = { "lua_ls", "gopls" }
---
--- require("mason").setup()
--- require("mason-lspconfig").setup {
---   ensure_installed = lspServers
--- }
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+      vim.notify("Lsp: completion enabled")
+    end
+  end,
+})
 
--- local cmp = require("cmp")
-
--- cmp.setup({
---   snippet = {
---     expand = function(args)
---       vim.snippet.expand(args.body) -- native nvim snippets
---     end,
---   },
---   mapping = cmp.mapping.preset.insert({
---     ['<c-space>'] = cmp.mapping.complete(),
---     ['<c-e>'] = cmp.mapping.abort(),
---     ['<cr>'] = cmp.mapping.confirm({ select = true }),
---   }),
---   sources = cmp.config.sources({
---     { name = "nvim_lsp" }
---   }, {
---     { name = "buffer" }
---   })
--- })
-
--- local on_attach_lsp = function(_, bufnr)
---   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>',
---     { noremap = true, silent = true })
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',
---     { noremap = true, silent = true })
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-f>', '<cmd>lua vim.lsp.buf.code_action()<CR>',
---     { noremap = true, silent = true })
---   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>',
---     { noremap = true, silent = true })
--- end
--- local capabilities = require("cmp_nvim_lsp").default_capabilities()
--- for _, server in ipairs(lspServers) do
---   require("lspconfig")[server].setup {
---     on_attach = on_attach_lsp,
---     capabilities = capabilities,
---   }
--- end
+-- completion options to improve autocompletion experience
+-- fuzzy: match a string using a non-exact search string
+-- menuone: show menu even when there is only on match
+-- noselect: don't insert the text until an item is selected
+-- popup: show extra information about the currently selected completion
+vim.o.completeopt = "fuzzy,menuone,noselect,popup"
+vim.o.pumheight = 10
 
 require("telescope").setup {
   pickers = {
