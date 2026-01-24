@@ -14,6 +14,7 @@
       bash-language-server
       gopls
       lua-language-server
+      nil
     ];
   };
 

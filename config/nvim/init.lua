@@ -20,6 +20,7 @@ bootstrap {
 
   "jiangmiao/auto-pairs",
   "romainl/vim-cool",
+  "airblade/vim-rooter",
 }
 
 -- auto-install the following languages and enable highlights
@@ -34,10 +35,9 @@ if #treesitter_languages > 0 then
   end
 end
 
--- LSP settings
+vim.lsp.enable({ "bashls", "gopls", "lua_ls", "nil_ls" })
 
-vim.lsp.enable({ "bashls", "gopls", "lua_ls" })
-
+-- completion settings
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -55,6 +55,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- popup: show extra information about the currently selected completion
 vim.o.completeopt = "fuzzy,menuone,noselect,popup"
 vim.o.pumheight = 10
+
+vim.diagnostic.config({
+  -- makes the diagnostic of the current line appear at the end of it
+  virtual_text = { current_line = true },
+})
 
 require("telescope").setup {
   pickers = {
@@ -131,26 +136,9 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-b>', builtin.buffers)
 vim.keymap.set('n', '<c-p>', builtin.find_files)
 vim.keymap.set('n', '<c-s-f>', builtin.live_grep)
+vim.keymap.set('n', '<leader>d', builtin.diagnostics)
 
 vim.api.nvim_create_user_command('Branches', builtin.git_branches, {})
-
--- local function diag_jump(direction)
---   vim.diagnostic.jump({
---     direction = direction,
---     diagnostic = vim.diagnostic.get(0)
---   })
--- end
-
--- vim.keymap.set('n', '[g', function() diag_jump("prev") end, { noremap = true, silent = true })
--- vim.keymap.set('n', ']g', function() diag_jump("next") end, { noremap = true, silent = true })
-
--- vim.diagnostic.config({ jump = { float = true } })
-
--- vim.keymap.set('n', '[g', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic', silent = true })
--- vim.keymap.set('n', ']g', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic', silent = true })
-
--- vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { noremap = true, silent = true })
--- vim.keymap.set('n', '<leader>e', function() vim.diagnostic.setqflist() end, { noremap = true, silent = true })
 
 -- vim.api.nvim_create_user_command('FormatFile', function()
 --   vim.lsp.buf.format({ async = true })
