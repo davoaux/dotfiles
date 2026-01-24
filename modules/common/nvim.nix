@@ -7,8 +7,15 @@
     viAlias = true;
     vimAlias = true;
 
+    withRuby = false;
+    withNodeJs = false;
+    withPython3 = false;
+
     extraPackages = with pkgs; [
       tree-sitter
+
+      shellcheck
+      shfmt
 
       # language servers
       bash-language-server
