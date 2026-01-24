@@ -6,6 +6,9 @@ exec mako &
 
 font pango:$font 12
 
+input type:pointer {
+  accel_profile "flat"
+}
 output * bg $HOME/Pictures/wallpapers/file.jpg fill #333333
 
 floating_modifier $mod
