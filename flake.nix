@@ -36,9 +36,7 @@
         system: nixpkgs.legacyPackages.${system}.nixfmt-tree
       );
       homeConfigurations = {
-        # Desktop
         "tiramisu" = home-manager.lib.homeManagerConfiguration (mkHome "desktop");
-        # Work laptop (macOS arm64)
         "GV-M-MJXVF4TNJX" = home-manager.lib.homeManagerConfiguration (mkHome "work-laptop");
       };
     };
