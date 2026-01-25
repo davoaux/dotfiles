@@ -23,30 +23,8 @@ bootstrap {
   "airblade/vim-rooter",
 }
 
--- auto-install the following languages and enable highlights
-local treesitter_languages = { "bash", "go", "lua", "nix" }
-if #treesitter_languages > 0 then
-  require("nvim-treesitter").install(treesitter_languages)
-  for _, parser in ipairs(treesitter_languages) do
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = parser, -- in case that it's different for other languages I might need to modify this
-      callback = function() vim.treesitter.start() end,
-    })
-  end
-end
-
-vim.lsp.enable({ "bashls", "gopls", "lua_ls", "nil_ls" })
-
--- completion settings
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-      vim.notify("Lsp: completion enabled")
-    end
-  end,
-})
+require 'treesitter'
+require 'lsp'
 
 -- completion options to improve autocompletion experience
 -- fuzzy: match a string using a non-exact search string
@@ -56,10 +34,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.o.completeopt = "fuzzy,menuone,noselect,popup"
 vim.o.pumheight = 10
 
-vim.diagnostic.config({
-  -- makes the diagnostic of the current line appear at the end of it
-  virtual_text = { current_line = true },
-})
+-- Use tab key to navigate the completion menu
+vim.keymap.set('i', '<tab>', function() return vim.fn.pumvisible() == 1 and "<c-n>" or "<tab>" end, { expr = true })
+vim.keymap.set('i', '<s-tab>', function() return vim.fn.pumvisible() == 1 and "<c-p>" or "<s-tab>" end, { expr = true })
 
 require("telescope").setup {
   pickers = {
@@ -86,6 +63,7 @@ vim.o.expandtab         = true
 
 vim.o.backup            = false
 vim.o.writebackup       = false
+vim.o.swapfile          = false
 
 vim.o.cursorline        = false
 vim.o.encoding          = 'utf-8'

@@ -1,0 +1,63 @@
+local M = {}
+
+local function on_attach(client, buf)
+  if client:supports_method('textDocument/completion') then
+    vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
+    vim.notify("Lsp: completion enabled")
+  end
+
+  -- default is 'gra'
+  vim.keymap.set('n', '<c-s-k>', function() vim.lsp.buf.code_action() end)
+  vim.keymap.set('n', 'grr', ':Telescope lsp_references<cr>')
+  -- no default
+  vim.keymap.set('n', 'gd', ':Telescope lsp_definitions<cr>')
+  -- default is 'gri'
+  vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<cr>')
+end
+
+-- Set up LSP completion configuration
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client == nil then
+      return
+    end
+    on_attach(client, args.buf)
+  end,
+})
+
+vim.diagnostic.config({
+  -- makes the diagnostic of the current line appear at the end of it
+  virtual_text = { current_line = true },
+})
+
+vim.api.nvim_create_user_command('FormatFile', function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format the current file using the attached LSP" })
+
+-- Override Lua language server configuration for better Neovim configuration completions
+vim.lsp.config('lua_ls', {
+  on_init = function(client)
+    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      runtime = {
+        version = 'LuaJIT',
+        path = {
+          'lua/?.lua',
+          'lua/?/init.lua',
+        },
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = { vim.env.VIMRUNTIME },
+      },
+    })
+  end,
+  settings = {
+    Lua = {},
+  },
+})
+
+-- TODO do on BufReadPre and BufNewFile autocmd?
+vim.lsp.enable({ "bashls", "gopls", "lua_ls", "nil_ls" })
+
+return M
