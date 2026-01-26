@@ -90,6 +90,7 @@
       fonts = "fc-list : family | sort | uniq | fzf";
       docker-stop-all = "docker stop $(docker ps -a -q)";
       hms = "home-manager switch --flake ${config.home.homeDirectory}/.dotfiles#$(hostname)";
+      nixdevelop = "nix develop -c $SHELL \"$@\"";
     };
 
   };
