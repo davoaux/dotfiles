@@ -1,11 +1,14 @@
 local M = {}
 
-local function on_attach(client, buf)
-  if client:supports_method('textDocument/completion') then
-    vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
-    vim.notify("Lsp: completion enabled")
+-- enable the specified language servers
+vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
+  once = true,
+  callback = function ()
+    vim.lsp.enable({ "bashls", "gopls", "lua_ls", "nil_ls" })
   end
+})
 
+local function on_attach()
   -- default is 'gra'
   vim.keymap.set('n', '<c-s-k>', function() vim.lsp.buf.code_action() end)
   vim.keymap.set('n', 'grr', ':Telescope lsp_references<cr>')
@@ -22,7 +25,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client == nil then
       return
     end
-    on_attach(client, args.buf)
+    on_attach()
   end,
 })
 
@@ -56,8 +59,5 @@ vim.lsp.config('lua_ls', {
     Lua = {},
   },
 })
-
--- TODO do on BufReadPre and BufNewFile autocmd?
-vim.lsp.enable({ "bashls", "gopls", "lua_ls", "nil_ls" })
 
 return M
