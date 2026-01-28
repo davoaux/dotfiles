@@ -12,6 +12,7 @@
     grim
     mako
     slurp
+    zathura
   ];
   extraModules = [ "linux" ];
   extraSessionVariables = {
