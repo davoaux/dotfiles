@@ -8,6 +8,7 @@ font pango:$font 12
 
 input type:pointer {
   accel_profile "flat"
+  pointer_accel -0.35
 }
 output * bg $HOME/Pictures/wallpapers/file.jpg fill #333333
 
