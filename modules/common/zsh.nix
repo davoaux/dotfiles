@@ -82,16 +82,21 @@
       fi
     '';
 
-    shellAliases = {
-      ls = "ls --color=auto";
-      l = "ls -lah";
-      rm = "rm -i";
-      k = "kubectl";
-      fonts = "fc-list : family | sort | uniq | fzf";
-      docker-stop-all = "docker stop $(docker ps -a -q)";
-      hms = "home-manager switch --flake ${config.home.homeDirectory}/.dotfiles#$(hostname)";
-      nixdevelop = "nix develop -c $SHELL \"$@\"";
-    };
+    shellAliases = lib.mkMerge [
+      {
+        ls = "ls --color=auto";
+        l = "ls -lah";
+        rm = "rm -i";
+        k = "kubectl";
+        fonts = "fc-list : family | sort | uniq | fzf";
+        docker-stop-all = "docker stop $(docker ps -a -q)";
+        hms = "home-manager switch --flake ${config.home.homeDirectory}/.dotfiles#$(hostname)";
+        nixdevelop = "nix develop -c $SHELL \"$@\"";
+      }
+      (lib.mkIf (pkgs.stdenv.isDarwin) {
+        dev = "cd \"$(fd . ${config.home.homeDirectory}/IdeaProjects --max-depth 1 | fzf)\"";
+      })
+    ];
 
   };
 }
