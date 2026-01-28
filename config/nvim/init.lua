@@ -38,12 +38,9 @@ require 'telescope'.setup {
 }
 
 require 'blink.cmp'.setup {
-  keymap = {
-    preset = "enter",
-    ['<tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
-    ['<s-tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
-  },
-  fuzzy = { implementation = "rust" }
+  keymap = { preset = "enter" },
+  fuzzy = { implementation = "rust" },
+  accept = { auto_brackets = { enabled = true }, },
 }
 
 vim.g.mapleader     = ' '
@@ -57,7 +54,7 @@ vim.o.hlsearch      = true
 vim.o.inccommand    = 'nosplit'
 
 -- max number of items to show in the completion menu
-vim.o.pumheight = 10
+vim.o.pumheight     = 10
 
 vim.o.softtabstop   = 2
 vim.o.shiftwidth    = 2
@@ -120,4 +117,3 @@ vim.keymap.set('n', '<c-s-f>', builtin.live_grep)
 vim.keymap.set('n', '<leader>d', builtin.diagnostics)
 
 vim.api.nvim_create_user_command('Branches', builtin.git_branches, {})
-
