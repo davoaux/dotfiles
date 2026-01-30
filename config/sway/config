@@ -100,7 +100,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-for_window [app_id="org.gnome.Nautilus|org.gnome.Loupe"] floating enable
+for_window [app_id="org.gnome.Nautilus|org.gnome.Loupe|com.transmissionbt.transmission.*"] floating enable
 for_window [class="^Steam$" title="^Friends List$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
