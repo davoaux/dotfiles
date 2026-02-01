@@ -82,7 +82,11 @@
       fi
     '';
 
-    shellAliases = lib.mkMerge [
+    shellAliases =
+      let
+        homeDir = config.home.homeDirectory;
+        projectsDir = if pkgs.stdenv.isDarwin then "${homeDir}/IdeaProjects" else "${homeDir}/Development";
+      in
       {
         ls = "ls --color=auto";
         l = "ls -lah";
@@ -90,13 +94,10 @@
         k = "kubectl";
         fonts = "fc-list : family | sort | uniq | fzf";
         docker-stop-all = "docker stop $(docker ps -a -q)";
-        hms = "home-manager switch --flake ${config.home.homeDirectory}/.dotfiles#$(hostname)";
-        nixdevelop = "nix develop -c $SHELL \"$@\"";
-      }
-      (lib.mkIf (pkgs.stdenv.isDarwin) {
-        dev = "cd \"$(fd . ${config.home.homeDirectory}/IdeaProjects --max-depth 1 | fzf)\"";
-      })
-    ];
+        hms = "home-manager switch --flake ${homeDir}/.dotfiles#$(hostname)";
+        nixdev = "nix develop -c $SHELL \"$@\"";
+        projects = "cd \"$(fd . ${projectsDir} --max-depth 1 | fzf)\"";
+      };
 
   };
 }
