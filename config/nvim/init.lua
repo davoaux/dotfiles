@@ -21,10 +21,13 @@ bootstrap {
   "nvim-telescope/telescope.nvim",
   "nvim-lua/plenary.nvim",
 
+  "sschleemilch/slimline.nvim",
+
   "nvim-neo-tree/neo-tree.nvim",
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
 
+  "tpope/vim-fugitive",
   "cohama/lexima.vim",
   "romainl/vim-cool",
   "airblade/vim-rooter",
@@ -41,6 +44,15 @@ require 'blink.cmp'.setup {
   keymap = { preset = "enter" },
   fuzzy = { implementation = "rust" },
   accept = { auto_brackets = { enabled = true }, },
+}
+
+require("slimline").setup {
+  style = "fg",
+  spaces = {
+    components = '',
+    left = '',
+    right = ''
+  }
 }
 
 vim.g.mapleader     = ' '

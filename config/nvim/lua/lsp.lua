@@ -3,20 +3,14 @@ local M = {}
 -- enable the specified language servers
 vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
   once = true,
-  callback = function ()
+  callback = function()
     vim.lsp.enable({ "bashls", "gopls", "lua_ls", "nil_ls" })
   end
 })
 
-local function on_attach()
-  -- default is 'gra'
-  vim.keymap.set('n', '<c-s-k>', function() vim.lsp.buf.code_action() end)
-  vim.keymap.set('n', 'grr', ':Telescope lsp_references<cr>')
-  -- no default
-  vim.keymap.set('n', 'gd', ':Telescope lsp_definitions<cr>')
-  -- default is 'gri'
-  vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<cr>')
-end
+vim.api.nvim_create_user_command('FormatFile', function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format the current file using the attached LSP" })
 
 -- Set up LSP completion configuration
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -25,18 +19,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client == nil then
       return
     end
-    on_attach()
+    vim.keymap.set('n', '<c-s-k>', function() vim.lsp.buf.code_action() end) -- default is 'gra'
+    vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format({ async = true }) end)
+    vim.keymap.set('n', 'grr', ':Telescope lsp_references<cr>', { silent = true })
+    vim.keymap.set('n', 'gd', ':Telescope lsp_definitions<cr>', { silent = true })     -- no default
+    vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<cr>', { silent = true }) -- default is 'gri'
   end,
 })
 
 vim.diagnostic.config({
-  -- makes the diagnostic of the current line appear at the end of it
   virtual_text = { current_line = true },
 })
-
-vim.api.nvim_create_user_command('FormatFile', function()
-  vim.lsp.buf.format({ async = true })
-end, { desc = "Format the current file using the attached LSP" })
 
 -- Override Lua language server configuration for better Neovim configuration completions
 vim.lsp.config('lua_ls', {
