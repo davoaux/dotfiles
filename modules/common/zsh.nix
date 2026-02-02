@@ -85,7 +85,10 @@
     shellAliases =
       let
         homeDir = config.home.homeDirectory;
-        projectsDir = if pkgs.stdenv.isDarwin then "${homeDir}/IdeaProjects" else "${homeDir}/Development";
+        projectsDir = lib.concatStringsSep " " (
+          [ "${homeDir}/Development" ]
+          ++ (if pkgs.stdenv.isDarwin then [ "${homeDir}/IdeaProjects" ] else [ ])
+        );
       in
       {
         ls = "ls --color=auto";
