@@ -1,7 +1,7 @@
 local M = {}
 
 -- auto-install the following language parsers and enable them
-local treesitter_languages = { "bash", "go", "lua", "nix" }
+local treesitter_languages = { "bash", "go", "lua", "nix", "java" }
 if #treesitter_languages > 0 then
   require("nvim-treesitter").install(treesitter_languages)
   for _, parser in ipairs(treesitter_languages) do
