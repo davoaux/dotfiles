@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.git = {
@@ -17,6 +17,9 @@
         ss = "status --short";
         cc = "shortlog -sn --all";
       };
+    }
+    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+      url."ssh://git@github.com/".insteadOf = "https://github.com/";
     };
   };
 }
