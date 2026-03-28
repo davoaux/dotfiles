@@ -13,8 +13,12 @@ print_volume() {
   fi
 }
 
+print_cpu() {
+  rg 'cpu ' /proc/stat | awk '{ printf "cpu: %d%%", ($2+$4)*100/($2+$4+$5) }'
+}
+
 print_date() {
   date +'%A, %B %d, %H:%M'
 }
 
-while printf "%s   %s   %s\n" "$(print_hdd_used)" "$(print_volume)" "$(print_date)"; do sleep 1; done
+while printf "%s   %s   %s   %s\n" "$(print_hdd_used)" "$(print_cpu)" "$(print_volume)" "$(print_date)"; do sleep 1; done
