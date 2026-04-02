@@ -75,12 +75,13 @@
         purePromptCfg
       ];
 
+    # TODO only if hostProfile is "minimal"
     # Linux-specific sway startup
-    loginExtra = lib.mkIf (pkgs.stdenv.isLinux) ''
-      if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
-        exec sway --unsupported-gpu
-      fi
-    '';
+    #loginExtra = lib.mkIf (pkgs.stdenv.isLinux) ''
+    #  if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
+    #    exec sway --unsupported-gpu
+    #  fi
+    #'';
 
     shellAliases =
       let

@@ -6,11 +6,11 @@ bootstrap {
 
   "neovim/nvim-lspconfig",
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    build = ":TSUpdate"
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   branch = "main",
+  --   build = ":TSUpdate"
+  -- },
 
   {
     'saghen/blink.cmp',
@@ -33,7 +33,7 @@ bootstrap {
   "airblade/vim-rooter",
 }
 
-require 'treesitter'
+-- require 'treesitter'
 require 'lsp'
 
 require 'telescope'.setup {

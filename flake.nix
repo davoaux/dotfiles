@@ -20,7 +20,8 @@
     let
       # attribute set containing the host profiles and it's used system
       hostProfileToSystem = {
-        "desktop" = "x86_64-linux";
+        "quick" = "x86_64-linux";
+        "arch" = "x86_64-linux";
         "work-laptop" = "aarch64-darwin";
       };
 
@@ -35,9 +36,12 @@
       formatter = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
         system: nixpkgs.legacyPackages.${system}.nixfmt-tree
       );
+
       homeConfigurations = {
-        "tiramisu" = home-manager.lib.homeManagerConfiguration (mkHome "desktop");
+        "flatwhite" = home-manager.lib.homeManagerConfiguration (mkHome "arch");
+        "tiramisu" = home-manager.lib.homeManagerConfiguration (mkHome "quick");
         "GV-M-MJXVF4TNJX" = home-manager.lib.homeManagerConfiguration (mkHome "work-laptop");
       };
+
     };
 }

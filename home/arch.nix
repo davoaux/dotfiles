@@ -5,8 +5,8 @@
 }:
 
 {
-  username = "david";
-  homeDirectory = "/home/david";
+  username = "davoaux";
+  homeDirectory = "/home/davoaux";
   extraPackages = with pkgs; [
     foot
     grim
@@ -14,7 +14,7 @@
     slurp
     zathura
   ];
-  extraModules = [ "linux" ];
+  extraModules = [ "wayland" ];
   extraSessionVariables = {
     # needed to integrate wayland and nvidia drivers (nvidia-580xx-dkms)
     XDG_SESSION_TYPE = "wayland";

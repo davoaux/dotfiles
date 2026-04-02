@@ -11,9 +11,11 @@
     withNodeJs = false;
     withPython3 = false;
 
-    extraPackages = with pkgs; [
-      tree-sitter
+    plugins = [
+      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+    ];
 
+    extraPackages = with pkgs; [
       shellcheck
       shfmt
 
