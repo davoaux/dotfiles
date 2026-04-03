@@ -11,8 +11,22 @@
     withNodeJs = false;
     withPython3 = false;
 
-    plugins = [
-      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+    plugins = with pkgs.vimPlugins; [
+      nvim-lspconfig
+
+      nvim-treesitter.withAllGrammars
+
+      telescope-nvim
+      plenary-nvim
+
+      neo-tree-nvim
+      plenary-nvim
+      nui-nvim
+
+      vim-fugitive
+      lexima-vim
+      vim-cool
+      vim-rooter
     ];
 
     extraPackages = with pkgs; [

@@ -1,30 +1,17 @@
 local bootstrap = require("bootstrap").bootstrap_paq
 
--- Install packages
+-- Most of my plugins are currently handled through nix, once I've migrated all of them
+-- to Nix I need to clean up paq-nvim and the bootstrap mechanism
 bootstrap {
   "savq/paq-nvim",
 
-  "neovim/nvim-lspconfig",
-
   {
     'saghen/blink.cmp',
-    branch = "v1.8.0",
+    branch = "v1.10.1",
     build = "nix run .#build-plugin"
   },
 
-  "nvim-telescope/telescope.nvim",
-  "nvim-lua/plenary.nvim",
-
   "sschleemilch/slimline.nvim",
-
-  "nvim-neo-tree/neo-tree.nvim",
-  "nvim-lua/plenary.nvim",
-  "MunifTanjim/nui.nvim",
-
-  "tpope/vim-fugitive",
-  "cohama/lexima.vim",
-  "romainl/vim-cool",
-  "airblade/vim-rooter",
 }
 
 require 'lsp'
