@@ -58,8 +58,8 @@ in
     }
     // hostConfig.extraSessionVariables;
 
-    # Set zsh as default shell on activation
-    activation.make-zsh-default-shell = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    # If on Linux set zsh as default shell on activation
+    activation.make-zsh-default-shell = lib.mkIf pkgs.stdenv.isLinux (lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       # if zsh is not the current shell
       PATH="/usr/bin:/bin:$PATH"
       ZSH_PATH="/home/${hostConfig.username}/.nix-profile/bin/zsh"
@@ -73,7 +73,7 @@ in
         run chsh -s $ZSH_PATH ${hostConfig.username}
         echo "zsh is now set as default shell !"
       fi
-    '';
+    '');
   };
 
   # Let Home Manager install and manage itself

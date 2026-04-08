@@ -7,7 +7,7 @@
 {
   username = "david.ruiz";
   homeDirectory = "/Users/david.ruiz";
-  extraPackages = [ ];
-  extraModules = [ "darwin" "ghostty" ];
+  extraPackages = with pkgs; [ gh ];
+  extraModules = [ "darwin" ];
   extraSessionVariables = { };
 }
