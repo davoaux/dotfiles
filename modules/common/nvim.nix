@@ -20,7 +20,6 @@
       plenary-nvim
 
       neo-tree-nvim
-      plenary-nvim
       nui-nvim
 
       vim-fugitive
@@ -28,6 +27,8 @@
       vim-cool
       vim-rooter
     ];
+
+    initLua = builtins.readFile ../../config/nvim/init.lua;
 
     extraPackages = with pkgs; [
       shellcheck
@@ -41,8 +42,7 @@
     ];
   };
 
-  home.file.".config/nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/nvim";
-    recursive = true;
+  home.file.".config/nvim/lua" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/nvim/lua";
   };
 }
