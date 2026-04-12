@@ -8,6 +8,6 @@
   username = "david.ruiz";
   homeDirectory = "/Users/david.ruiz";
   extraPackages = with pkgs; [ gh ];
-  extraModules = [ "darwin" ];
+  extraModules = [ "work" "ghostty" ];
   extraSessionVariables = { };
 }

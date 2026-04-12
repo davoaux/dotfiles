@@ -20,8 +20,8 @@
     let
       # attribute set containing the host profiles and it's used system
       hostProfileToSystem = {
-        "quick" = "x86_64-linux";
         "arch" = "x86_64-linux";
+        "desktop" = "aarch64-darwin";
         "work-laptop" = "aarch64-darwin";
       };
 
@@ -38,9 +38,9 @@
       );
 
       homeConfigurations = {
-        "flatwhite" = home-manager.lib.homeManagerConfiguration (mkHome "arch");
-        "tiramisu" = home-manager.lib.homeManagerConfiguration (mkHome "quick");
+        "tiramisu" = home-manager.lib.homeManagerConfiguration (mkHome "arch");
         "GV-M-MJXVF4TNJX" = home-manager.lib.homeManagerConfiguration (mkHome "work-laptop");
+        "flat.local" = home-manager.lib.homeManagerConfiguration (mkHome "desktop");
       };
 
     };
