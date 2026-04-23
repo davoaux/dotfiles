@@ -35,40 +35,42 @@ require("slimline").setup {
   }
 }
 
-vim.g.mapleader     = ' '
-vim.g.health        = { style = 'float' }
+vim.g.mapleader   = ' '
+vim.g.health      = { style = 'float' }
 
-vim.o.ignorecase    = true
-vim.o.smartcase     = true
-vim.o.hlsearch      = true
+vim.o.ignorecase  = true
+vim.o.smartcase   = true
+vim.o.hlsearch    = true
 
 -- show the results of :sub immediately
-vim.o.inccommand    = 'nosplit'
+vim.o.inccommand  = 'nosplit'
 
 -- max number of items to show in the completion menu
-vim.o.pumheight     = 10
+vim.o.pumheight   = 10
 
-vim.o.softtabstop   = 2
-vim.o.shiftwidth    = 2
-vim.o.tabstop       = 2
-vim.o.expandtab     = true
+vim.o.softtabstop = 2
+vim.o.shiftwidth  = 2
+vim.o.tabstop     = 2
+vim.o.expandtab   = true
 
-vim.o.backup        = false
-vim.o.writebackup   = false
-vim.o.swapfile      = false
+vim.o.backup      = false
+vim.o.writebackup = false
+vim.o.swapfile    = false
 
-vim.o.cursorline    = false
-vim.o.encoding      = 'utf-8'
-vim.o.hidden        = true
-vim.o.history       = 100
-vim.o.mouse         = 'a'
-vim.o.scrolloff     = 5
-vim.o.showmode      = true
-vim.o.splitbelow    = true
-vim.o.splitright    = true
-vim.o.wrap          = false
+vim.o.cursorline  = false
+vim.o.encoding    = 'utf-8'
+vim.o.hidden      = true
+vim.o.history     = 100
+vim.o.mouse       = 'a'
+vim.o.scrolloff   = 5
+vim.o.showmode    = true
+vim.o.splitbelow  = true
+vim.o.splitright  = true
+vim.o.wrap        = false
 
-vim.o.background    = 'dark'
+vim.cmd.colorscheme("alabaster")
+vim.o.background    = "light" -- TODO read from system settings
+
 vim.o.laststatus    = 2
 vim.o.number        = true
 vim.o.signcolumn    = 'no'

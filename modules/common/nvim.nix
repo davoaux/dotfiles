@@ -26,6 +26,8 @@
       lexima-vim
       vim-cool
       vim-rooter
+
+      alabaster-nvim
     ];
 
     initLua = builtins.readFile ../../config/nvim/init.lua;

@@ -10,7 +10,7 @@
     package = with pkgs; if stdenv.isDarwin then ghostty-bin else ghostty;
 
     settings = {
-      theme = "Nvim Dark";
+      theme = "dark:Nvim Dark,light:Alabaster";
     };
   };
 }
