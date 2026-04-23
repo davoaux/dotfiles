@@ -75,13 +75,12 @@
         purePromptCfg
       ];
 
-    # TODO only if hostProfile is "minimal"
     # Linux-specific sway startup
-    #loginExtra = lib.mkIf (pkgs.stdenv.isLinux) ''
-    #  if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
-    #    exec sway --unsupported-gpu
-    #  fi
-    #'';
+    loginExtra = lib.mkIf (pkgs.stdenv.isLinux) ''
+     if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
+       exec sway --unsupported-gpu
+     fi
+    '';
 
     shellAliases =
       let
@@ -101,6 +100,7 @@
         hms = "home-manager switch --flake ${homeDir}/.dotfiles#$(hostname)";
         nixdev = "nix develop -c $SHELL \"$@\"";
         projects = "cd \"$(fd . ${projectsDir} --max-depth 1 | fzf)\"";
+        glovo-ai-sync = "pnpm dlx @glovo/ai-prompts-cli sync"; # TODO enable only for work profile
       };
 
   };
