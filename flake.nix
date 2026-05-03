@@ -40,7 +40,7 @@
       homeConfigurations = {
         "tiramisu" = home-manager.lib.homeManagerConfiguration (mkHome "arch");
         "GV-M-MJXVF4TNJX" = home-manager.lib.homeManagerConfiguration (mkHome "work-laptop");
-        "flat.local" = home-manager.lib.homeManagerConfiguration (mkHome "desktop");
+        "flat" = home-manager.lib.homeManagerConfiguration (mkHome "desktop");
       };
 
     };
