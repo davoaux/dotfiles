@@ -68,11 +68,22 @@
             prompt pure
           '')
         ];
+
+        nixswitchCfg = zshGeneral ''
+          nixswitch() {
+            if type -p darwin-rebuild &>/dev/null; then
+              darwin-rebuild switch --flake "$HOME/.dotfiles#$(hostname)"
+            else
+              home-manager switch --flake "$HOME/.dotfiles#$(hostname)"
+            fi
+          }
+        '';
       in
       lib.mkMerge [
         autopairCfg
         completionCfg
         purePromptCfg
+        nixswitchCfg
       ];
 
     # Linux-specific sway startup

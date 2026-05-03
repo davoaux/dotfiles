@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ghostty = {
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +21,12 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      darwin,
+      ...
+    }:
     let
       # attribute set containing the host profiles and it's used system
       hostProfileToSystem = {
@@ -40,7 +50,32 @@
       homeConfigurations = {
         "tiramisu" = home-manager.lib.homeManagerConfiguration (mkHome "arch");
         "GV-M-MJXVF4TNJX" = home-manager.lib.homeManagerConfiguration (mkHome "work-laptop");
-        "flat.local" = home-manager.lib.homeManagerConfiguration (mkHome "desktop");
+        # "flat" = home-manager.lib.homeManagerConfiguration (mkHome "desktop");
+      };
+
+      darwinConfigurations = {
+        "flat" = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            (
+              { ... }:
+              {
+                # Let Determinate Nix handle Nix configuration
+                nix.enable = false;
+              }
+            )
+
+            ./darwin/configuration.nix
+
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { hostProfile = "desktop"; };
+              home-manager.users.david = ./home/home.nix;
+            }
+          ];
+        };
       };
 
     };
