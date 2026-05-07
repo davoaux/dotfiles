@@ -29,9 +29,6 @@ let
 in
 {
   home = {
-    username = hostConfig.username;
-    homeDirectory = hostConfig.homeDirectory;
-
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "25.11";
 

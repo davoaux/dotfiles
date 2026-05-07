@@ -28,34 +28,53 @@
       ...
     }:
     let
-      # attribute set containing the host profiles and it's used system
+      # attribute set containing the host profiles and their used system
       hostProfileToSystem = {
         "arch" = "x86_64-linux";
         "desktop" = "aarch64-darwin";
         "work-laptop" = "aarch64-darwin";
       };
 
-      # function to create the home-manager configuration for a given host profile
-      mkHome = hostProfile: {
-        pkgs = nixpkgs.legacyPackages.${hostProfileToSystem.${hostProfile}};
-        extraSpecialArgs = { inherit hostProfile; };
-        modules = [ ./home/home.nix ];
-      };
-    in
-    {
-      formatter = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
-        system: nixpkgs.legacyPackages.${system}.nixfmt-tree
-      );
+      # Load host config data from the per-host file
+      mkHostConfig =
+        hostProfile:
+        let
+          system = hostProfileToSystem.${hostProfile};
+        in
+        import ./home/${hostProfile}.nix {
+          pkgs = nixpkgs.legacyPackages.${system};
+          lib = nixpkgs.lib;
+          config = { };
+        };
 
-      homeConfigurations = {
-        "tiramisu" = home-manager.lib.homeManagerConfiguration (mkHome "arch");
-        "GV-M-MJXVF4TNJX" = home-manager.lib.homeManagerConfiguration (mkHome "work-laptop");
-        # "flat" = home-manager.lib.homeManagerConfiguration (mkHome "desktop");
-      };
+      # Standalone home-manager configuration (e.g. arch/Linux, work-laptop)
+      mkHome =
+        hostProfile:
+        let
+          system = hostProfileToSystem.${hostProfile};
+          hostConfig = mkHostConfig hostProfile;
+        in
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = { inherit hostProfile; };
+          modules = [
+            ./home/home.nix
+            {
+              home.username = hostConfig.username;
+              home.homeDirectory = hostConfig.homeDirectory;
+            }
+          ];
+        };
 
-      darwinConfigurations = {
-        "flat" = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
+      # nix-darwin system configuration
+      mkDarwin =
+        hostProfile:
+        let
+          system = hostProfileToSystem.${hostProfile};
+          hostConfig = mkHostConfig hostProfile;
+        in
+        darwin.lib.darwinSystem {
+          inherit system;
           modules = [
             (
               { ... }:
@@ -67,15 +86,36 @@
 
             ./darwin/configuration.nix
 
+            {
+              system.primaryUser = hostConfig.username;
+              users.users.${hostConfig.username} = {
+                name = hostConfig.username;
+                home = hostConfig.homeDirectory;
+              };
+            }
+
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { hostProfile = "desktop"; };
-              home-manager.users.david = ./home/home.nix;
+              home-manager.extraSpecialArgs = { inherit hostProfile; };
+              home-manager.users.${hostConfig.username} = ./home/home.nix;
             }
           ];
         };
+    in
+    {
+      formatter = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
+        system: nixpkgs.legacyPackages.${system}.nixfmt-tree
+      );
+
+      homeConfigurations = {
+        "tiramisu" = mkHome "arch";
+        "GV-M-MJXVF4TNJX" = mkHome "work-laptop";
+      };
+
+      darwinConfigurations = {
+        "flat" = mkDarwin "desktop";
       };
 
     };
