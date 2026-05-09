@@ -4,20 +4,17 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    darwin = {
-      url = "github:nix-darwin/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    darwin.url = "github:nix-darwin/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ghostty.url = "github:ghostty-org/ghostty";
+    ghostty.inputs.nixpkgs.follows = "nixpkgs";
+
+    sf-mono-liga-src.url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
+    sf-mono-liga-src.flake = false;
   };
 
   outputs =
@@ -25,6 +22,7 @@
       nixpkgs,
       home-manager,
       darwin,
+      self,
       ...
     }:
     let
@@ -72,14 +70,17 @@
         let
           system = hostProfileToSystem.${hostProfile};
           hostConfig = mkHostConfig hostProfile;
+          specialArgs = {
+            inherit hostProfile;
+            inputs = self.inputs;
+          };
         in
         darwin.lib.darwinSystem {
-          inherit system;
+          inherit system specialArgs;
           modules = [
             (
               { ... }:
               {
-                # Let Determinate Nix handle Nix configuration
                 nix.enable = false;
               }
             )

@@ -5,6 +5,9 @@
   ...
 }:
 
+let
+  homeDir = config.home.homeDirectory;
+in
 {
   programs.zsh = {
     enable = true;
@@ -18,7 +21,7 @@
     '';
 
     history = {
-      path = "$HOME/.histfile";
+      path = "${homeDir}/.histfile";
       size = 1000;
       save = 1000;
       ignoreAllDups = true;
@@ -72,9 +75,9 @@
         nixswitchCfg = zshGeneral ''
           nixswitch() {
             if type -p darwin-rebuild &>/dev/null; then
-              darwin-rebuild switch --flake "$HOME/.dotfiles#$(hostname)"
+              sudo darwin-rebuild switch --flake "${homeDir}/.dotfiles#$(hostname)"
             else
-              home-manager switch --flake "$HOME/.dotfiles#$(hostname)"
+              home-manager switch --flake "${homeDir}/.dotfiles#$(hostname)"
             fi
           }
         '';
@@ -88,16 +91,18 @@
 
     # Linux-specific sway startup
     loginExtra = lib.mkIf (pkgs.stdenv.isLinux) ''
-     if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
-       exec sway --unsupported-gpu
-     fi
+      if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
+        exec sway --unsupported-gpu
+      fi
     '';
 
     shellAliases =
       let
-        homeDir = config.home.homeDirectory;
         projectsDir = lib.concatStringsSep " " (
-          [ "${homeDir}/Development" ]
+          [
+            "${homeDir}/Development"
+            "${homeDir}/.dotfiles"
+          ]
           ++ (if pkgs.stdenv.isDarwin then [ "${homeDir}/IdeaProjects" ] else [ ])
         );
       in
@@ -108,7 +113,6 @@
         k = "kubectl";
         fonts = "fc-list : family | sort | uniq | fzf";
         docker-stop-all = "docker stop $(docker ps -a -q)";
-        hms = "home-manager switch --flake ${homeDir}/.dotfiles#$(hostname)";
         nixdev = "nix develop -c $SHELL \"$@\"";
         projects = "cd \"$(fd . ${projectsDir} --max-depth 1 | fzf)\"";
         glovo-ai-sync = "pnpm dlx @glovo/ai-prompts-cli sync"; # TODO enable only for work profile

@@ -40,6 +40,7 @@ in
         fzf
         jq
         opencode
+        pfetch
         ripgrep
       ]
       ++ hostConfig.extraPackages;
