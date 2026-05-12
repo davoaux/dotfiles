@@ -23,7 +23,9 @@ require 'telescope'.setup {
 require 'blink.cmp'.setup {
   keymap = { preset = "enter" },
   fuzzy = { implementation = "rust" },
-  accept = { auto_brackets = { enabled = true }, },
+  completion = {
+    accept = { auto_brackets = { enabled = true }, },
+  },
 }
 
 require("slimline").setup {
