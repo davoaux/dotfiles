@@ -12,6 +12,14 @@
     settings = {
       theme = "dark:Nvim Dark,light:Alabaster";
       font-family = "Liga SFMono Nerd Font";
+
+      # split navigation
+      keybind = [
+        "super+shift+h=goto_split:left"
+        "super+shift+j=goto_split:down"
+        "super+shift+k=goto_split:up"
+        "super+shift+l=goto_split:right"
+      ];
     };
   };
 }
