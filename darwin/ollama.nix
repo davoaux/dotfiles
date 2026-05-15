@@ -13,5 +13,6 @@
         OLLAMA_HOST = "0.0.0.0";
         OLLAMA_ORIGINS = "*";
       };
+    };
   };
 }

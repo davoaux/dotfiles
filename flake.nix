@@ -85,7 +85,10 @@
               }
             )
 
+            # TODO autoload modules in darwin directory
             ./darwin/configuration.nix
+            ./darwin/ollama.nix
+            ./darwin/wm.nix
 
             {
               system.primaryUser = hostConfig.username;
@@ -97,7 +100,7 @@
 
             home-manager.darwinModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
+              home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit hostProfile; };
               home-manager.users.${hostConfig.username} = ./home/home.nix;
