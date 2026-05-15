@@ -6,8 +6,6 @@
 }:
 
 {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "lexima.vim" ];
-
   programs.neovim = {
     enable = true;
 

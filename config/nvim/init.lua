@@ -71,7 +71,7 @@ vim.o.splitright  = true
 vim.o.wrap        = false
 
 vim.cmd.colorscheme("alabaster")
-vim.o.background    = "light" -- TODO read from system settings
+vim.o.background    = "light"
 
 vim.o.laststatus    = 2
 vim.o.number        = true

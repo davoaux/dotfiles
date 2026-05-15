@@ -89,13 +89,6 @@ in
         nixswitchCfg
       ];
 
-    # Linux-specific sway startup
-    loginExtra = lib.mkIf (pkgs.stdenv.isLinux) ''
-      if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
-        exec sway --unsupported-gpu
-      fi
-    '';
-
     shellAliases =
       let
         projectsDir = lib.concatStringsSep " " (
@@ -111,11 +104,10 @@ in
         l = "ls -lah";
         rm = "rm -i";
         k = "kubectl";
-        fonts = "fc-list : family | sort | uniq | fzf";
         docker-stop-all = "docker stop $(docker ps -a -q)";
+        fonts = "fc-list : family | sort | uniq | fzf";
         nixdev = "nix develop -c $SHELL \"$@\"";
         projects = "cd \"$(fd . ${projectsDir} --max-depth 1 | fzf)\"";
-        glovo-ai-sync = "pnpm dlx @glovo/ai-prompts-cli sync"; # TODO enable only for work profile
       };
 
   };
