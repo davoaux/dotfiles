@@ -13,6 +13,9 @@
     ghostty.url = "github:ghostty-org/ghostty";
     ghostty.inputs.nixpkgs.follows = "nixpkgs";
 
+    fff.url = "github:dmtrKovalenko/fff";
+    fff.inputs.nixpkgs.follows = "nixpkgs";
+
     sf-mono-liga-src.url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
     sf-mono-liga-src.flake = false;
   };
@@ -54,7 +57,10 @@
         in
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
-          extraSpecialArgs = { inherit hostProfile; };
+          extraSpecialArgs = {
+            inherit hostProfile;
+            inputs = self.inputs;
+          };
           modules = [
             ./home/home.nix
             {
@@ -102,7 +108,7 @@
             {
               home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit hostProfile; };
+              home-manager.extraSpecialArgs = { inherit hostProfile; inputs = self.inputs; };
               home-manager.users.${hostConfig.username} = ./home/home.nix;
             }
           ];

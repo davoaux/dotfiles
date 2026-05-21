@@ -16,5 +16,7 @@
     "work"
     "ghostty"
   ];
-  extraSessionVariables = { };
+  extraSessionVariables = {
+    OPENCODE_CONFIG = "/Users/david.ruiz/.config/opencode/opencode-nix.jsonc";
+  };
 }

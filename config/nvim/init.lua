@@ -71,7 +71,6 @@ vim.o.splitright  = true
 vim.o.wrap        = false
 
 vim.cmd.colorscheme("alabaster")
-vim.o.background    = "light"
 
 vim.o.laststatus    = 2
 vim.o.number        = true
@@ -108,8 +107,8 @@ vim.keymap.set('n', '<c-n>', '<cmd>Neotree toggle<cr>')
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-b>', builtin.buffers)
-vim.keymap.set('n', '<c-p>', builtin.find_files)
-vim.keymap.set('n', '<c-s-f>', builtin.live_grep)
+vim.keymap.set('n', '<c-p>', function() require('fff').find_files() end)
+vim.keymap.set('n', '<c-s-f>', function() require('fff').live_grep() end)
 vim.keymap.set('n', '<leader>d', builtin.diagnostics)
 
 vim.api.nvim_create_user_command('Branches', builtin.git_branches, {})

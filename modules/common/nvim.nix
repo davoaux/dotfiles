@@ -23,6 +23,7 @@
 
       telescope-nvim
       plenary-nvim
+      fff-nvim
 
       neo-tree-nvim
       nui-nvim
