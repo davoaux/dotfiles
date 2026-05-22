@@ -5,12 +5,6 @@ local bootstrap = require("bootstrap").bootstrap_paq
 bootstrap {
   "savq/paq-nvim",
 
-  {
-    'saghen/blink.cmp',
-    branch = "v1.10.1",
-    build = "nix run .#build-plugin"
-  },
-
   "sschleemilch/slimline.nvim",
 }
 

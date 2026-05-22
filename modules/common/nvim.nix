@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -20,6 +15,8 @@
       nvim-lspconfig
 
       nvim-treesitter.withAllGrammars
+
+      blink-cmp
 
       telescope-nvim
       plenary-nvim
