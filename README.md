@@ -31,5 +31,5 @@ brew tap deliveryhero/dp-tap
 brew install deliveryhero/dp-tap/dp-devinfra
 ```
 
-After running `hms`, the `HOMEBREW_GITHUB_API_TOKEN` will be set automatically in your shell via `gh auth token`.
+After running `nixswitch`, the `HOMEBREW_GITHUB_API_TOKEN` will be set automatically in your shell via `gh auth token`.
 
