@@ -13,8 +13,9 @@
     pi-coding-agent
   ];
   extraModules = [
-    "work"
     "ghostty"
+    "idea"
+    "work"
   ];
   extraSessionVariables = {
     OPENCODE_CONFIG = "/Users/david.ruiz/.config/opencode/opencode-nix.jsonc";
