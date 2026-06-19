@@ -10,6 +10,7 @@ in
   home.file.".config/opencode/opencode-nix.jsonc".text = builtins.toJSON {
     "$schema" = "https://opencode.ai/config.json";
     instructions = [ "~/.config/opencode/AGENTS.md" ];
+    lsp = true;
     permission = {
       external_directory = {
         "*" = "ask";
