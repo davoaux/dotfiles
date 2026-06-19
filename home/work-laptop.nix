@@ -10,7 +10,6 @@
   extraPackages = with pkgs; [
     gh
     pnpm # needed to periodically sync @glovo/ai-prompts-cli
-    pi-coding-agent
   ];
   extraModules = [
     "ghostty"
