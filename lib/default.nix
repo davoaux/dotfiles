@@ -6,6 +6,8 @@
 }:
 
 let
+  utils = import ./utils.nix;
+
   # attribute set containing the host profiles and their used system
   hostProfileToSystem = {
     "arch" = "x86_64-linux";
@@ -67,12 +69,9 @@ let
             nix.enable = false;
           }
         )
-
-        # TODO autoload modules in darwin directory
-        ../darwin/configuration.nix
-        ../darwin/ollama.nix
-        ../darwin/wm.nix
-
+      ]
+      ++ utils.nixFilesIn ../darwin
+      ++ [
         {
           system.primaryUser = hostConfig.username;
           users.users.${hostConfig.username} = {

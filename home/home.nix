@@ -7,22 +7,10 @@
 }:
 
 let
+  utils = import ../lib/utils.nix;
+
   # Function to retrieve modules to import
-  importFrom =
-    dirs:
-    let
-      importDir =
-        collection:
-        let
-          modulesCollectionDir = ../modules + "/${collection}";
-        in
-        map (moduleFile: modulesCollectionDir + "/${moduleFile}") (
-          lib.filter (lib.strings.hasSuffix ".nix") (
-            builtins.attrNames (builtins.readDir modulesCollectionDir)
-          )
-        );
-    in
-    lib.flatten (map importDir dirs);
+  importFrom = dirs: builtins.concatMap (d: utils.nixFilesIn (../modules + "/${d}")) dirs;
 
   # Import host-specific configuration data
   hostConfig = import ./${hostProfile}.nix { inherit config pkgs lib; };
