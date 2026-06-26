@@ -7,7 +7,7 @@
 {
   username = "david";
   homeDirectory = "/Users/david";
-  extraPackages = with pkgs; [ claude-code ];
+  extraPackages = with pkgs; [ claude-code whisky ];
   extraModules = [
     "ghostty"
     "idea"

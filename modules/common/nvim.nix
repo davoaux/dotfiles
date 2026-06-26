@@ -31,6 +31,7 @@
       vim-rooter
 
       alabaster-nvim
+      slimline-nvim
     ];
 
     initLua = builtins.readFile ../../config/nvim/init.lua;

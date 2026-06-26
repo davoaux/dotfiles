@@ -1,13 +1,3 @@
-local bootstrap = require("bootstrap").bootstrap_paq
-
--- Most of my plugins are currently handled through nix, once I've migrated all of them
--- to Nix I need to clean up paq-nvim and the bootstrap mechanism
-bootstrap {
-  "savq/paq-nvim",
-
-  "sschleemilch/slimline.nvim",
-}
-
 require 'lsp'
 
 require 'telescope'.setup {
