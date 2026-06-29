@@ -12,6 +12,7 @@
     pnpm # needed to periodically sync @glovo/ai-prompts-cli
   ];
   extraModules = [
+    "fonts"
     "ghostty"
     "idea"
     "work"

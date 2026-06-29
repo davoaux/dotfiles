@@ -9,6 +9,7 @@
   homeDirectory = "/Users/david";
   extraPackages = with pkgs; [ claude-code whisky ];
   extraModules = [
+    "fonts"
     "ghostty"
     "idea"
   ];

@@ -11,7 +11,7 @@
 
     settings = {
       theme = "dark:Nvim Dark,light:Alabaster";
-      font-family = "Liga SFMono Nerd Font";
+      font-family = "Berkeley Mono";
 
       # split navigation
       keybind = [
