@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ ... }:
 
 {
   programs.git = {
@@ -11,14 +11,14 @@
       };
 
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
 
       alias = {
         l = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
         ss = "status --short";
         cc = "shortlog -sn --all";
       };
-    }
-    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+
       url."ssh://git@github.com/".insteadOf = "https://github.com/";
     };
   };
