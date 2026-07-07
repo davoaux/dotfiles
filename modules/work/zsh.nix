@@ -1,5 +1,8 @@
-{ ... }:
+{ config, ... }:
 
+let
+  homeDir = config.home.homeDirectory;
+in
 {
   programs.zsh.shellAliases = {
     # it might not work, if it doesn't run:
@@ -7,6 +10,7 @@
     # 2. nixswitch
     # 3. glovo-ai-sync
     glovo-ai-sync = "pnpm dlx @glovo/ai-prompts-cli@latest setup-global";
+    notes = "vi \"$(fd . ${homeDir}/Documents/Notes | fzf)\"";
   };
 
   programs.zsh.initContent = ''
