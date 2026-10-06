@@ -105,6 +105,7 @@ in
         rm = "rm -i";
         k = "kubectl";
         docker-stop-all = "docker stop $(docker ps -a -q)";
+        docker-remove-all = "docker rm $(docker ps -a -q)";
         fonts = "fc-list : family | sort | uniq | fzf";
         nixdev = "nix develop -c $SHELL \"$@\"";
         projects = "cd \"$(fd . ${projectsDir} --max-depth 1 | fzf)\"";
