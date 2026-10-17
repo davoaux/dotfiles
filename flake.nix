@@ -7,14 +7,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    ghostty.url = "github:ghostty-org/ghostty";
-    ghostty.inputs.nixpkgs.follows = "nixpkgs";
-
     fff.url = "github:dmtrKovalenko/fff";
     fff.inputs.nixpkgs.follows = "nixpkgs";
-
-    sf-mono-liga-src.url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
-    sf-mono-liga-src.flake = false;
   };
 
   outputs =

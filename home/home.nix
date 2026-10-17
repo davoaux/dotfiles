@@ -1,8 +1,7 @@
 {
   config,
   pkgs,
-  lib,
-  hostProfile,
+  hostConfig,
   ...
 }:
 
@@ -11,9 +10,6 @@ let
 
   # Function to retrieve modules to import
   importFrom = dirs: builtins.concatMap (d: utils.nixFilesIn (../modules + "/${d}")) dirs;
-
-  # Import host-specific configuration data
-  hostConfig = import ./${hostProfile}.nix { inherit config pkgs lib; };
 in
 {
   home = {
@@ -25,7 +21,6 @@ in
       with pkgs;
       [
         fd
-        fzf
         jq
         opencode
         pfetch

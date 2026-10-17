@@ -1,4 +1,4 @@
-{ pkgs, inputs, lib, ... }:
+{ pkgs, lib, ... }:
 
 let
   berkeleyMono = pkgs.stdenvNoCC.mkDerivation {

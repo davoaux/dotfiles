@@ -19,7 +19,12 @@ let
       system = hostProfileToSystem.${hostProfile};
     in
     import ../home/${hostProfile}.nix {
-      pkgs = nixpkgs.legacyPackages.${system};
+      # allowUnfree is required here because host configs list unfree packages
+      # (e.g. claude-code) and are evaluated outside of Home Manager's pkgs
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       lib = nixpkgs.lib;
       config = { };
     };
@@ -34,7 +39,7 @@ let
     home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {
-        inherit hostProfile;
+        inherit hostConfig;
         inputs = self.inputs;
       };
       modules = [
