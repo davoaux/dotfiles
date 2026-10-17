@@ -74,11 +74,7 @@ in
 
         nixswitchCfg = zshGeneral ''
           nixswitch() {
-            if type -p darwin-rebuild &>/dev/null; then
-              sudo darwin-rebuild switch --flake "${homeDir}/.dotfiles#$(hostname)"
-            else
-              home-manager switch --flake "${homeDir}/.dotfiles#$(hostname)"
-            fi
+            home-manager switch --flake "${homeDir}/.dotfiles#$(hostname)"
           }
         '';
       in

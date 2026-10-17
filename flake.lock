@@ -15,26 +15,6 @@
         "type": "github"
       }
     },
-    "darwin": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1786845137,
-        "narHash": "sha256-oQFip+v0luP8NIxJzmiW4Wu8bILsbFWom5l0zonl8hQ=",
-        "owner": "nix-darwin",
-        "repo": "nix-darwin",
-        "rev": "4cff07de74b50e64bdd68cd4e722ab5b6b35ee48",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-darwin",
-        "repo": "nix-darwin",
-        "type": "github"
-      }
-    },
     "fff": {
       "inputs": {
         "crane": "crane",
@@ -46,11 +26,11 @@
         "zig-overlay": "zig-overlay"
       },
       "locked": {
-        "lastModified": 1791127993,
-        "narHash": "sha256-vj2GFRsNXWtZkpblfBbBOrhANzK6XcAqHCwBYP/kH/8=",
+        "lastModified": 1792119962,
+        "narHash": "sha256-NKHKCKyzntKCgMW4Xcg7VMFT7NxqLfwXisXL7CBUHEI=",
         "owner": "dmtrKovalenko",
         "repo": "fff",
-        "rev": "c188e7a8f90e4ee4aabe18f93d5869dfb4289f12",
+        "rev": "8154eec7bdd9ccfa2ec5e3ea2b77df60734bf448",
         "type": "github"
       },
       "original": {
@@ -121,11 +101,11 @@
         "zon2nix": "zon2nix"
       },
       "locked": {
-        "lastModified": 1791245595,
-        "narHash": "sha256-qy6j3ZNYeHyjGGw+AMY4rjLUJNyzfFTz2vQx3s3XS1Y=",
+        "lastModified": 1792167584,
+        "narHash": "sha256-G9zLjxbFM+FwF623FbRM/xpYNbk9PW3fkC0aPa8eFe4=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "c3203ea4b169a18eb2ccfe92847e426d8afea858",
+        "rev": "949149d5791a0eb08412ad05cd8fd484ad134481",
         "type": "github"
       },
       "original": {
@@ -162,11 +142,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791227480,
-        "narHash": "sha256-+lrD+sxc2RKUWXRBAcggn7uBCFeJgnV75jD/cz7gJRA=",
+        "lastModified": 1792098797,
+        "narHash": "sha256-u4DIIZgznEGzByxXrxWCXK19VcMtTBmi/M9gZ7Jk9bM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "aa23f720d022187228bc264f759aef6b80233bcf",
+        "rev": "640725978b99076e18e069f6e7d2959124584f8f",
         "type": "github"
       },
       "original": {
@@ -177,11 +157,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1791260994,
-        "narHash": "sha256-Miqqk/ammqnTUxaoCyvtwoPeLbI1ksFyLxi/CazZpWY=",
+        "lastModified": 1791956154,
+        "narHash": "sha256-jBYGPi4udQ9uo4KQp9m2J0546nJVQitG15gvZSaVVAs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "151fa4e8ddfdd8dd25d945ad94ed54a13de9f6e4",
+        "rev": "55bfb4d7437bd4e09ab7cba58a43bd68eb310044",
         "type": "github"
       },
       "original": {
@@ -193,7 +173,6 @@
     },
     "root": {
       "inputs": {
-        "darwin": "darwin",
         "fff": "fff",
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",

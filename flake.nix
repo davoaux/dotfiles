@@ -7,9 +7,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    darwin.url = "github:nix-darwin/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
-
     ghostty.url = "github:ghostty-org/ghostty";
     ghostty.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -24,7 +21,6 @@
     {
       nixpkgs,
       home-manager,
-      darwin,
       self,
       ...
     }:
@@ -33,11 +29,10 @@
         inherit
           nixpkgs
           home-manager
-          darwin
           self
           ;
       };
-      inherit (lib) mkHome mkDarwin;
+      inherit (lib) mkHome;
     in
     {
       formatter = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
@@ -46,9 +41,7 @@
       homeConfigurations = {
         "tiramisu" = mkHome "arch";
         "GV-M-MJXVF4TNJX" = mkHome "work-laptop";
-      };
-      darwinConfigurations = {
-        "flat" = mkDarwin "desktop";
+        "flat" = mkHome "desktop";
       };
     };
 }
