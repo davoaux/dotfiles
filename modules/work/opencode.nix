@@ -23,6 +23,12 @@ in
         enabled = true;
       };
     };
+    references = {
+      "ads-sponsoring-core" = {
+        path = "~/IdeaProjects/ads-sponsoring-core/";
+        description = "The repository for the backend service responsible of handling the sponsoring logic of partners and brands";
+      };
+    };
   };
 
   home.file.".config/opencode/AGENTS.md".text = ''
