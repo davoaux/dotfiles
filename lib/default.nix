@@ -43,6 +43,8 @@ let
           self.inputs.llm-agents.overlays.shared-nixpkgs
           (final: _prev: {
             fff-mcp = self.inputs.fff.packages.${final.stdenv.hostPlatform.system}.fff-mcp;
+            # darwin-only package, evaluated lazily so other systems are unaffected
+            mole = self.inputs.mole.packages.${final.stdenv.hostPlatform.system}.mole;
           })
         ];
       };

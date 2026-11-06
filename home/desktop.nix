@@ -13,6 +13,7 @@
     "fonts"
     "ghostty"
     "idea"
+    "mole"
   ];
   extraSessionVariables = { };
 }

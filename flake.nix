@@ -10,6 +10,9 @@
     fff.url = "github:dmtrKovalenko/fff";
     fff.inputs.nixpkgs.follows = "nixpkgs";
 
+    mole.url = "github:tw93/Mole";
+    mole.inputs.nixpkgs.follows = "nixpkgs";
+
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs";
   };
