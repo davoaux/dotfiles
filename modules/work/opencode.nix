@@ -1,11 +1,9 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
-let
-  system = pkgs.stdenv.hostPlatform.system;
-  fff-mcp = inputs.fff.packages.${system}.fff-mcp;
-in
 {
-  home.packages = [ fff-mcp ];
+  home.packages = [ pkgs.fff-mcp ];
+
+  home.sessionVariables.OPENCODE_CONFIG = "${config.home.homeDirectory}/.config/opencode/opencode-nix.jsonc";
 
   home.file.".config/opencode/opencode-nix.jsonc".text = builtins.toJSON {
     "$schema" = "https://opencode.ai/config.json";
@@ -19,7 +17,7 @@ in
     mcp = {
       fff = {
         type = "local";
-        command = [ "${fff-mcp}/bin/fff-mcp" ];
+        command = [ "${pkgs.fff-mcp}/bin/fff-mcp" ];
         enabled = true;
       };
     };

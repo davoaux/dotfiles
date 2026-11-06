@@ -9,6 +9,9 @@ let
   homeDir = config.home.homeDirectory;
 in
 {
+  # provides prompt_pure_setup on the fpath
+  home.packages = [ pkgs.pure-prompt ];
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -22,8 +25,8 @@ in
 
     history = {
       path = "${homeDir}/.histfile";
-      size = 1000;
-      save = 1000;
+      size = 5000;
+      save = 5000;
       ignoreAllDups = true;
       ignoreSpace = true;
       share = true;
@@ -34,21 +37,8 @@ in
     plugins = [
       {
         name = "zsh-autopair";
-        src = pkgs.fetchFromGitHub {
-          owner = "hlissner";
-          repo = "zsh-autopair";
-          rev = "master";
-          sha256 = "sha256-3zvOgIi+q7+sTXrT+r/4v98qjeiEL4Wh64rxBYnwJvQ=";
-        };
-      }
-      {
-        name = "pure-prompt-theme";
-        src = pkgs.fetchFromGitHub {
-          owner = "sindresorhus";
-          repo = "pure";
-          rev = "main";
-          sha256 = "sha256-AZSxP2g6BWoxyiSQH7yzbbbfGcwD8jgnXPPfcYwJUL0=";
-        };
+        src = pkgs.zsh-autopair;
+        file = "share/zsh/zsh-autopair/autopair.zsh";
       }
     ];
 
@@ -71,18 +61,11 @@ in
             prompt pure
           '')
         ];
-
-        nixswitchCfg = zshGeneral ''
-          nixswitch() {
-            home-manager switch --flake "${homeDir}/.dotfiles#$(hostname)"
-          }
-        '';
       in
       lib.mkMerge [
         autopairCfg
         completionCfg
         purePromptCfg
-        nixswitchCfg
       ];
 
     shellAliases =
@@ -92,7 +75,7 @@ in
             "${homeDir}/Development"
             "${homeDir}/.dotfiles"
           ]
-          ++ (if pkgs.stdenv.isDarwin then [ "${homeDir}/IdeaProjects" ] else [ ])
+          ++ (if pkgs.stdenv.hostPlatform.isDarwin then [ "${homeDir}/IdeaProjects" ] else [ ])
         );
       in
       {
@@ -104,6 +87,7 @@ in
         docker-remove-all = "docker rm $(docker ps -a -q)";
         fonts = "fc-list : family | sort | uniq | fzf";
         nixdev = "nix develop -c $SHELL \"$@\"";
+        nixswitch = "home-manager switch --flake ${homeDir}/.dotfiles#$(hostname)";
         projects = "cd \"$(fd . ${projectsDir} --max-depth 1 | fzf)\"";
       };
 

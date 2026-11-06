@@ -12,12 +12,11 @@
     pnpm # needed to periodically sync @glovo/ai-prompts-cli
   ];
   extraModules = [
+    "ai"
     "fonts"
     "ghostty"
     "idea"
     "work"
   ];
-  extraSessionVariables = {
-    OPENCODE_CONFIG = "/Users/david.ruiz/.config/opencode/opencode-nix.jsonc";
-  };
+  extraSessionVariables = { };
 }

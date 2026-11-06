@@ -37,10 +37,17 @@ let
       hostConfig = mkHostConfig hostProfile;
     in
     home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          self.inputs.llm-agents.overlays.shared-nixpkgs
+          (final: _prev: {
+            fff-mcp = self.inputs.fff.packages.${final.stdenv.hostPlatform.system}.fff-mcp;
+          })
+        ];
+      };
       extraSpecialArgs = {
         inherit hostConfig;
-        inputs = self.inputs;
       };
       modules = [
         ../home/home.nix

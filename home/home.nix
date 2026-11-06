@@ -22,7 +22,6 @@ in
       [
         fd
         jq
-        opencode
         pfetch
         ripgrep
       ]
@@ -31,6 +30,7 @@ in
     sessionPath = [
       "${config.home.homeDirectory}/.local/bin"
       "${config.home.homeDirectory}/bin"
+      "${config.home.homeDirectory}/.opencode/bin"
     ];
 
     sessionVariables = {
