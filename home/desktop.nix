@@ -1,19 +1,20 @@
-{
-  config,
-  pkgs,
-  lib,
-}:
+{ pkgs, ... }:
 
+let
+  utils = import ../lib/utils.nix;
+in
 {
-  username = "david";
-  homeDirectory = "/Users/david";
-  extraPackages = with pkgs; [ whisky ];
-  extraModules = [
+  imports = utils.modulesFrom [
     "ai"
     "fonts"
     "ghostty"
     "idea"
     "mole"
   ];
-  extraSessionVariables = { };
+
+  home = {
+    username = "david";
+    homeDirectory = "/Users/david";
+    packages = with pkgs; [ whisky ];
+  };
 }

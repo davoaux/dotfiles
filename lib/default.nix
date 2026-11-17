@@ -12,33 +12,13 @@ let
     "work-laptop" = "aarch64-darwin";
   };
 
-  # Load host config data from the per-host file
-  mkHostConfig =
-    hostProfile:
-    let
-      system = hostProfileToSystem.${hostProfile};
-    in
-    import ../home/${hostProfile}.nix {
-      # allowUnfree is required here because host configs list unfree packages
-      # (e.g. claude-code) and are evaluated outside of Home Manager's pkgs
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      lib = nixpkgs.lib;
-      config = { };
-    };
-
-  # Standalone home-manager configuration
+  # Standalone home-manager configuration, built from the shared base
+  # (home/home.nix) plus the host module (home/<hostProfile>.nix)
   mkHome =
     hostProfile:
-    let
-      system = hostProfileToSystem.${hostProfile};
-      hostConfig = mkHostConfig hostProfile;
-    in
     home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
-        inherit system;
+        system = hostProfileToSystem.${hostProfile};
         config.allowUnfree = true;
         overlays = [
           self.inputs.llm-agents.overlays.shared-nixpkgs
@@ -51,15 +31,9 @@ let
           })
         ];
       };
-      extraSpecialArgs = {
-        inherit hostConfig;
-      };
       modules = [
         ../home/home.nix
-        {
-          home.username = hostConfig.username;
-          home.homeDirectory = hostConfig.homeDirectory;
-        }
+        ../home/${hostProfile}.nix
       ];
     };
 in

@@ -1,22 +1,23 @@
-{
-  config,
-  pkgs,
-  lib,
-}:
+{ pkgs, ... }:
 
+let
+  utils = import ../lib/utils.nix;
+in
 {
-  username = "david.ruiz";
-  homeDirectory = "/Users/david.ruiz";
-  extraPackages = with pkgs; [
-    gh
-    pnpm # needed to periodically sync @glovo/ai-prompts-cli
-  ];
-  extraModules = [
+  imports = utils.modulesFrom [
     "ai"
     "fonts"
     "ghostty"
     "idea"
     "work"
   ];
-  extraSessionVariables = { };
+
+  home = {
+    username = "david.ruiz";
+    homeDirectory = "/Users/david.ruiz";
+    packages = with pkgs; [
+      gh
+      pnpm # needed to periodically sync @glovo/ai-prompts-cli
+    ];
+  };
 }
