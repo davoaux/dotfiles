@@ -4,6 +4,7 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-    defaultOptions = [ "--color=light" ]; # should be set based on system theme
+    # base16 uses the terminal palette, so it follows the light/dark theme
+    defaultOptions = [ "--color=base16" ];
   };
 }

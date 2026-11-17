@@ -87,7 +87,7 @@ in
         docker-remove-all = "docker rm $(docker ps -a -q)";
         fonts = "fc-list : family | sort | uniq | fzf";
         nixdev = "nix develop -c $SHELL \"$@\"";
-        nixswitch = "home-manager switch --flake ${config.dotfiles.dir}#$(hostname)";
+        nixswitch = "home-manager switch --flake ${config.dotfiles.dir}#$(hostname -s)";
         projects = "cd \"$(fd . ${projectsDir} --max-depth 1 | fzf)\"";
       };
 
