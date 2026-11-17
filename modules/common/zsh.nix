@@ -73,7 +73,7 @@ in
         projectsDir = lib.concatStringsSep " " (
           [
             "${homeDir}/Development"
-            "${homeDir}/.dotfiles"
+            config.dotfiles.dir
           ]
           ++ (if pkgs.stdenv.hostPlatform.isDarwin then [ "${homeDir}/IdeaProjects" ] else [ ])
         );
@@ -87,7 +87,7 @@ in
         docker-remove-all = "docker rm $(docker ps -a -q)";
         fonts = "fc-list : family | sort | uniq | fzf";
         nixdev = "nix develop -c $SHELL \"$@\"";
-        nixswitch = "home-manager switch --flake ${homeDir}/.dotfiles#$(hostname)";
+        nixswitch = "home-manager switch --flake ${config.dotfiles.dir}#$(hostname)";
         projects = "cd \"$(fd . ${projectsDir} --max-depth 1 | fzf)\"";
       };
 

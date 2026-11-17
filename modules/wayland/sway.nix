@@ -2,8 +2,7 @@
 
 {
   home.file = {
-    ".config/sway".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/sway";
+    ".config/sway".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.dir}/config/sway";
     "Pictures/wallpapers/file.jpg".source = ../../wp/file.jpg;
   };
 }

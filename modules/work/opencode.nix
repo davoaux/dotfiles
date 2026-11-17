@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.fff-mcp ];
-
   home.sessionVariables.OPENCODE_CONFIG = "${config.home.homeDirectory}/.config/opencode/opencode-nix.jsonc";
 
   home.file.".config/opencode/opencode-nix.jsonc".text = builtins.toJSON {

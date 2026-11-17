@@ -49,6 +49,6 @@
   };
 
   home.file.".config/nvim/lua" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/nvim/lua";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.dir}/config/nvim/lua";
   };
 }
