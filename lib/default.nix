@@ -39,6 +39,7 @@ let
     home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         inherit system;
+        config.allowUnfree = true;
         overlays = [
           self.inputs.llm-agents.overlays.shared-nixpkgs
           (final: _prev: {
