@@ -45,6 +45,8 @@ let
             fff-mcp = self.inputs.fff.packages.${final.stdenv.hostPlatform.system}.fff-mcp;
             # darwin-only package, evaluated lazily so other systems are unaffected
             mole = self.inputs.mole.packages.${final.stdenv.hostPlatform.system}.mole;
+            # non-flake source tree, consumed as "${pkgs.helix-vim}/helix.idea.vim"
+            helix-vim = self.inputs.helix-vim;
           })
         ];
       };

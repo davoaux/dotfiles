@@ -1,42 +1,34 @@
 let mapleader=" "
 
-" Plug 'tpope/vim-commentary'
+" Helix keybindings (https://github.com/chtenb/helix.vim), linked by modules/idea/idea.nix.
+" Must be sourced first so the mappings below take precedence.
+" Optional plugins used by it: KJump (gw), String Manipulation (&), Tab Shifter (space w h/j/k/l).
+source ~/.config/ideavim/helix.idea.vim
 
-set visualbell
 set noerrorbells
-set number
-set scrolloff=5
-set incsearch
 set ignorecase
-set smartcase
 set clipboard=unnamed
 set clipboard^=ideaput
 set idearefactormode=keep
-set ideajoin
 set NERDTree
-set commentary
 let g:NERDTreeMapActivateNode="l"
 let g:NERDTreeMapJumpParent="h"
-" Don't use Ex mode, use Q for formatting.
-map Q gq
 
+" Mirror modules/common/helix.nix
+nmap <F5> <Action>(EditorToggleShowWhitespaces)
+nmap <c-s-f> <Action>(FindInPath)
+nmap <c-s-k> <Action>(ShowIntentionActions)
+nnoremap <Up> <nop>
+nnoremap <Down> <nop>
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
 
 nmap <c-j> :m +1<cr>
 nmap <c-k> :m -2<cr>
 nmap <c-p> <Action>(GotoFile)
 nmap <c-s-p> <Action>(GotoAction)
 nmap <c-s-o> <Action>(OptimizeImports)
-nmap ]d <Action>(GotoNextError)
-nmap [d <Action>(GotoPreviousError)
 nmap <leader>q <Action>(CloseEditor)
 nmap <leader>n :NERDTreeToggle<cr>
 nmap <leader>g <Action>(Gradle.ExecuteTask)
 nmap <leader>m <Action>(Maven.ExecuteGoal)
-nmap <leader>i <Action>(SplitHorizontally)
-nmap <leader>o <Action>(SplitVertically)
-nmap <leader>r <Action>(RenameElement)
-nmap <leader>f <Action>(ReformatCode)
-" For formatting, especially comments
-" Depends on https://plugins.jetbrains.com/plugin/7234-wrap-to-column/
-" NOTE: vnoremap doesn't work with Actions
-"nmap gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)

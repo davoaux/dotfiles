@@ -15,6 +15,9 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs";
+
+    helix-vim.url = "github:chtenb/helix.vim";
+    helix-vim.flake = false;
   };
 
   outputs =

@@ -60,11 +60,11 @@
         "zig-overlay": "zig-overlay"
       },
       "locked": {
-        "lastModified": 1794607791,
-        "narHash": "sha256-/ag2T6OaR6to5Z1NYq9VNOII80U5Vwq/MnmsVsZa8N4=",
+        "lastModified": 1794869746,
+        "narHash": "sha256-cxwKODAVEOOlDteIeLu62jfY6I8S8Lgm9sfGa/iEoeQ=",
         "owner": "dmtrKovalenko",
         "repo": "fff",
-        "rev": "924cb4d758f09bb54654555b0c9440bacd1f97f0",
+        "rev": "ab3002a9bfbef53874dd0b56608e34d281791b4c",
         "type": "github"
       },
       "original": {
@@ -128,6 +128,22 @@
         "type": "github"
       }
     },
+    "helix-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764342545,
+        "narHash": "sha256-BYXknpFAX2vQpebAN4yGuve+2jpB8j1ZS1dXaq2kuI0=",
+        "owner": "chtenb",
+        "repo": "helix.vim",
+        "rev": "958314b6210d93d1abd4b1bc23b06a69fd17e3e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chtenb",
+        "repo": "helix.vim",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -135,11 +151,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794715309,
-        "narHash": "sha256-awkBBs5ctFKgEYjpNGpi3t/VqF589n5EWfdinRb2gNI=",
+        "lastModified": 1794897420,
+        "narHash": "sha256-hMI9Xg+lxS8kbnxIxL/jPQn688dstoxQAcMEbCb1ax0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a1293da7dd8e497e08d26173f97e2976b36a31ea",
+        "rev": "5b76c5b8eec25fdbce4f43309b3ee10584374a26",
         "type": "github"
       },
       "original": {
@@ -159,11 +175,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1794808658,
-        "narHash": "sha256-RbvK/ghvMuWWx/riUqtCZCxjZFji2n3onTo2Kg60T3s=",
+        "lastModified": 1794921748,
+        "narHash": "sha256-NSkvZS3SHtvhjjwMxhoh8U/AgvxE2WwK2m3otedppUw=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "733d5b0fa81d5aad7c623dca8d8170ce411fba1d",
+        "rev": "9b3e4b6bde4f5618b3cff4bef829a789d91c5e2f",
         "type": "github"
       },
       "original": {
@@ -211,6 +227,7 @@
     "root": {
       "inputs": {
         "fff": "fff",
+        "helix-vim": "helix-vim",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "mole": "mole",
