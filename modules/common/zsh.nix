@@ -70,12 +70,9 @@ in
 
     shellAliases =
       let
-        projectsDir = lib.concatStringsSep " " (
-          [
-            "${homeDir}/Development"
-            config.dotfiles.dir
-          ]
-          ++ (if pkgs.stdenv.hostPlatform.isDarwin then [ "${homeDir}/IdeaProjects" ] else [ ])
+        projectsDirs = lib.escapeShellArgs (
+          [ "${homeDir}/Development" ]
+          ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin "${homeDir}/IdeaProjects"
         );
       in
       {
@@ -88,7 +85,7 @@ in
         fonts = "fc-list : family | sort | uniq | fzf";
         nixdev = "nix develop -c $SHELL \"$@\"";
         nixswitch = "home-manager switch --flake ${config.dotfiles.dir}#$(hostname -s)";
-        projects = "cd \"$(fd . ${projectsDir} --max-depth 1 | fzf)\"";
+        projects = "cd \"$( (fd . ${projectsDirs} --max-depth 1; echo ${lib.escapeShellArg config.dotfiles.dir}) | fzf)\"";
       };
 
   };
