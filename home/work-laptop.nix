@@ -13,11 +13,11 @@ in
   ];
 
   home = {
-    username = "david.ruiz";
-    homeDirectory = "/Users/david.ruiz";
+    # TODO: set once the work laptop is provisioned
+    username = "TBD";
+    homeDirectory = "/Users/TBD";
     packages = with pkgs; [
       gh
-      pnpm # needed to periodically sync @glovo/ai-prompts-cli
     ];
   };
 }

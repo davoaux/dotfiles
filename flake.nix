@@ -43,7 +43,8 @@
       );
       homeConfigurations = {
         "tiramisu" = mkHome "arch";
-        "GV-M-MJXVF4TNJX" = mkHome "work-laptop";
+        # TODO: replace with the work laptop hostname (`hostname -s`)
+        "TBD" = mkHome "work-laptop";
         "flat" = mkHome "desktop";
       };
     };
